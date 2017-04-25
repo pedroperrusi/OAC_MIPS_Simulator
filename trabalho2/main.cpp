@@ -6,20 +6,24 @@
 #include <iterator>
 #include <bitset>
 
-bool loadBinFile( std::string, char** );
+int loadBinFile( std::string, char** );
 
 int main( int argc, char* argv[] ) {
 
 	char * memblock;
 
-	loadBinFile( argv[1], &memblock );
+	int size;
+
+	size = loadBinFile( argv[1], &memblock );
+
+	std::cout << "Size: " << size << '\n';
 
 	delete[] memblock;
 
 	return 0;
 }
 
-bool loadBinFile( std::string fileName, char ** memblock )
+int loadBinFile( std::string fileName, char ** memblock )
 {
 	std::ifstream myfile; // File stream for reading
 	myfile.open ( fileName,  std::ios::in|std::ios::binary|std::ios::ate );
@@ -38,7 +42,7 @@ bool loadBinFile( std::string fileName, char ** memblock )
 	else
 	{
 		std::cout << "Error when opening" << '\n';
-		return false;
+		return 0;
 	}
-	return true;
+	return size;
 }
