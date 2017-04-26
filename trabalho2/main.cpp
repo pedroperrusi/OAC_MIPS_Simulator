@@ -17,10 +17,8 @@ using std::getline;
 int32_t mem[MEM_SIZE];
 
 
-void interfaceUsuario();
-void executar();
-void limpaTela();
-
+/**TODO: 	Depois tem q arrumar as declarações de funçoes como arquivo .h e os codigos em outro .cpp e arrumar o make, mas tem tempo q fiz isso nao lembro
+			Vo pesquisar depois ve se lembro como faz, mas se alguem ja souber e quiser agilizar fica show*/
 
 
 /**************************************************************************************************************/
@@ -28,6 +26,11 @@ void limpaTela();
 *	Bloco 0: destinado as funções genericas:
 */
 /**************************************************************************************************************/
+
+void interfaceUsuario();
+void executar();
+void limpaTela();
+
 int main(int argc, char *argv[]){
 	string paramP("p");
 	string paramF("f");
