@@ -32,6 +32,7 @@ void printAddressValues( int32_t addr, int32_t value, char format )
 	// Print as Hexadecimal Values (default)
 	if( format == 'h' )
 		printf("%#010x \t = \t %#010x\n", addr, value );
+		// ref: http://stackoverflow.com/questions/14733761/printf-formatting-for-hex
 	// Print as Decimal Values
 	else if( format == 'd' )
 		std::cout << addr << "\t = \t" << value << '\n';
@@ -71,6 +72,7 @@ int printBinFile( std::string fileName, char format )
 			// Read binary value from file.
 			// Cating as a char* avoids warnings when passing pointer as reference
 			myfile.read(reinterpret_cast<char *>(&binValue), sizeof(binValue));
+			// ref: http://stackoverflow.com/questions/3595136/c-cout-hex-format
 			// Prnt addresses and its values
 			printAddressValues( static_cast<int>(myfile.tellg()), binValue );
 			getchar();
