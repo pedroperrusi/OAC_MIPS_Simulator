@@ -13,8 +13,6 @@ void printAddressValues( int32_t, int32_t, char format = 'h' );
 
 int printBinFile( std::string, char format = 'h' );
 
-void dump_mem(/* int start int end char format */);
-
 int main( int argc, char* argv[] ) {
 
 	if( argc == 1 )
@@ -87,9 +85,3 @@ int printBinFile( std::string fileName, char format )
 	}
 	return fileSize;
 }
-
-// void dump_mem(/* int start int end char format */)
-// {
-// 	std::bitset<MEM_SIZE> bits((std::string(memblock)));
-// 	std::cout << "Raw memory Loaded:\n"<< bits << '\n';
-// }
