@@ -20,16 +20,11 @@ int main( int argc, char* argv[] ) {
 	if( argc == 1 )
 		return 0;
 
-//	char * memblock;
 	int size;
 
 	size = printBinFile( argv[1] );
 
 	std::cout << "Size: " << size << '\n';
-
-	//dump_mem();
-
-//	delete[] memblock;
 
 	return 0;
 }
