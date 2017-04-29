@@ -37,7 +37,7 @@ void allocateValueOnMemory( size_t, int32_t );
 
 void dump_mem( size_t, size_t, char );
 
-int loadBinFile( std::string );
+int loadBinFile( std::string, size_t, size_t );
 
 int main( int argc, char* argv[] ) {
 
@@ -57,7 +57,7 @@ int main( int argc, char* argv[] ) {
 
 	int size;
 
-	size = loadBinFile( fileText );
+	size = loadBinFile( fileText, 0, MEM_SIZE );
 	dump_mem( 0, size, format );
 	std::cout << "Size: " << size << '\n';
 
@@ -101,12 +101,10 @@ void dump_mem( size_t start, size_t end, char format )
 	}
 }
 
-int loadBinFile( std::string fileName )
+int loadBinFile( std::string fileName, size_t start, size_t end )
 {
 	std::ifstream myfile; // File stream for reading
 	myfile.open ( fileName,  std::ios::in|std::ios::binary );
-
-	uint32_t binValue;
 
 	std::streampos fileSize;
 
@@ -120,18 +118,21 @@ int loadBinFile( std::string fileName )
 		myfile.seekg( 0, std::ios::beg );
 
 		// Loop over the file
-		size_t position = myfile.tellg();
-		while( position < fileSize )
+		uint32_t binValue;
+		size_t wordSize = sizeof(binValue);
+		// get file pointer position and shift it from start
+		size_t position =  start + myfile.tellg();
+		while( position < fileSize && position < end )
 		{
 			// Read binary value from file.
-			// Cating as a char* avoids warnings when passing pointer as reference
-			myfile.read(reinterpret_cast<char *>(&binValue), sizeof(binValue));
+			// Casting as a char* avoids warnings when passing pointer as reference
+			myfile.read(reinterpret_cast<char *>(&binValue), wordSize);
 			// ref: http://stackoverflow.com/questions/3595136/c-cout-hex-format
 
 			allocateValueOnMemory( position, binValue );
 
 			// Update Positon values
-			position = myfile.tellg();
+			position += wordSize;
 		}
 
 		myfile.close();
