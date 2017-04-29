@@ -22,7 +22,7 @@ void allocateValueOnMemory( size_t, int32_t );
 
 void dump_mem( size_t, size_t, char );
 
-int loadBinFile( std::string, char format = 'h' );
+int loadBinFile( std::string );
 
 int main( int argc, char* argv[] ) {
 
@@ -76,7 +76,7 @@ void dump_mem( size_t start, size_t end, char format )
 	}
 }
 
-int loadBinFile( std::string fileName, char format )
+int loadBinFile( std::string fileName )
 {
 	if( format != 'h' && format != 'd' )
 	{
