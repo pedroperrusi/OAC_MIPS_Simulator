@@ -7,14 +7,21 @@
 #include <iterator>
 #include <bitset>
 
-#define MEM_SIZE 4096
+#define MEM_SIZE 		0x0002ffc
+#define WORD_SIZE 4
+
+#define MEM_TEXT_BEGIN 	0x00000000
+#define MEM_TEXT_END 	0x00000084
+#define MEM_DATA_BEGIN 	0x00002000
+#define MEM_DATA_END 	0x0002ffc
+
 int32_t mem[MEM_SIZE];
 
 void help()
 {
 	std::cout << "\nThis program is importing MIPS data from binary files\n"
-	<<	"Input parameters are:\n"
-	<<"\t ./readBinaryFile [filenameText.bin] [filenameData.bin] [output format ('d', ou 'h')]" << "\n\n";
+			  <<	"Input parameters are:\n"
+			  <<"\t ./readBinaryFile [filenameText.bin] [filenameData.bin] [output format ('d', ou 'h')]" << "\n\n";
 }
 
 void validateNumInput( int nInput, int nExpected )
@@ -49,17 +56,17 @@ int main( int argc, char* argv[] ) {
 	std::string fileData = argv[2];
 	char format = getFormat( *argv[3] );
 
-	if( format != 'h' && format != 'd' )
-	{
-		std::cout << "Invalid format input" << '\n';
-		return -1;
-	}
+	int sizeText = 0;
+	std::cout << ".text Segment" << '\n';
+	sizeText+=loadBinFile( fileText, MEM_TEXT_BEGIN, MEM_TEXT_END );
+	dump_mem( 0, sizeText, format );
+	std::cout << "Size: " << sizeText << '\n';
 
-	int size;
-
-	size = loadBinFile( fileText, 0, MEM_SIZE );
-	dump_mem( 0, size, format );
-	std::cout << "Size: " << size << '\n';
+	int sizeData = MEM_DATA_BEGIN;
+	std::cout << ".data Segment" << '\n';
+	sizeData+=loadBinFile( fileText, MEM_DATA_BEGIN, MEM_DATA_END );
+	dump_mem( MEM_DATA_BEGIN, sizeData, format );
+	std::cout << "Size: " << sizeData << '\n';
 
 	return 0;
 }
@@ -73,9 +80,6 @@ void printAddressValues( int32_t addr, int32_t value, char format )
 	// Print as Decimal Values
 	else if( format == 'd' )
 		std::cout << addr << "\t = \t" << value << '\n';
-	// Invalid input
-	else
-		std::cout << "Invalid Formatation Requested." << '\n';
 }
 
 void allocateValueOnMemory( size_t position, int32_t value )
@@ -86,12 +90,15 @@ void allocateValueOnMemory( size_t position, int32_t value )
 
 void dump_mem( size_t start, size_t end, char format )
 {
-	if( start > end || end > MEM_SIZE )
+	if( start > end  || end > MEM_SIZE )
+	{
+		std::cout << "Error with memory dimentions." << '\n';
 		return;
+	}
 
 	uint32_t binValue;
 	std::cout << " Memory "<< '\n';
-	for( size_t position = start; position < end; position += 4 )
+	for( size_t position = start; position < end; position += WORD_SIZE )
 	{
 		binValue = mem[ position ];
 		// Prnt addresses and their values
@@ -119,20 +126,19 @@ int loadBinFile( std::string fileName, size_t start, size_t end )
 
 		// Loop over the file
 		uint32_t binValue;
-		size_t wordSize = sizeof(binValue);
 		// get file pointer position and shift it from start
-		size_t position =  start + myfile.tellg();
-		while( position < fileSize && position < end )
+		size_t position =  myfile.tellg();
+		while( position < fileSize && position <= end )
 		{
 			// Read binary value from file.
 			// Casting as a char* avoids warnings when passing pointer as reference
-			myfile.read(reinterpret_cast<char *>(&binValue), wordSize);
+			myfile.read(reinterpret_cast<char *>(&binValue), WORD_SIZE);
 			// ref: http://stackoverflow.com/questions/3595136/c-cout-hex-format
 
-			allocateValueOnMemory( position, binValue );
+			allocateValueOnMemory( start + position, binValue );
 
 			// Update Positon values
-			position += wordSize;
+			position += WORD_SIZE;
 		}
 
 		myfile.close();
