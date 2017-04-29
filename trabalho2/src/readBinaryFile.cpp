@@ -22,7 +22,7 @@ void allocateValueOnMemory( size_t, int32_t );
 
 void dump_mem( size_t, size_t, char );
 
-int printBinFile( std::string, char format = 'h' );
+int loadBinFile( std::string, char format = 'h' );
 
 int main( int argc, char* argv[] ) {
 
@@ -32,7 +32,7 @@ int main( int argc, char* argv[] ) {
 
 	int size;
 
-	size = printBinFile( argv[1] );
+	size = loadBinFile( argv[1] );
 	dump_mem( 0, size, *argv[2] );
 	std::cout << "Size: " << size << '\n';
 
@@ -76,7 +76,7 @@ void dump_mem( size_t start, size_t end, char format )
 	}
 }
 
-int printBinFile( std::string fileName, char format )
+int loadBinFile( std::string fileName, char format )
 {
 	if( format != 'h' && format != 'd' )
 	{
