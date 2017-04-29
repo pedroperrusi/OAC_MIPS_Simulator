@@ -14,15 +14,20 @@ void help()
 {
 	std::cout << "\nThis program is importing MIPS data from binary files\n"
 	<<	"Input parameters are:\n"
-	<<"\t ./readBinaryFile [filename.bin] [output format ('d', ou 'h')]" << "\n\n";
+	<<"\t ./readBinaryFile [filenameText.bin] [filenameData.bin] [output format ('d', ou 'h')]" << "\n\n";
+}
+
+void validateNumInput( int nInput, int nExpected )
+{
+	if( nInput != nExpected )
+		throw std::invalid_argument( "Número de parâmetros incorreto." );
 }
 
 char getFormat( char format )
 {
 	if( format != 'h' && format != 'd' )
-	{
 		throw std::invalid_argument( "O parâmetro format de entrada não era nem 'd' para saídas decimais e nem 'h' para hexadecimais." );
-	}
+
 	else return format;
 }
 
@@ -38,11 +43,11 @@ int main( int argc, char* argv[] ) {
 
 	help();
 
-	if( argc < 3 )
-		return -1;
+	validateNumInput( argc, 4 );
 
-	std::string filename = argv[1];
-	char format = getFormat( *argv[2] );
+	std::string fileText = argv[1];
+	std::string fileData = argv[2];
+	char format = getFormat( *argv[3] );
 
 	if( format != 'h' && format != 'd' )
 	{
@@ -52,7 +57,7 @@ int main( int argc, char* argv[] ) {
 
 	int size;
 
-	size = loadBinFile( filename );
+	size = loadBinFile( fileText );
 	dump_mem( 0, size, format );
 	std::cout << "Size: " << size << '\n';
 
