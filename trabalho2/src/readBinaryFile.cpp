@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <stdexcept>
 #include <iostream>
 #include <fstream>
 #include <iterator>
@@ -16,6 +17,15 @@ void help()
 	<<"\t ./readBinaryFile [filename.bin] [output format ('d', ou 'h')]" << "\n\n";
 }
 
+char getFormat( char format )
+{
+	if( format != 'h' && format != 'd' )
+	{
+		throw std::invalid_argument( "O parâmetro format de entrada não era nem 'd' para saídas decimais e nem 'h' para hexadecimais." );
+	}
+	else return format;
+}
+
 void printAddressValues( int32_t, int32_t, char format = 'h' );
 
 void allocateValueOnMemory( size_t, int32_t );
@@ -27,13 +37,23 @@ int loadBinFile( std::string );
 int main( int argc, char* argv[] ) {
 
 	help();
+
 	if( argc < 3 )
-		return 0;
+		return -1;
+
+	std::string filename = argv[1];
+	char format = getFormat( *argv[2] );
+
+	if( format != 'h' && format != 'd' )
+	{
+		std::cout << "Invalid format input" << '\n';
+		return -1;
+	}
 
 	int size;
 
-	size = loadBinFile( argv[1] );
-	dump_mem( 0, size, *argv[2] );
+	size = loadBinFile( filename );
+	dump_mem( 0, size, format );
 	std::cout << "Size: " << size << '\n';
 
 	return 0;
@@ -78,11 +98,6 @@ void dump_mem( size_t start, size_t end, char format )
 
 int loadBinFile( std::string fileName )
 {
-	if( format != 'h' && format != 'd' )
-	{
-		std::cout << "Invalid format input" << '\n';
-		return -1;
-	}
 	std::ifstream myfile; // File stream for reading
 	myfile.open ( fileName,  std::ios::in|std::ios::binary );
 
