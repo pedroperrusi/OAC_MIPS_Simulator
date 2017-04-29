@@ -9,21 +9,31 @@
 #define MEM_SIZE 4096
 int32_t mem[MEM_SIZE];
 
+void help()
+{
+	std::cout << "\nThis program is importing MIPS data from binary files\n"
+	<<	"Input parameters are:\n"
+	<<"\t ./readBinaryFile [filename.bin] [output format ('d', ou 'h')]" << "\n\n";
+}
+
 void printAddressValues( int32_t, int32_t, char format = 'h' );
 
 void allocateValueOnMemory( size_t, int32_t );
+
+void dump_mem( size_t, size_t, char );
 
 int printBinFile( std::string, char format = 'h' );
 
 int main( int argc, char* argv[] ) {
 
-	if( argc == 1 )
+	help();
+	if( argc < 3 )
 		return 0;
 
 	int size;
 
 	size = printBinFile( argv[1] );
-
+	dump_mem( 0, size, *argv[2] );
 	std::cout << "Size: " << size << '\n';
 
 	return 0;
@@ -49,6 +59,23 @@ void allocateValueOnMemory( size_t position, int32_t value )
 		mem[ position ] = value;
 }
 
+void dump_mem( size_t start, size_t end, char format )
+{
+	if( start > end || end > MEM_SIZE )
+		return;
+
+	uint32_t binValue;
+	std::cout << " Memory "<< '\n';
+	for( size_t position = start; position < end; position += 4 )
+	{
+		binValue = mem[ position ];
+		// Prnt addresses and their values
+		printAddressValues( position, binValue, format );
+		// wait key
+		getchar();
+	}
+}
+
 int printBinFile( std::string fileName, char format )
 {
 	if( format != 'h' && format != 'd' )
@@ -72,7 +99,6 @@ int printBinFile( std::string fileName, char format )
 		// Return to beginning
 		myfile.seekg( 0, std::ios::beg );
 
-		std::cout << "Memory" << '\n';
 		// Loop over the file
 		size_t position = myfile.tellg();
 		while( position < fileSize )
@@ -81,13 +107,11 @@ int printBinFile( std::string fileName, char format )
 			// Cating as a char* avoids warnings when passing pointer as reference
 			myfile.read(reinterpret_cast<char *>(&binValue), sizeof(binValue));
 			// ref: http://stackoverflow.com/questions/3595136/c-cout-hex-format
-			// Prnt addresses and its values
-			printAddressValues( position, binValue );
+
 			allocateValueOnMemory( position, binValue );
+
 			// Update Positon values
 			position = myfile.tellg();
-			// Wait for reading
-			// getchar();
 		}
 
 		myfile.close();
