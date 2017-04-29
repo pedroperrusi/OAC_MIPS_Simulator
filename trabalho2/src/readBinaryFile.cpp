@@ -11,6 +11,8 @@ int32_t mem[MEM_SIZE];
 
 void printAddressValues( int32_t, int32_t, char format = 'h' );
 
+void allocateValueOnMemory( size_t, int32_t );
+
 int printBinFile( std::string, char format = 'h' );
 
 int main( int argc, char* argv[] ) {
@@ -41,6 +43,12 @@ void printAddressValues( int32_t addr, int32_t value, char format )
 		std::cout << "Invalid Formatation Requested." << '\n';
 }
 
+void allocateValueOnMemory( size_t position, int32_t value )
+{
+	if( position < MEM_SIZE )
+		mem[ position ] = value;
+}
+
 int printBinFile( std::string fileName, char format )
 {
 	if( format != 'h' && format != 'd' )
@@ -66,16 +74,20 @@ int printBinFile( std::string fileName, char format )
 
 		std::cout << "Memory" << '\n';
 		// Loop over the file
-		// While position = tellg() < size
-		while( myfile.tellg() < fileSize )
+		size_t position = myfile.tellg();
+		while( position < fileSize )
 		{
 			// Read binary value from file.
 			// Cating as a char* avoids warnings when passing pointer as reference
 			myfile.read(reinterpret_cast<char *>(&binValue), sizeof(binValue));
 			// ref: http://stackoverflow.com/questions/3595136/c-cout-hex-format
 			// Prnt addresses and its values
-			printAddressValues( static_cast<int>(myfile.tellg()), binValue );
-			getchar();
+			printAddressValues( position, binValue );
+			allocateValueOnMemory( position, binValue );
+			// Update Positon values
+			position = myfile.tellg();
+			// Wait for reading
+			// getchar();
 		}
 
 		myfile.close();
