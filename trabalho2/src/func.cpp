@@ -114,6 +114,8 @@ void decode(){
 
 }
 
+
+// TODO ir criando as funçoes para cada caso
 void execute(){
 	switch(opcode){
 		case EXT:
