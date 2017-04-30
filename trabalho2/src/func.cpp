@@ -1,22 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include "func.hpp" 
-
-#include <iostream>
-using std::cout;
-using std::cin;
-using std::endl;
-
-#include <string>
-using std::string;
-using std::getline;
-
-#define MEM_SIZE 4096
-#define WORD_SIZE 4
-
-#define CLEAR "clear" 						//Utilize clr caso sistema seja unix
-
+#include "func.hpp"
 
 /* Variaveis que correspondem aos campos das intrucoes */
 int opcode, rs, rt, rd, shamt, funct;
@@ -38,7 +20,7 @@ enum REGISTERS {	ZERO=0, AT=1, V0=2, V1=3, A0=4, A1=5, A2=6, A3=7, T0=8, T1=9, T
 
 
 /* Constantes dos opcodes */
-enum OPCODES {		EXT=0x00, LH=0x21, SB=0x28, BLEZ=0x06, SLTI=0x0A, XORI=0x0E, LW=0x23, LHU=0x25, SH=0x29,	
+enum OPCODES {		EXT=0x00, LH=0x21, SB=0x28, BLEZ=0x06, SLTI=0x0A, XORI=0x0E, LW=0x23, LHU=0x25, SH=0x29,
 					BGTZ=0x07, SLTIU=0x0B, J=0x02, LB=0x20, LUI=0x0F, BEQ=0x04, ADDI=0x08, ANDI=0x0C, JAL=0x03,
 					LBU=0x24, SW=0x2B, BNE=0x05, ADDIU=0x09, ORI=0x0D };
 
@@ -59,13 +41,13 @@ void limpaTela(int mode){
 
 	if(mode == 0){									//Limpa a tela sem esperar nada
 		system(CLEAR);
-	
+
 	}else if(mode == 1){							//Espera enter para limpar tela, mostra mensagem pedindo para tecla ser apertada
 		while (getchar() != '\n');					//Limpa o buffer no caso de mais de um char armazenado
 		cout << "Pressione ENTER para continuar";
 		getchar();
 		system(CLEAR);
-	
+
 	}else if(mode == 2){							//Espera enter para limpar tela, mas nao mostra mensagem
 		while (getchar() != '\n');					//Limpa o buffer no caso de mais de um char armazenado
 		getchar();
@@ -78,8 +60,8 @@ void fetch(){
 	RI = mem[PC];
 	PC += WORD_SIZE;
 
-} 
- 
+}
+
 void decode(){
 
 	opcode = (RI >> 26) & 0x3F;		/* Separa apenas os bits de interesse que representam o opcode */
@@ -103,7 +85,7 @@ void decode(){
 			/* Separacao de cada campo */
 			rs = (RI >> 21) & 0x1F;
 			rt = (RI >> 16) & 0x1F;
-			k16 = RI & 0xFFFF; 
+			k16 = RI & 0xFFFF;
 	}
 	else if(opcode == BLEZ, opcode == J, opcode == JAL, opcode == BGTZ){	/* Se do tipo J */
 
@@ -201,7 +183,7 @@ void execute(){
 //	Bloco 1: destinado as funções relativas ao primeiro caminho de execução:
 /**************************************************************************************************************/
 
-int menu(){ 
+int menu(){
 	int opcao;
 
 	cout << "Defina o numero da opcao desejada:\n";
@@ -223,7 +205,7 @@ void interfaceUsuario(){
 
 	int opcaoMenu;
 
-	do{		
+	do{
 		opcaoMenu = menu();
 
 		switch(opcaoMenu){
@@ -232,15 +214,15 @@ void interfaceUsuario(){
 			break;
 
 			case 2:
-				
+
 			break;
 
 			case 3:
-				
+
 			break;
 
 			case 4:
-				
+
 			break;
 
 			case 5:
@@ -277,7 +259,7 @@ void inicializaRegs(){
 
 /**************************************************************************************************************/
 //	Bloco 2: destinado as funções relativas ao segundo caminho de execução:
-/**************************************************************************************************************/	
+/**************************************************************************************************************/
 
 void executar(){
 	cout << "Teste f";
