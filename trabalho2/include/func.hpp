@@ -6,6 +6,9 @@ void executar();
 void limpaTela(int pausa);
 int menu();
 void fetch();
-void decode();	 
+void decode();
+void execute();	 
+void step();
+void inicializaRegs();
 
 #endif
