@@ -8,14 +8,12 @@
 #include <bitset>
 
 #define MEM_SIZE 		0x0002ffc
-#define WORD_SIZE 4
+#define WORD_SIZE 		4
 
 #define MEM_TEXT_BEGIN 	0x00000000
 #define MEM_TEXT_END 	0x00000084
 #define MEM_DATA_BEGIN 	0x00002000
 #define MEM_DATA_END 	0x0002ffc
-
-int32_t mem[MEM_SIZE];
 
 void help()
 {
@@ -40,11 +38,11 @@ char getFormat( char format )
 
 void printAddressValues( int32_t, int32_t, char format = 'h' );
 
-void allocateValueOnMemory( size_t, int32_t );
+void allocateValueOnMemory( int32_t*, size_t, int32_t );
 
-void dump_mem( size_t, size_t, char );
+void dump_mem( int32_t*, size_t, size_t, char );
 
-int loadBinFile( std::string, size_t, size_t );
+int loadBinFile( std::string, int32_t*, size_t, size_t );
 
 int main( int argc, char* argv[] ) {
 
@@ -56,16 +54,18 @@ int main( int argc, char* argv[] ) {
 	std::string fileData = argv[2];
 	char format = getFormat( *argv[3] );
 
+	int32_t mem[MEM_SIZE];
+
 	int sizeText = 0;
 	std::cout << ".text Segment" << '\n';
-	sizeText+=loadBinFile( fileText, MEM_TEXT_BEGIN, MEM_TEXT_END );
-	dump_mem( 0, sizeText, format );
+	sizeText+=loadBinFile( fileText, mem, MEM_TEXT_BEGIN, MEM_TEXT_END );
+	dump_mem( mem, 0, sizeText, format );
 	std::cout << "Size: " << sizeText << '\n';
 
 	int sizeData = MEM_DATA_BEGIN;
 	std::cout << ".data Segment" << '\n';
-	sizeData+=loadBinFile( fileText, MEM_DATA_BEGIN, MEM_DATA_END );
-	dump_mem( MEM_DATA_BEGIN, sizeData, format );
+	sizeData+=loadBinFile( fileText, mem, MEM_DATA_BEGIN, MEM_DATA_END );
+	dump_mem( mem, MEM_DATA_BEGIN, sizeData, format );
 	std::cout << "Size: " << sizeData << '\n';
 
 	return 0;
@@ -82,13 +82,13 @@ void printAddressValues( int32_t addr, int32_t value, char format )
 		std::cout << addr << "\t = \t" << value << '\n';
 }
 
-void allocateValueOnMemory( size_t position, int32_t value )
+void allocateValueOnMemory( int32_t* memptr, size_t position, int32_t value )
 {
 	if( position < MEM_SIZE )
-		mem[ position ] = value;
+		memptr[ position ] = value;
 }
 
-void dump_mem( size_t start, size_t end, char format )
+void dump_mem( int32_t* memptr, size_t start, size_t end, char format )
 {
 	if( start > end  || end > MEM_SIZE )
 	{
@@ -100,7 +100,7 @@ void dump_mem( size_t start, size_t end, char format )
 	std::cout << " Memory "<< '\n';
 	for( size_t position = start; position < end; position += WORD_SIZE )
 	{
-		binValue = mem[ position ];
+		binValue = memptr[ position ];
 		// Prnt addresses and their values
 		printAddressValues( position, binValue, format );
 		// wait key
@@ -108,7 +108,7 @@ void dump_mem( size_t start, size_t end, char format )
 	}
 }
 
-int loadBinFile( std::string fileName, size_t start, size_t end )
+int loadBinFile( std::string fileName, int32_t* memptr, size_t start, size_t end )
 {
 	std::ifstream myfile; // File stream for reading
 	myfile.open ( fileName,  std::ios::in|std::ios::binary );
@@ -135,7 +135,7 @@ int loadBinFile( std::string fileName, size_t start, size_t end )
 			myfile.read(reinterpret_cast<char *>(&binValue), WORD_SIZE);
 			// ref: http://stackoverflow.com/questions/3595136/c-cout-hex-format
 
-			allocateValueOnMemory( start + position, binValue );
+			allocateValueOnMemory( memptr, start + position, binValue );
 
 			// Update Positon values
 			position += WORD_SIZE;
