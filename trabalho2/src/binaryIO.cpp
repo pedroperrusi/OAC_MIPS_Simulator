@@ -13,7 +13,6 @@ void printAddressValues( int32_t addr, int32_t value, char format )
 
 void allocateValueOnMemory( int32_t* memptr, size_t position, int32_t value )
 {
-	std::cout << "allocateValueOnMemory" << '\n';
 	if( position < MEM_SIZE )
 		memptr[ position ] = value;
 	std::cout << "Done" << '\n';
@@ -21,7 +20,6 @@ void allocateValueOnMemory( int32_t* memptr, size_t position, int32_t value )
 
 int loadBinFile( std::string fileName, int32_t* memptr, size_t start, size_t end )
 {
-	std::cout << "Load Bin file" << '\n';
 	std::ifstream myfile; // File stream for reading
 	myfile.open ( fileName,  std::ios::in|std::ios::binary );
 
@@ -42,7 +40,6 @@ int loadBinFile( std::string fileName, int32_t* memptr, size_t start, size_t end
 		size_t position =  myfile.tellg();
 		while( position < fileSize && position <= end )
 		{
-			std::cout << "Reading file" << '\n';
 			// Read binary value from file.
 			// Casting as a char* avoids warnings when passing pointer as reference
 			myfile.read(reinterpret_cast<char *>(&binValue), WORD_SIZE);
