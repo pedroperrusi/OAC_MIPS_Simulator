@@ -4,14 +4,15 @@ MIPS_simulador::MIPS_simulador( std::string fileText, std::string fileData )
 {
 	this -> mips_ = new MIPS_core();
 	loadMemory( fileText, fileData );
-	std::cout << "size Text " << sizeText << " size Data " << sizeData << '\n';
 }
 
 int MIPS_simulador::loadMemory( std::string fileText, std::string fileData)
 {
-	this->sizeText = loadBinFile( fileText, mips_->mem, MEM_TEXT_BEGIN, MEM_TEXT_END );
-	this->sizeData = loadBinFile( fileData, mips_->mem, MEM_DATA_BEGIN, MEM_DATA_END );
-	return (sizeText+sizeData);
+	this->sizeText = 0;
+	this->sizeText += loadBinFile( fileText, mips_->mem, MEM_TEXT_BEGIN, MEM_TEXT_END );
+	this->sizeData = MEM_DATA_BEGIN;
+	this->sizeData += loadBinFile( fileData, mips_->mem, MEM_DATA_BEGIN, MEM_DATA_END );
+	return(true);
 }
 
 
