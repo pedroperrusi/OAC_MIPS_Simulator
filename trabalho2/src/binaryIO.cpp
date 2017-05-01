@@ -15,7 +15,6 @@ void allocateValueOnMemory( int32_t* memptr, size_t position, int32_t value )
 {
 	if( position < MEM_SIZE )
 		memptr[ position ] = value;
-	std::cout << "Done" << '\n';
 }
 
 int loadBinFile( std::string fileName, int32_t* memptr, size_t start, size_t end )
