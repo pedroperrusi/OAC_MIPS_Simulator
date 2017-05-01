@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 	std::cout << ".text" << '\n';
 	simulador.mips_ -> dump_mem( MEM_TEXT_BEGIN, MEM_TEXT_END, 'h' );
 	std::cout << ".data" << '\n';
-	simulador.mips_ -> dump_mem( MEM_DATA_BEGIN, MEM_DATA_END, 'h' );
+	simulador.mips_ -> dump_mem( MEM_DATA_BEGIN, (MEM_DATA_BEGIN+simulador.sizeData), 'h' );
 
 
 	return 0;

@@ -9,7 +9,7 @@ void MIPS_core::dump_mem( size_t start, size_t end, char format )
 {
 	if( start > end  || end > MEM_SIZE )
 	{
-		std::cout << "Error with memory dimentions." << '\n';
+        std::cout << "Dump Memory: Error when accessing memory dimentions." << '\n';
 		return;
 	}
 

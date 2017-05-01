@@ -15,6 +15,7 @@ private:
 public:
     MIPS_core* mips_;
     MIPS_simulador( std::string, std::string );
+    int sizeText, sizeData;
 
     int menu();
     void interfaceUsuario();
