@@ -17,7 +17,7 @@ void allocateValueOnMemory( int32_t* memptr, size_t position, int32_t value )
 		memptr[ position ] = value;
 }
 
-int loadBinFile( std::string fileName, int32_t* memptr, size_t start, size_t end )
+int loadBinFile( char* fileName, int32_t* memptr, size_t start, size_t end )
 {
 	std::ifstream myfile; // File stream for reading
 	myfile.open ( fileName,  std::ios::in|std::ios::binary );

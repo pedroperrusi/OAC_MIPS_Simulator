@@ -10,11 +10,11 @@ class MIPS_simulador
 {
 private:
     void limpaTela(int);
-    int loadMemory( std::string, std::string );
+    int loadMemory( char*, char* );
 
 public:
     MIPS_core* mips_;
-    MIPS_simulador( std::string, std::string );
+    MIPS_simulador( char*, char* );
     int sizeText, sizeData;
 
     int menu();

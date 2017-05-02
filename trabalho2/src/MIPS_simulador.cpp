@@ -1,12 +1,12 @@
 #include "MIPS_simulador.hpp"
 
-MIPS_simulador::MIPS_simulador( std::string fileText, std::string fileData )
+MIPS_simulador::MIPS_simulador( char* fileText, char* fileData )
 {
 	this -> mips_ = new MIPS_core();
 	loadMemory( fileText, fileData );
 }
 
-int MIPS_simulador::loadMemory( std::string fileText, std::string fileData)
+int MIPS_simulador::loadMemory( char* fileText, char* fileData)
 {
 	this->sizeText = 0;
 	this->sizeText += loadBinFile( fileText, mips_->mem, MEM_TEXT_BEGIN, MEM_TEXT_END );

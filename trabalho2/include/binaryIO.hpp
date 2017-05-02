@@ -8,6 +8,6 @@ void printAddressValues( int32_t, int32_t, char format = 'h' );
 
 void allocateValueOnMemory( int32_t*, size_t, int32_t );
 
-int loadBinFile( std::string, int32_t*, size_t, size_t );
+int loadBinFile( char*, int32_t*, size_t, size_t );
 
 #endif
