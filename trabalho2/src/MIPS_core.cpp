@@ -1,5 +1,6 @@
 #include "MIPS_core.hpp"
 
+
 void MIPS_core::inicializaRegs()
 {
     PC = 0;
@@ -68,6 +69,68 @@ void MIPS_core::decode(){
 void MIPS_core::execute(){
 	switch(opcode){
 		case EXT:
+			switch(funct){
+
+				case ADD:  //TODO verificar ocorrencia de overflow
+					mem[rd] = mem[rs] + mem[rt];
+				break;
+
+				case SUB:	//TODO verificar overflow
+					mem[rd] = mem[rs] - mem[rt];
+				break;
+
+				case DIV:
+					LO = mem[rs]/mem[rt];
+					HI = mem[rs]%mem[rt];
+				break;
+
+				case MULT:  //TODO verificar se o funcionamento esta correto
+					/*int64_t result = mem[rs] * mem[rt];
+					LO = *((int32_t *)&result + 0);
+					HI = *((int32_t *)&result + 1);*/
+				break;
+
+				case AND:
+					mem[rd] = mem[rs] & mem[rt];
+				break;
+
+				case OR:
+					mem[rd] = mem[rs] | mem[rt];
+				break;
+
+				case NOR:
+					mem[rd] = !(mem[rs] | mem[rt]);
+				break;
+
+				case SLT:
+					if(mem[rs] < mem[rt]) mem[rd] = 1;
+					else mem[rd] = 0;
+				break;
+
+				case SLL:  //TODO verificar se o funcionamento esta correto
+					mem[rd] = ((uint32_t) mem[rt]) << shamt;
+				break;
+
+				case SRL:  //TODO verificar se o funcionamento esta correto
+					mem[rd] = ((uint32_t) mem[rt]) >> shamt;
+				break;
+
+				case SRA:  //TODO verificar se o funcionamento esta correto
+					mem[rd] = ((int32_t) mem[rt]) >> shamt;
+				break;
+
+				case MFHI:  //TODO restricçao de instrulcoes seguintes nao poderem mexer em HI
+					mem[rd] = HI;
+				break;
+
+				case MFLO:  //TODO restricçao de instrulcoes seguintes nao poderem mexer em LO
+					mem[rd] = LO;
+				break;
+
+				case XOR:
+					mem[rd] = mem[rs] ^ mem[rt];
+				break;
+			}
 		break;
 
 		case LH:
