@@ -144,7 +144,7 @@ void MIPS_core::execute(){
 		break;
 
 		case BLEZ:  //TODO, testar caso de o endereco ser invalido, testar se precisa do +4
-			if(mem[rs] <= 0) PC = (PC + ((int32_t)k16<<2))
+			if(mem[rs] <= 0) PC = (PC + ((int32_t)k16<<2));
 		break;
 
 		case SLTI:
@@ -166,7 +166,7 @@ void MIPS_core::execute(){
 		break;
 
 		case BGTZ: //Testar , verificar se é necessario o +4
-			if(mem[rs] > 0) PC = (PC + ((int32_t)k16<<2))
+			if(mem[rs] > 0) PC = (PC + ((int32_t)k16<<2));
 		break;
 
 		case SLTIU:
@@ -183,7 +183,7 @@ void MIPS_core::execute(){
 		break;
 
 		case BEQ: //Testar , verificar se é necessario o +4
-			if(mem[rs] == mem[rt]) PC = (PC+ ((int32_t)k16<<2))
+			if(mem[rs] == mem[rt]) PC = (PC+ ((int32_t)k16<<2));
 		break;
 
 		case ADDI:  //TODO verificar overflow
@@ -206,7 +206,7 @@ void MIPS_core::execute(){
 		break;
 
 		case BNE: //testar se e necessario +4
-			if(mem[rs] != mem[rt]) PC = (PC+ ((int32_t)k16<<2))
+			if(mem[rs] != mem[rt]) PC = (PC+ ((int32_t)k16<<2));
 		break;
 
 		case ADDIU:
