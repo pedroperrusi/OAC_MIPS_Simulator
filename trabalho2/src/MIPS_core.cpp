@@ -143,9 +143,12 @@ void MIPS_core::execute(){
 		break;
 
 		case SLTI:
+			if((int32_t)mem[rs] < (int16_t)k16) mem[rt] = 1;
+			else mem[rt] = 0;
 		break;
 
 		case XORI:
+			mem[rt] = mem[rs] ^ (uint32_t)k16;
 		break;
 
 		case LW:
@@ -175,10 +178,12 @@ void MIPS_core::execute(){
 		case BEQ:
 		break;
 
-		case ADDI:
+		case ADDI:  //TODO verificar overflow
+			mem[rt] = mem[rs] + k16;
 		break;
 
 		case ANDI:
+			mem[rt] = mem[rs] & (uint32_t)k16;
 		break;
 
 		case JAL:
@@ -194,9 +199,11 @@ void MIPS_core::execute(){
 		break;
 
 		case ADDIU:
+			mem[rt] = (int32_t)mem[rs] + (int16_t)k16;
 		break;
 
 		case ORI:
+			mem[rt] = mem[rs] | (uint32_t)k16;
 		break;
 	}
 }
