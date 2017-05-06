@@ -47,6 +47,7 @@ public:
     // Memória do simulador
     int32_t mem[MEM_SIZE];
 
+    MIPS_core();
     void inicializaRegs();
 
     void dump_mem( size_t, size_t, char );
