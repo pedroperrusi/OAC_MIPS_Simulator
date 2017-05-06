@@ -1,5 +1,9 @@
 #include "MIPS_core.hpp"
 
+MIPS_core::MIPS_core()
+{
+    this -> inicializaRegs();
+}
 
 void MIPS_core::inicializaRegs()
 {
