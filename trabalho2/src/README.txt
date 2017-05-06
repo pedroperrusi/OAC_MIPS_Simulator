@@ -4,10 +4,12 @@ Para compilar o programa usando linux ubunto, abra o terminal no diretorio do ar
 
 	make run
 
-Para complilar utilizando outro sistema operacional, fica a cargo pessoal.
-Recomenda-se para a compilação em windows utilizar o MinGW e baixar o mingw32-make, seguindo esse procedimento 
-a compilação fica:
-	
-	mingw32-make run
+
+Para executar em modo inteface com usuario digite
+	./main ../bin/primos_text.bin ../bin/primos_data.bin p
+
+Para rodar todo o programa digite
+	./main ../bin/primos_text.bin ../bin/primos_data.bin f
+
 
 ***************************************************************************************************************
