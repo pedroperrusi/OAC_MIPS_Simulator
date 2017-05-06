@@ -130,6 +130,10 @@ void MIPS_core::execute(){
 				case XOR:
 					mem[rd] = mem[rs] ^ mem[rt];
 				break;
+
+				case JR:  //TODO verificar o branch delay, nao saquei o q e,  //VERIFICAR O PC +4
+					PC = mem[rs];
+				break;
 			}
 		break;
 
@@ -139,7 +143,8 @@ void MIPS_core::execute(){
 		case SB:
 		break;
 
-		case BLEZ:
+		case BLEZ:  //TODO, testar caso de o endereco ser invalido, testar se precisa do +4
+			if(mem[rs] <= 0) PC = (PC + ((int32_t)k16<<2))
 		break;
 
 		case SLTI:
@@ -160,13 +165,15 @@ void MIPS_core::execute(){
 		case SH:
 		break;
 
-		case BGTZ:
+		case BGTZ: //Testar , verificar se é necessario o +4
+			if(mem[rs] > 0) PC = (PC + ((int32_t)k16<<2))
 		break;
 
 		case SLTIU:
 		break;
 
-		case J:
+		case J:  //VERIFICAR O PC +4
+			PC = ((PC & 0xff000000) | (int32_t)k26 << 2);
 		break;
 
 		case LB:
@@ -175,7 +182,8 @@ void MIPS_core::execute(){
 		case LUI:
 		break;
 
-		case BEQ:
+		case BEQ: //Testar , verificar se é necessario o +4
+			if(mem[rs] == mem[rt]) PC = (PC+ ((int32_t)k16<<2))
 		break;
 
 		case ADDI:  //TODO verificar overflow
@@ -186,7 +194,9 @@ void MIPS_core::execute(){
 			mem[rt] = mem[rs] & (uint32_t)k16;
 		break;
 
-		case JAL:
+		case JAL: //VERIFICAR O PC +4
+			mem[RA] = PC + 8;
+			PC = ((PC & 0xff000000) | (int32_t)k26 << 2);
 		break;
 
 		case LBU:
@@ -195,7 +205,8 @@ void MIPS_core::execute(){
 		case SW:
 		break;
 
-		case BNE:
+		case BNE: //testar se e necessario +4
+			if(mem[rs] != mem[rt]) PC = (PC+ ((int32_t)k16<<2))
 		break;
 
 		case ADDIU:
