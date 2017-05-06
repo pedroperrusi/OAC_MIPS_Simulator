@@ -22,7 +22,7 @@ main: $(OBJ)
 
 .PHONY: clean
 
-pedro:
+run:
 	g++ -o main $(CFLAGS) *'.cpp'
 
 clean:

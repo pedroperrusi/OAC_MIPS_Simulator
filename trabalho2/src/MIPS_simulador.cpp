@@ -35,18 +35,18 @@ int MIPS_simulador::menu(){
 void MIPS_simulador::limpaTela(int mode){
 
 	if(mode == 0){									//Limpa a tela sem esperar nada
-		//system('clear');
+		system("clear");
 
 	}else if(mode == 1){							//Espera enter para limpar tela, mostra mensagem pedindo para tecla ser apertada
 		while (getchar() != '\n');					//Limpa o buffer no caso de mais de um char armazenado
 		cout << "Pressione ENTER para continuar";
 		getchar();
-		// system('clear');
+		system("clear");
 
 	}else if(mode == 2){							//Espera enter para limpar tela, mas nao mostra mensagem
 		while (getchar() != '\n');					//Limpa o buffer no caso de mais de um char armazenado
 		getchar();
-		// system('clear');
+		system("clear");
 	}
 }
 
