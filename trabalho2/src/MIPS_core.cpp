@@ -43,7 +43,7 @@ void MIPS_core::fetch()
     RI = mem[PC];
     std::cout << "PC \t \t \t RI " << '\n';
     printAddressValues( PC, RI, 'h' );
-    std::cout << "----------------------------------------" << '\n';
+    std::cout << "----------------------------------------\n";
     PC += WORD_SIZE;
 }
 
@@ -81,7 +81,7 @@ void MIPS_core::decode(){
 
 void MIPS_core::execute(){
     std::cout << "----------------------------------------" << '\n';
-    std::cout << "decode:\n" << '\n';
+    std::cout << "decode:\n";
 	switch(opcode){
 		case EXT:
 			switch(funct){
@@ -89,6 +89,8 @@ void MIPS_core::execute(){
 				case ADD:  //TODO verificar ocorrencia de overflow
                     std::cout
                         << "function\n\tadd rd, rs, $rt\n" << std::hex
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
                         << rd << " <- " << mem[rs] << " + " << mem[rt]
                     << std::endl;
 					mem[rd] = mem[rs] + mem[rt];
@@ -97,6 +99,8 @@ void MIPS_core::execute(){
 				case SUB:	//TODO verificar overflow
                     std::cout
                         << "function\n\tsub rd, rs, $rt\n" << std::hex
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
                         << rd << " <- " << mem[rs] << " - " << mem[rt]
                     << std::endl;
 					mem[rd] = mem[rs] - mem[rt];
@@ -105,8 +109,10 @@ void MIPS_core::execute(){
 				case DIV:
                     std::cout
                         << "function\n\tdiv rs, $rt\n" << std::hex
-                        << "LO" << " <- " << mem[rs] << " / " << mem[rt]
-                        << "HI" << " <- " << mem[rs] << " % " << mem[rt] << "\n"
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
+                        << "LO" << " <- " << mem[rs] << " / " << mem[rt] << "\n\t"
+                        << "HI" << " <- " << mem[rs] << " % " << mem[rt]
                     << std::endl;
 					LO = mem[rs]/mem[rt];
 					HI = mem[rs]%mem[rt];
@@ -115,7 +121,9 @@ void MIPS_core::execute(){
 				case MULT:  //TODO verificar se o funcionamento esta correto
                     std::cout
                         << "function\n\tmult rs, $rt\n" << std::hex
-                        << "HI" << " <- " << mem[rs] << " * " << mem[rt] << "\n"
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
+                        << "HI" << " <- " << mem[rs] << " * " << mem[rt] << "\n\t"
                         << "LO" << " <- " << mem[rs] << " * " << mem[rt]
                     << std::endl;
 					/*int64_t result = mem[rs] * mem[rt];
@@ -126,6 +134,8 @@ void MIPS_core::execute(){
 				case AND:
                     std::cout
                         << "function\n\tand rd, rs, $rt\n" << std::hex
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
                         << rd << " <- " << mem[rs] << " & " << mem[rt]
                     << std::endl;
 					mem[rd] = mem[rs] & mem[rt];
@@ -134,6 +144,8 @@ void MIPS_core::execute(){
 				case OR:
                     std::cout
                         << "function\n\tor rd, rs, $rt\n" << std::hex
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
                         << rd << " <- " << mem[rs] << " | " << mem[rt]
                     << std::endl;
 					mem[rd] = mem[rs] | mem[rt];
@@ -142,6 +154,8 @@ void MIPS_core::execute(){
                 case XOR:
                     std::cout
                         << "function\n\txor rd, rs, $rt\n" << std::hex
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
                         << rd << " <-  " << mem[rs] << " xor " << mem[rt] << " )"
                     << std::endl;
 					mem[rd] = mem[rs] ^ mem[rt];
@@ -150,6 +164,8 @@ void MIPS_core::execute(){
 				case NOR:
                     std::cout
                         << "function\n\tnor rd, rs, $rt\n" << std::hex
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
                         << rd << " <- ~( " << mem[rs] << " | " << mem[rt] << " )"
                     << std::endl;
 					mem[rd] = !(mem[rs] | mem[rt]);
@@ -158,6 +174,8 @@ void MIPS_core::execute(){
 				case SLT:
                     std::cout
                         << "function\n\tslt rd, rs, $rt\n" << std::hex
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
                         << rd << " = ( " << mem[rs] << " < " << mem[rt] << " )? 1 : 0"
                     << std::endl;
 					if(mem[rs] < mem[rt]) mem[rd] = 1;
@@ -167,6 +185,8 @@ void MIPS_core::execute(){
 				case SLL:  //TODO verificar se o funcionamento esta correto
                     std::cout
                         << "function\n\tsll rd, rs, shamt\n" << std::hex
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
                         << rd << " = " << mem[rs] << " << " << shamt
                     << std::endl;
 					mem[rd] = ((uint32_t) mem[rt]) << shamt;
@@ -175,6 +195,8 @@ void MIPS_core::execute(){
 				case SRL:  //TODO verificar se o funcionamento esta correto
                     std::cout
                         << "function\n\tsrl rd, rs, shamt\n" << std::hex
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
                         << rd << " = " << mem[rs] << "∅ >> " << shamt
                     << std::endl;
                     // TODO expressão do MIPS reference: RD = RS >> SHIFT5
@@ -184,6 +206,8 @@ void MIPS_core::execute(){
 				case SRA:  //TODO verificar se o funcionamento esta correto
                     std::cout
                         << "function\n\tra rd, rs, shamt\n" << std::hex
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
                         << rd << " = " << mem[rs] << " >> " << shamt
                     << std::endl;
 					mem[rd] = ((int32_t) mem[rt]) >> shamt;
@@ -192,6 +216,8 @@ void MIPS_core::execute(){
 				case MFHI:  //TODO restricçao de instrulcoes seguintes nao poderem mexer em HI
                     std::cout
                         << "function\n\tmfhi rd\n" << std::hex
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
                         << rd << " = " << HI
                     << std::endl;
 					mem[rd] = HI;
@@ -200,6 +226,8 @@ void MIPS_core::execute(){
 				case MFLO:  //TODO restricçao de instrucoes seguintes nao poderem mexer em LO
                     std::cout
                         << "function\n\tmflo rd\n" << std::hex
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
                         << rd << " = " << LO
                     << std::endl;
 					mem[rd] = LO;
@@ -208,6 +236,8 @@ void MIPS_core::execute(){
 				case JR:  //TODO verificar o branch delay, nao saquei o q e,  //VERIFICAR O PC +4
                     std::cout
                         << "function\n\tjr rs\n" << std::hex
+                        << "----------------------------------------\n"
+                        << "execute:\n\t"
                         << PC << " <-  " << rs
                     << std::endl;
 					PC = mem[rs];
@@ -218,6 +248,8 @@ void MIPS_core::execute(){
         case ADDI:  //TODO verificar overflow
             std::cout
                 << "function\n\taddi rd, rs, k16\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 << rd << " <- " << mem[rs] << " + " << k16
             << std::endl;
 			mem[rt] = mem[rs] + k16;
@@ -226,6 +258,8 @@ void MIPS_core::execute(){
         case ADDIU:
             std::cout
                 << "function\n\taddiu rd, rs, k16\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 << rd << " <- u(" << mem[rs] << ") + u(" << k16 << ")"
             << std::endl;
 			mem[rt] = (int32_t)mem[rs] + (int16_t)k16;
@@ -234,6 +268,8 @@ void MIPS_core::execute(){
         case ANDI:
             std::cout
                 << "function\n\tandi rd, rs, k16\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 << rd << " <-  " << mem[rs] << " & " << k16 << " )"
             << std::endl;
 			mem[rt] = mem[rs] & (uint32_t)k16;
@@ -242,6 +278,8 @@ void MIPS_core::execute(){
         case ORI:
             std::cout
                 << "function\n\tori rd, rs, k16\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 << rd << " <-  " << mem[rs] << " | " << k16 << " )"
             << std::endl;
 			mem[rt] = mem[rs] | (uint32_t)k16;
@@ -250,6 +288,8 @@ void MIPS_core::execute(){
         case XORI:
             std::cout
                 << "function\n\txori rd, rs, k16\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 << rd << " <-  " << mem[rs] << " xor " << k16 << " )"
             << std::endl;
 			mem[rt] = mem[rs] ^ (uint32_t)k16;
@@ -258,6 +298,8 @@ void MIPS_core::execute(){
         case LW:
             std::cout
                 << "function\n\tlw rd, off( rs )\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 << rd << " <-  " << mem[rs] << " + " << k16
             << std::endl;
             //TODO Fazer função
@@ -266,6 +308,8 @@ void MIPS_core::execute(){
 		case LH:
             std::cout
                 << "function\n\tlh rd, off( rs )\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 // TODO representar rs em half word
                 << rd << " <-  " << mem[rs] << " + " << k16
             << std::endl;
@@ -275,6 +319,8 @@ void MIPS_core::execute(){
         case LHU:
             std::cout
                 << "function\n\tlh rd, off( rs )\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 // TODO representar rs em half word
                 << rd << " <-  " << mem[rs] << " + " << k16
             << std::endl;
@@ -284,6 +330,8 @@ void MIPS_core::execute(){
         case LB:
             std::cout
                 << "function\n\tlb rd, off( rs )\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 // TODO representá-los em byte
                 << rd << " <-  " << mem[rs] << " + " << k16
             << std::endl;
@@ -305,6 +353,8 @@ void MIPS_core::execute(){
         case SH:
             std::cout
                 << "function\n\tsh rs, off( rt )\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 // TODO representar rt em halfword
                 << rs << " <-  " << mem[rt] << " + " << k16
             << std::endl;
@@ -314,6 +364,8 @@ void MIPS_core::execute(){
 		case SB:
             std::cout
                 << "function\n\tsb rs, off( rt )\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 // TODO representar rt em byte
                 << rs << " <-  " << mem[rt] << " + " << k16
             << std::endl;
@@ -323,6 +375,8 @@ void MIPS_core::execute(){
         case SLTI:
             std::cout
                 << "function\n\tslti rd, rs, k16\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 << rd << " = ( " << mem[rs] << " < " <<  k16 << " )? 1 : 0"
             << std::endl;
 			if((int32_t)mem[rs] < (int16_t)k16) mem[rt] = 1;
@@ -332,6 +386,8 @@ void MIPS_core::execute(){
         case SLTIU:
             std::cout
                 << "function\n\tsltiu rd, rs, k16\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 << rd << " = ( u(" << mem[rs] << ") < u(" <<  k16 << ") )? 1 : 0"
             << std::endl;
             //TODO Fazer função
@@ -340,6 +396,8 @@ void MIPS_core::execute(){
         case J:  //VERIFICAR O PC +4
             std::cout
                 << "function\n\tj LABEL\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 << PC <<  " += " << k26
             << std::endl;
 			PC = ((PC & 0xff000000) | (int32_t)k26 << 2);
@@ -348,8 +406,10 @@ void MIPS_core::execute(){
         case JAL: //VERIFICAR O PC +4
             std::cout
                 << "function\n\tjal LABEL\n" << std::hex
-                << RA << " <- " << PC + 8 << "\n"
-                << PC << " += " << k26 << "\n"
+                << "----------------------------------------\n"
+                << "execute:\n\t"
+                << RA << " <- " << PC + 8 << "\n\t"
+                << PC << " += " << k26
             << std::endl;
 			mem[RA] = PC + 8;
 			PC = ((PC & 0xff000000) | (int32_t)k26 << 2);
@@ -358,6 +418,8 @@ void MIPS_core::execute(){
         case BEQ: //Testar , verificar se é necessario o +4
             std::cout
                 << "function\n\tbeq rs, rt, LABEL\n" << std::hex
+                << "----------------------------------------\n"
+                << "execute:\n\t"
                 << "if( " << mem[rs] << " == " << mem[rt] << " )\n\t"
                 << PC << " += " << k26
             << std::endl;
@@ -367,7 +429,9 @@ void MIPS_core::execute(){
 		case BNE: //testar se e necessario +4
             std::cout
                 << "function\n\tbne rs, rt, LABEL\n" << std::hex
-                << "if( " << mem[rs] << " != " << mem[rt] << " )\n\t"
+                << "----------------------------------------\n"
+                << "execute:\n\t"
+                << "if( " << mem[rs] << " != " << mem[rt] << " )\n\t\t"
                 << PC << " += " << k26
             << std::endl;
 			if(mem[rs] != mem[rt]) PC = (PC+ ((int32_t)k16<<2));
@@ -376,7 +440,9 @@ void MIPS_core::execute(){
 		case BLEZ:  //TODO, testar caso de o endereco ser invalido, testar se precisa do +4
             std::cout
                 << "function\n\tblez rs, k26\n" << std::hex
-                << "if( " << mem[rs] << " <= 0  )\n\t"
+                << "----------------------------------------\n"
+                << "execute:\n\t"
+                << "if( " << mem[rs] << " <= 0  )\n\t\t"
                 << PC << " <-  " << rs << " + " << k26
             << std::endl;
 			if(mem[rs] <= 0) PC = (PC + ((int32_t)k16<<2));
@@ -385,7 +451,9 @@ void MIPS_core::execute(){
 		case BGTZ: //Testar , verificar se é necessario o +4
             std::cout
                 << "function\n\tbgtz rs, LABEL\n" << std::hex
-                << "if( " << mem[rs] << " > 0  )\n\t"
+                << "----------------------------------------\n"
+                << "execute:\n\t"
+                << "if( " << mem[rs] << " > 0  )\n\t\t"
                 << PC << " +=  " << k26
             << std::endl;
 			if(mem[rs] > 0) PC = (PC + ((int32_t)k16<<2));
