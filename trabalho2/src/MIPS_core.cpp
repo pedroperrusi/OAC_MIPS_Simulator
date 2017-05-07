@@ -145,9 +145,9 @@ void MIPS_core::decode(){
 		funct = RI & 0x3F;
 	}
 	else
-        if( opcode == ADDI, opcode == ADDIU, opcode == ANDI, opcode == BEQ, opcode == BNE, opcode == LBU,
-			opcode == LH, opcode == LUI, opcode == LW, opcode == ORI, opcode == SB, opcode == SH, opcode == SLTI,
-			opcode == SLTIU, opcode == SW, opcode == XORI,  opcode == LB, opcode == LHU)
+        if( opcode == ADDI || opcode == ADDIU || opcode == ANDI || opcode == BEQ || opcode == BNE || opcode == LBU ||
+			opcode == LH || opcode == LUI || opcode == LW || opcode == ORI || opcode == SB || opcode == SH || opcode == SLTI ||
+			opcode == SLTIU || opcode == SW || opcode == XORI ||  opcode == LB || opcode == LHU)
         {	/* Se do tipo I */
 			/* Separacao de cada campo */
 			rs = (RI >> 21) & 0x1F;
@@ -155,7 +155,7 @@ void MIPS_core::decode(){
 			k16 = RI & 0xFFFF;
 	}
 	else
-        if(opcode == BLEZ, opcode == J, opcode == JAL, opcode == BGTZ)
+        if(opcode == BLEZ || opcode == J || opcode == JAL || opcode == BGTZ)
         {	/* Se do tipo J */
 			/* Separacao de cada campo */
 			k26 = RI & 0x03FFFFFF;		/* Separando endereco */
