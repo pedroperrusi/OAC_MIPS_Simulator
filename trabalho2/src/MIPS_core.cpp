@@ -384,7 +384,7 @@ void MIPS_core::execute(){
                 << "execute:\n\t"
                 << rd << " <- " << regs[rs] << " + " << k16
             << std::endl;
-			regs[rt] = regs[rs] + k16;
+			regs[rt] = (int32_t)regs[rs] + (int16_t)k16;
 			std::cout << "Resultado " << regs[rt];
 		break;
 
