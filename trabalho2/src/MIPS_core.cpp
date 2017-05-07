@@ -33,7 +33,15 @@ void MIPS_core::dump_mem( size_t start, size_t end, char format )
 
 void MIPS_core::fetch()
 {
-
+    if( PC >= (this->sizeText) )
+    {
+        std::cout << "-- program is finished running --" << '\n';
+        return;
+    }
+    RI = mem[PC];
+    std::cout << "PC \t \t \t RI " << '\n';
+    printAddressValues( PC, RI, 'h' );
+    PC += WORD_SIZE;
 }
 
 void MIPS_core::decode(){
@@ -42,8 +50,6 @@ void MIPS_core::decode(){
 
 
 	if(opcode == EXT){	/* Se do tipo R */
-
-
 			/* Separacao de cada campo */
 			rs = (RI >> 21) & 0x1F;
 			rt = (RI >> 16) & 0x1F;
@@ -225,8 +231,8 @@ void MIPS_core::execute(){
 
 void MIPS_core::step(){
 	fetch();
-	decode();
-	execute();
+//	decode();
+//	execute();
 }
 
 void MIPS_core::run()

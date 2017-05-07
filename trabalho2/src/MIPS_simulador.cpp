@@ -8,10 +8,10 @@ MIPS_simulador::MIPS_simulador( char* fileText, char* fileData )
 
 int MIPS_simulador::loadMemory( char* fileText, char* fileData)
 {
-	this->sizeText = 0;
-	this->sizeText += loadBinFile( fileText, mips_->mem, MEM_TEXT_BEGIN, MEM_TEXT_END );
-	this->sizeData = MEM_DATA_BEGIN;
-	this->sizeData += loadBinFile( fileData, mips_->mem, MEM_DATA_BEGIN, MEM_DATA_END );
+	mips_->sizeText = 0;
+	mips_->sizeText += loadBinFile( fileText, mips_->mem, MEM_TEXT_BEGIN, MEM_SIZE);
+	mips_->sizeData = MEM_DATA_BEGIN;
+	mips_->sizeData += loadBinFile( fileData, mips_->mem, MEM_DATA_BEGIN, MEM_SIZE );
 	return(true);
 }
 

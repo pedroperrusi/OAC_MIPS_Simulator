@@ -16,7 +16,6 @@ private:
 public:
     MIPS_core* mips_;
     MIPS_simulador( char*, char* );
-    int sizeText, sizeData;
 
     int menu();
     void interfaceUsuario();
