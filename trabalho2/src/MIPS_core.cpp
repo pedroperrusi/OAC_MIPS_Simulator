@@ -404,7 +404,8 @@ void MIPS_core::execute(){
                 << "execute:\n\t"
                 << rd << " <-  " << mem[rs] << " + " << k16
             << std::endl;
-            //TODO Fazer função
+             mem[rt] = ((int32_t)mem[mem[rs]+(int32_t)k16]);
+			std::cout << "Resultado" << mem[rt];
 		break;
 
 		case LH:
@@ -415,7 +416,8 @@ void MIPS_core::execute(){
                 // TODO representar rs em half word
                 << rd << " <-  " << mem[rs] << " + " << k16
             << std::endl;
-            //TODO Fazer função
+            mem[rt] = ((int16_t)mem[mem[rs]+(int32_t)k16]);
+			std::cout << "Resultado" << mem[rt];
 		break;
 
         case LHU:
@@ -426,7 +428,8 @@ void MIPS_core::execute(){
                 // TODO representar rs em half word
                 << rd << " <-  " << mem[rs] << " + " << k16
             << std::endl;
-            //TODO Fazer função
+            mem[rt] = ((uint16_t)mem[mem[rs]+(int32_t)k16]);
+			std::cout << "Resultado" << mem[rt];
 		break;
 
         case LB:
@@ -437,7 +440,7 @@ void MIPS_core::execute(){
                 // TODO representá-los em byte
                 << rd << " <-  " << mem[rs] << " + " << k16
             << std::endl;
-            mem[rt] = (int32_t)mem[mem[rs]+(int32_t)k16];
+            mem[rt] = ((int8_t)mem[mem[rs]+(int32_t)k16]);
 			std::cout << "Resultado" << mem[rt];
 
 
@@ -449,7 +452,7 @@ void MIPS_core::execute(){
 		break;
 
 		case LBU:
-			mem[rt] = (uint32_t)mem[mem[rs]+(int32_t)k16];
+			mem[rt] = ((uint8_t)mem[mem[rs]+(int32_t)k16]);
 			std::cout << "Resultado" << mem[rt];
 		break;
 
@@ -577,7 +580,7 @@ void MIPS_core::execute(){
 			std::cout << "Resultado" << PC;
 		break;
 	}
-	std::cout << "----------------------------------------" << '\n';
+	std::cout << "\n----------------------------------------" << '\n';
 }
 
 void MIPS_core::step(){
