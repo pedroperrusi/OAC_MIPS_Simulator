@@ -258,7 +258,7 @@ void MIPS_core::execute(){
         case LW:
             std::cout
                 << "function\n\tlw rd, off( rs )\n" << std::hex
-                << rd << " <-  " << rs << " + " << k16
+                << rd << " <-  " << mem[rs] << " + " << k16
             << std::endl;
             //TODO Fazer função
 		break;
@@ -267,7 +267,7 @@ void MIPS_core::execute(){
             std::cout
                 << "function\n\tlh rd, off( rs )\n" << std::hex
                 // TODO representar rs em half word
-                << rd << " <-  " << rs << " + " << k16
+                << rd << " <-  " << mem[rs] << " + " << k16
             << std::endl;
             //TODO Fazer função
 		break;
@@ -276,7 +276,7 @@ void MIPS_core::execute(){
             std::cout
                 << "function\n\tlh rd, off( rs )\n" << std::hex
                 // TODO representar rs em half word
-                << rd << " <-  " << rs << " + " << k16
+                << rd << " <-  " << mem[rs] << " + " << k16
             << std::endl;
             //TODO Fazer função
 		break;
@@ -285,7 +285,7 @@ void MIPS_core::execute(){
             std::cout
                 << "function\n\tlb rd, off( rs )\n" << std::hex
                 // TODO representá-los em byte
-                << rd << " <-  " << rs << " + " << k16
+                << rd << " <-  " << mem[rs] << " + " << k16
             << std::endl;
             //TODO Fazer função
 		break;
@@ -306,7 +306,7 @@ void MIPS_core::execute(){
             std::cout
                 << "function\n\tsh rs, off( rt )\n" << std::hex
                 // TODO representar rt em halfword
-                << rs << " <-  " << rt << " + " << k16
+                << rs << " <-  " << mem[rt] << " + " << k16
             << std::endl;
             //TODO Fazer função
 		break;
@@ -315,7 +315,7 @@ void MIPS_core::execute(){
             std::cout
                 << "function\n\tsb rs, off( rt )\n" << std::hex
                 // TODO representar rt em byte
-                << rs << " <-  " << rt << " + " << k16
+                << rs << " <-  " << mem[rt] << " + " << k16
             << std::endl;
             //TODO Fazer função
 		break;
