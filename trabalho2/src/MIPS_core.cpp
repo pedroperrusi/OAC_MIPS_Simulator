@@ -30,6 +30,88 @@ void MIPS_core::dump_mem( size_t start, size_t end, char format )
 	}
 }
 
+void MIPS_core::dump_reg(char formato)	/* Imprime o conteúdo dos registradores do MIPS */
+{	
+	printf("REGISTERS\n\n");
+
+	if(formato == 'h'){		/* Printando o valor dos regs em formato hexadecimal */
+
+		printf("$zero = 0x%08x \n",mem[ZERO]);		/* 0x%08x para printar no formato hexadecimal 0x00000000 */
+		printf("$at = 0x%08x \n",mem[AT]);
+		printf("$v0 = 0x%08x \n",mem[V0]);
+		printf("$v1 = 0x%08x \n",mem[V1]);
+		printf("$a0 = 0x%08x \n",mem[A0]);
+		printf("$a1 = 0x%08x \n",mem[A1]);
+		printf("$a2 = 0x%08x \n",mem[A2]);
+		printf("$a3 = 0x%08x \n",mem[A3]);
+		printf("$t0 = 0x%08x \n",mem[T0]);
+		printf("$t1 = 0x%08x \n",mem[T1]);
+		printf("$t2 = 0x%08x \n",mem[T2]);
+		printf("$t3 = 0x%08x \n",mem[T3]);
+		printf("$t4 = 0x%08x \n",mem[T4]);
+		printf("$t5 = 0x%08x \n",mem[T5]);
+		printf("$t6 = 0x%08x \n",mem[T6]);
+		printf("$t7 = 0x%08x \n",mem[T7]);
+		printf("$s0 = 0x%08x \n",mem[S0]);
+		printf("$s1 = 0x%08x \n",mem[S1]);
+		printf("$s2 = 0x%08x \n",mem[S2]);
+		printf("$s3 = 0x%08x \n",mem[S3]);
+		printf("$s4 = 0x%08x \n",mem[S4]);
+		printf("$s5 = 0x%08x \n",mem[S5]);
+		printf("$s6 = 0x%08x \n",mem[S6]);
+		printf("$s7 = 0x%08x \n",mem[S7]);
+		printf("$t8 = 0x%08x \n",mem[T8]);
+		printf("$t9 = 0x%08x \n",mem[T9]);
+		printf("$k0 = 0x%08x \n",mem[K0]);
+		printf("$k1 = 0x%08x \n",mem[K1]);
+		printf("$gp = 0x%08x \n",mem[GP]);
+		printf("$sp = 0x%08x \n",mem[SP]);
+		printf("$fp = 0x%08x \n",mem[FP]);
+		printf("$ra = 0x%08x \n\n",mem[RA]);
+		printf("PC = 0x%08x \n",PC);
+		printf("HI = 0x%08x \n",HI);
+		printf("LO = 0x%08x \n",LO);
+	}
+	else if(formato == 'd'){	/* Printando o valor dos regs em formato decimal */
+
+		printf("$zero = %d \n",mem[ZERO]);
+		printf("$at = %d \n",mem[AT]);
+		printf("$v0 = %d \n",mem[V0]);
+		printf("$v1 = %d \n",mem[V1]);
+		printf("$a0 = %d \n",mem[A0]);
+		printf("$a1 = %d \n",mem[A1]);
+		printf("$a2 = %d \n",mem[A2]);
+		printf("$a3 = %d \n",mem[A3]);
+		printf("$t0 = %d \n",mem[T0]);
+		printf("$t1 = %d \n",mem[T1]);
+		printf("$t2 = %d \n",mem[T2]);
+		printf("$t3 = %d \n",mem[T3]);
+		printf("$t4 = %d \n",mem[T4]);
+		printf("$t5 = %d \n",mem[T5]);
+		printf("$t6 = %d \n",mem[T6]);
+		printf("$t7 = %d \n",mem[T7]);
+		printf("$s0 = %d \n",mem[S0]);
+		printf("$s1 = %d \n",mem[S1]);
+		printf("$s2 = %d \n",mem[S2]);
+		printf("$s3 = %d \n",mem[S3]);
+		printf("$s4 = %d \n",mem[S4]);
+		printf("$s5 = %d \n",mem[S5]);
+		printf("$s6 = %d \n",mem[S6]);
+		printf("$s7 = %d \n",mem[S7]);
+		printf("$t8 = %d \n",mem[T8]);
+		printf("$t9 = %d \n",mem[T9]);
+		printf("$k0 = %d \n",mem[K0]);
+		printf("$k1 = %d \n",mem[K1]);
+		printf("$gp = %d \n",mem[GP]);
+		printf("$sp = %d \n",mem[SP]);
+		printf("$fp = %d \n",mem[FP]);
+		printf("$ra = %d \n\n",mem[RA]);
+		printf("PC = %d \n",PC);
+		printf("HI = %d \n",HI);
+		printf("LO = %d \n",LO);
+	}
+
+}
 
 void MIPS_core::fetch()
 {
