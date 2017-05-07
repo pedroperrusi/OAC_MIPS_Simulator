@@ -374,6 +374,14 @@ void MIPS_core::execute(){
 					PC = regs[rs];
 					std::cout << "Resultado " << regs[rs];
 				break;
+
+				case SYSCALL:
+					if((regs[V0] == 1) || (regs[V0] == 4))
+						cout << regs[A0];
+					else if (regs[V0] == 10)
+						exit(0);
+				break;
+			}
 			}
 		break;
 
