@@ -448,7 +448,8 @@ void MIPS_core::execute(){
 		break;
 
 		case LUI:
-		      //TODO Fazer função
+		    mem[rt] = ((uint32_t)k16 << 16);
+		    std::cout << "Resultado " << mem[rt];
 		break;
 
 		case LBU:
@@ -457,7 +458,8 @@ void MIPS_core::execute(){
 		break;
 
         case SW:
-            //TODO Fazer função
+            mem[mem[rs]+(int32_t)k16]= (int32_t)mem[rt];
+			"Resultado " << mem[mem[rs]+(int32_t)k16];
 		break;
 
         case SH:
@@ -468,7 +470,8 @@ void MIPS_core::execute(){
                 // TODO representar rt em halfword
                 << rs << " <-  " << mem[rt] << " + " << k16
             << std::endl;
-            //TODO Fazer função
+            mem[mem[rs]+(int32_t)k16]= (int16_t)mem[rt];
+			"Resultado " << mem[mem[rs]+(int32_t)k16];
 		break;
 
 		case SB:
@@ -479,7 +482,8 @@ void MIPS_core::execute(){
                 // TODO representar rt em byte
                 << rs << " <-  " << mem[rt] << " + " << k16
             << std::endl;
-            //TODO Fazer função
+            mem[mem[rs]+(int32_t)k16]= (int8_t)mem[rt];
+			"Resultado " << mem[mem[rs]+(int32_t)k16];
 		break;
 
         case SLTI:
