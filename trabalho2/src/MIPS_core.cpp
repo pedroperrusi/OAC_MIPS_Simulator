@@ -4,11 +4,44 @@ MIPS_core::MIPS_core()
 {
 	this -> inicializaRegs();
 }
-
-void MIPS_core::inicializaRegs()
-{
+ 
+void MIPS_core::inicializaRegs()	/* Inicializa todos os regs com o valor 0 */
+{	
 	PC = 0;
+	HI = 0;
+	LO = 0; 
 	mem[ZERO] = 0;
+	mem[AT] = 0;
+	mem[V0] = 0;
+	mem[V1] = 0;
+	mem[A0] = 0;
+	mem[A1] = 0;
+	mem[A2] = 0;
+	mem[A3] = 0;
+	mem[T0] = 0;
+	mem[T1] = 0;
+	mem[T2] = 0;
+	mem[T3] = 0;
+	mem[T4] = 0;
+	mem[T5] = 0;
+	mem[T6] = 0;
+	mem[T7] = 0;
+	mem[S0] = 0;
+	mem[S1] = 0;
+	mem[S2] = 0;
+	mem[S3] = 0;
+	mem[S4] = 0;
+	mem[S5] = 0;
+	mem[S6] = 0;
+	mem[S7] = 0;
+	mem[T8] = 0;
+	mem[T9] = 0;
+	mem[K0] = 0;
+	mem[K1] = 0;
+	mem[GP] = 0;
+	mem[SP] = 0;
+	mem[FP] = 0;
+	mem[RA] = 0;
 }
 
 void MIPS_core::dump_mem( size_t start, size_t end, char format )
