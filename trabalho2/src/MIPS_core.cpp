@@ -381,7 +381,7 @@ void MIPS_core::execute(){
 					else if (regs[V0] == 10)
 						exit(0);
 				break;
-			}
+			
 			}
 		break;
 
