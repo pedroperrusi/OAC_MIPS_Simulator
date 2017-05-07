@@ -8,7 +8,7 @@ MIPS_core::MIPS_core()
 void MIPS_core::inicializaRegs()
 {
 	PC = 0;
-	mem[ZERO] = 0;
+	regs[ZERO] = 0;
 }
 
 void MIPS_core::dump_mem( size_t start, size_t end, char format )
@@ -37,76 +37,76 @@ void MIPS_core::dump_reg(char formato)	/* Imprime o conteúdo dos registradores 
 
 	if(formato == 'h'){		/* Printando o valor dos regs em formato hexadecimal */
 
-		printf("$zero = 0x%08x \n",mem[ZERO]);		/* 0x%08x para printar no formato hexadecimal 0x00000000 */
-		printf("$at = 0x%08x \n",mem[AT]);
-		printf("$v0 = 0x%08x \n",mem[V0]);
-		printf("$v1 = 0x%08x \n",mem[V1]);
-		printf("$a0 = 0x%08x \n",mem[A0]);
-		printf("$a1 = 0x%08x \n",mem[A1]);
-		printf("$a2 = 0x%08x \n",mem[A2]);
-		printf("$a3 = 0x%08x \n",mem[A3]);
-		printf("$t0 = 0x%08x \n",mem[T0]);
-		printf("$t1 = 0x%08x \n",mem[T1]);
-		printf("$t2 = 0x%08x \n",mem[T2]);
-		printf("$t3 = 0x%08x \n",mem[T3]);
-		printf("$t4 = 0x%08x \n",mem[T4]);
-		printf("$t5 = 0x%08x \n",mem[T5]);
-		printf("$t6 = 0x%08x \n",mem[T6]);
-		printf("$t7 = 0x%08x \n",mem[T7]);
-		printf("$s0 = 0x%08x \n",mem[S0]);
-		printf("$s1 = 0x%08x \n",mem[S1]);
-		printf("$s2 = 0x%08x \n",mem[S2]);
-		printf("$s3 = 0x%08x \n",mem[S3]);
-		printf("$s4 = 0x%08x \n",mem[S4]);
-		printf("$s5 = 0x%08x \n",mem[S5]);
-		printf("$s6 = 0x%08x \n",mem[S6]);
-		printf("$s7 = 0x%08x \n",mem[S7]);
-		printf("$t8 = 0x%08x \n",mem[T8]);
-		printf("$t9 = 0x%08x \n",mem[T9]);
-		printf("$k0 = 0x%08x \n",mem[K0]);
-		printf("$k1 = 0x%08x \n",mem[K1]);
-		printf("$gp = 0x%08x \n",mem[GP]);
-		printf("$sp = 0x%08x \n",mem[SP]);
-		printf("$fp = 0x%08x \n",mem[FP]);
-		printf("$ra = 0x%08x \n\n",mem[RA]);
+		printf("$zero = 0x%08x \n",regs[ZERO]);		/* 0x%08x para printar no formato hexadecimal 0x00000000 */
+		printf("$at = 0x%08x \n",regs[AT]);
+		printf("$v0 = 0x%08x \n",regs[V0]);
+		printf("$v1 = 0x%08x \n",regs[V1]);
+		printf("$a0 = 0x%08x \n",regs[A0]);
+		printf("$a1 = 0x%08x \n",regs[A1]);
+		printf("$a2 = 0x%08x \n",regs[A2]);
+		printf("$a3 = 0x%08x \n",regs[A3]);
+		printf("$t0 = 0x%08x \n",regs[T0]);
+		printf("$t1 = 0x%08x \n",regs[T1]);
+		printf("$t2 = 0x%08x \n",regs[T2]);
+		printf("$t3 = 0x%08x \n",regs[T3]);
+		printf("$t4 = 0x%08x \n",regs[T4]);
+		printf("$t5 = 0x%08x \n",regs[T5]);
+		printf("$t6 = 0x%08x \n",regs[T6]);
+		printf("$t7 = 0x%08x \n",regs[T7]);
+		printf("$s0 = 0x%08x \n",regs[S0]);
+		printf("$s1 = 0x%08x \n",regs[S1]);
+		printf("$s2 = 0x%08x \n",regs[S2]);
+		printf("$s3 = 0x%08x \n",regs[S3]);
+		printf("$s4 = 0x%08x \n",regs[S4]);
+		printf("$s5 = 0x%08x \n",regs[S5]);
+		printf("$s6 = 0x%08x \n",regs[S6]);
+		printf("$s7 = 0x%08x \n",regs[S7]);
+		printf("$t8 = 0x%08x \n",regs[T8]);
+		printf("$t9 = 0x%08x \n",regs[T9]);
+		printf("$k0 = 0x%08x \n",regs[K0]);
+		printf("$k1 = 0x%08x \n",regs[K1]);
+		printf("$gp = 0x%08x \n",regs[GP]);
+		printf("$sp = 0x%08x \n",regs[SP]);
+		printf("$fp = 0x%08x \n",regs[FP]);
+		printf("$ra = 0x%08x \n\n",regs[RA]);
 		printf("PC = 0x%08x \n",PC);
 		printf("HI = 0x%08x \n",HI);
 		printf("LO = 0x%08x \n",LO);
 	}
 	else if(formato == 'd'){	/* Printando o valor dos regs em formato decimal */
 
-		printf("$zero = %d \n",mem[ZERO]);
-		printf("$at = %d \n",mem[AT]);
-		printf("$v0 = %d \n",mem[V0]);
-		printf("$v1 = %d \n",mem[V1]);
-		printf("$a0 = %d \n",mem[A0]);
-		printf("$a1 = %d \n",mem[A1]);
-		printf("$a2 = %d \n",mem[A2]);
-		printf("$a3 = %d \n",mem[A3]);
-		printf("$t0 = %d \n",mem[T0]);
-		printf("$t1 = %d \n",mem[T1]);
-		printf("$t2 = %d \n",mem[T2]);
-		printf("$t3 = %d \n",mem[T3]);
-		printf("$t4 = %d \n",mem[T4]);
-		printf("$t5 = %d \n",mem[T5]);
-		printf("$t6 = %d \n",mem[T6]);
-		printf("$t7 = %d \n",mem[T7]);
-		printf("$s0 = %d \n",mem[S0]);
-		printf("$s1 = %d \n",mem[S1]);
-		printf("$s2 = %d \n",mem[S2]);
-		printf("$s3 = %d \n",mem[S3]);
-		printf("$s4 = %d \n",mem[S4]);
-		printf("$s5 = %d \n",mem[S5]);
-		printf("$s6 = %d \n",mem[S6]);
-		printf("$s7 = %d \n",mem[S7]);
-		printf("$t8 = %d \n",mem[T8]);
-		printf("$t9 = %d \n",mem[T9]);
-		printf("$k0 = %d \n",mem[K0]);
-		printf("$k1 = %d \n",mem[K1]);
-		printf("$gp = %d \n",mem[GP]);
-		printf("$sp = %d \n",mem[SP]);
-		printf("$fp = %d \n",mem[FP]);
-		printf("$ra = %d \n\n",mem[RA]);
+		printf("$zero = %d \n",regs[ZERO]);
+		printf("$at = %d \n",regs[AT]);
+		printf("$v0 = %d \n",regs[V0]);
+		printf("$v1 = %d \n",regs[V1]);
+		printf("$a0 = %d \n",regs[A0]);
+		printf("$a1 = %d \n",regs[A1]);
+		printf("$a2 = %d \n",regs[A2]);
+		printf("$a3 = %d \n",regs[A3]);
+		printf("$t0 = %d \n",regs[T0]);
+		printf("$t1 = %d \n",regs[T1]);
+		printf("$t2 = %d \n",regs[T2]);
+		printf("$t3 = %d \n",regs[T3]);
+		printf("$t4 = %d \n",regs[T4]);
+		printf("$t5 = %d \n",regs[T5]);
+		printf("$t6 = %d \n",regs[T6]);
+		printf("$t7 = %d \n",regs[T7]);
+		printf("$s0 = %d \n",regs[S0]);
+		printf("$s1 = %d \n",regs[S1]);
+		printf("$s2 = %d \n",regs[S2]);
+		printf("$s3 = %d \n",regs[S3]);
+		printf("$s4 = %d \n",regs[S4]);
+		printf("$s5 = %d \n",regs[S5]);
+		printf("$s6 = %d \n",regs[S6]);
+		printf("$s7 = %d \n",regs[S7]);
+		printf("$t8 = %d \n",regs[T8]);
+		printf("$t9 = %d \n",regs[T9]);
+		printf("$k0 = %d \n",regs[K0]);
+		printf("$k1 = %d \n",regs[K1]);
+		printf("$gp = %d \n",regs[GP]);
+		printf("$sp = %d \n",regs[SP]);
+		printf("$fp = %d \n",regs[FP]);
+		printf("$ra = %d \n\n",regs[RA]);
 		printf("PC = %d \n",PC);
 		printf("HI = %d \n",HI);
 		printf("LO = %d \n",LO);
@@ -176,10 +176,10 @@ void MIPS_core::execute(){
                         << "function\n\tadd rd, rs, $rt\n" << std::hex
                         << "----------------------------------------\n"
                         << "execute:\n\t"
-                        << rd << " <- " << mem[rs] << " + " << mem[rt]
+                        << rd << " <- " << regs[rs] << " + " << regs[rt]
                     << std::endl;
-					mem[rd] = mem[rs] + mem[rt];
-					std::cout << "Resultado " << mem[rd];
+					regs[rd] = regs[rs] + regs[rt];
+					std::cout << "Resultado " << regs[rd];
 				break;
 
 				case SUB:	//TODO verificar overflow
@@ -187,10 +187,10 @@ void MIPS_core::execute(){
                         << "function\n\tsub rd, rs, $rt\n" << std::hex
                         << "----------------------------------------\n"
                         << "execute:\n\t"
-                        << rd << " <- " << mem[rs] << " - " << mem[rt]
+                        << rd << " <- " << regs[rs] << " - " << regs[rt]
                     << std::endl;
-					mem[rd] = mem[rs] - mem[rt];
-					std::cout << "Resultado " << mem[rd];
+					regs[rd] = regs[rs] - regs[rt];
+					std::cout << "Resultado " << regs[rd];
 				break;
 
 				case DIV:
@@ -198,11 +198,11 @@ void MIPS_core::execute(){
                         << "function\n\tdiv rs, $rt\n" << std::hex
                         << "----------------------------------------\n"
                         << "execute:\n\t"
-                        << "LO" << " <- " << mem[rs] << " / " << mem[rt] << "\n\t"
-                        << "HI" << " <- " << mem[rs] << " % " << mem[rt]
+                        << "LO" << " <- " << regs[rs] << " / " << regs[rt] << "\n\t"
+                        << "HI" << " <- " << regs[rs] << " % " << regs[rt]
                     << std::endl;
-					LO = mem[rs]/mem[rt];
-					HI = mem[rs]%mem[rt];
+					LO = regs[rs]/regs[rt];
+					HI = regs[rs]%regs[rt];
 				break;
 
 				case MULT:  //TODO verificar se o funcionamento esta correto
@@ -210,10 +210,10 @@ void MIPS_core::execute(){
                         << "function\n\tmult rs, $rt\n" << std::hex
                         << "----------------------------------------\n"
                         << "execute:\n\t"
-                        << "HI" << " <- " << mem[rs] << " * " << mem[rt] << "\n\t"
-                        << "LO" << " <- " << mem[rs] << " * " << mem[rt]
+                        << "HI" << " <- " << regs[rs] << " * " << regs[rt] << "\n\t"
+                        << "LO" << " <- " << regs[rs] << " * " << regs[rt]
                     << std::endl;
-					/*int64_t result = mem[rs] * mem[rt];
+					/*int64_t result = regs[rs] * regs[rt];
 					LO = *((int32_t *)&result + 0);
 					HI = *((int32_t *)&result + 1);*/
 				break;
@@ -223,10 +223,10 @@ void MIPS_core::execute(){
                         << "function\n\tand rd, rs, $rt\n" << std::hex
                         << "----------------------------------------\n"
                         << "execute:\n\t"
-                        << rd << " <- " << mem[rs] << " & " << mem[rt]
+                        << rd << " <- " << regs[rs] << " & " << regs[rt]
                     << std::endl;
-					mem[rd] = mem[rs] & mem[rt];
-					std::cout << "Resultado " << mem[rd];
+					regs[rd] = regs[rs] & regs[rt];
+					std::cout << "Resultado " << regs[rd];
 				break;
 
 				case OR:
@@ -234,10 +234,10 @@ void MIPS_core::execute(){
                         << "function\n\tor rd, rs, $rt\n" << std::hex
                         << "----------------------------------------\n"
                         << "execute:\n\t"
-                        << rd << " <- " << mem[rs] << " | " << mem[rt]
+                        << rd << " <- " << regs[rs] << " | " << regs[rt]
                     << std::endl;
-					mem[rd] = mem[rs] | mem[rt];
-					std::cout << "Resultado " << mem[rd];
+					regs[rd] = regs[rs] | regs[rt];
+					std::cout << "Resultado " << regs[rd];
 				break;
 
                 case XOR:
@@ -245,10 +245,10 @@ void MIPS_core::execute(){
                         << "function\n\txor rd, rs, $rt\n" << std::hex
                         << "----------------------------------------\n"
                         << "execute:\n\t"
-                        << rd << " <-  " << mem[rs] << " xor " << mem[rt] << " )"
+                        << rd << " <-  " << regs[rs] << " xor " << regs[rt] << " )"
                     << std::endl;
-					mem[rd] = mem[rs] ^ mem[rt];
-					std::cout << "Resultado " << mem[rd];
+					regs[rd] = regs[rs] ^ regs[rt];
+					std::cout << "Resultado " << regs[rd];
 				break;
 
 				case NOR:
@@ -256,10 +256,10 @@ void MIPS_core::execute(){
                         << "function\n\tnor rd, rs, $rt\n" << std::hex
                         << "----------------------------------------\n"
                         << "execute:\n\t"
-                        << rd << " <- ~( " << mem[rs] << " | " << mem[rt] << " )"
+                        << rd << " <- ~( " << regs[rs] << " | " << regs[rt] << " )"
                     << std::endl;
-					mem[rd] = !(mem[rs] | mem[rt]);
-					std::cout << "Resultado " << mem[rd];
+					regs[rd] = !(regs[rs] | regs[rt]);
+					std::cout << "Resultado " << regs[rd];
 				break;
 
 				case SLT:
@@ -267,11 +267,11 @@ void MIPS_core::execute(){
                         << "function\n\tslt rd, rs, $rt\n" << std::hex
                         << "----------------------------------------\n"
                         << "execute:\n\t"
-                        << rd << " = ( " << mem[rs] << " < " << mem[rt] << " )? 1 : 0"
+                        << rd << " = ( " << regs[rs] << " < " << regs[rt] << " )? 1 : 0"
                     << std::endl;
-					if(mem[rs] < mem[rt]) mem[rd] = 1;
-					else mem[rd] = 0;
-					std::cout << "Resultado " << mem[rd];
+					if(regs[rs] < regs[rt]) regs[rd] = 1;
+					else regs[rd] = 0;
+					std::cout << "Resultado " << regs[rd];
 				break;
 
 				case SLL:  //TODO verificar se o funcionamento esta correto
@@ -279,10 +279,10 @@ void MIPS_core::execute(){
                         << "function\n\tsll rd, rs, shamt\n" << std::hex
                         << "----------------------------------------\n"
                         << "execute:\n\t"
-                        << rd << " = " << mem[rs] << " << " << shamt
+                        << rd << " = " << regs[rs] << " << " << shamt
                     << std::endl;
-					mem[rd] = ((uint32_t) mem[rt]) << shamt;
-					std::cout << "Resultado " << mem[rd];
+					regs[rd] = ((uint32_t) regs[rt]) << shamt;
+					std::cout << "Resultado " << regs[rd];
 				break;
 
 				case SRL:  //TODO verificar se o funcionamento esta correto
@@ -290,11 +290,11 @@ void MIPS_core::execute(){
                         << "function\n\tsrl rd, rs, shamt\n" << std::hex
                         << "----------------------------------------\n"
                         << "execute:\n\t"
-                        << rd << " = " << mem[rs] << "∅ >> " << shamt
+                        << rd << " = " << regs[rs] << "∅ >> " << shamt
                     << std::endl;
                     // TODO expressão do MIPS reference: RD = RS >> SHIFT5
-					mem[rd] = ((uint32_t) mem[rt]) >> shamt;
-					std::cout << "Resultado " << mem[rd];
+					regs[rd] = ((uint32_t) regs[rt]) >> shamt;
+					std::cout << "Resultado " << regs[rd];
 				break;
 
 				case SRA:  //TODO verificar se o funcionamento esta correto
@@ -302,10 +302,10 @@ void MIPS_core::execute(){
                         << "function\n\tra rd, rs, shamt\n" << std::hex
                         << "----------------------------------------\n"
                         << "execute:\n\t"
-                        << rd << " = " << mem[rs] << " >> " << shamt
+                        << rd << " = " << regs[rs] << " >> " << shamt
                     << std::endl;
-					mem[rd] = ((int32_t) mem[rt]) >> shamt;
-					std::cout << "Resultado " << mem[rd];
+					regs[rd] = ((int32_t) regs[rt]) >> shamt;
+					std::cout << "Resultado " << regs[rd];
 				break;
 
 				case MFHI:  //TODO restricçao de instrulcoes seguintes nao poderem mexer em HI
@@ -315,8 +315,8 @@ void MIPS_core::execute(){
                         << "execute:\n\t"
                         << rd << " = " << HI
                     << std::endl;
-					mem[rd] = HI;
-					std::cout << "Resultado " << mem[rd];
+					regs[rd] = HI;
+					std::cout << "Resultado " << regs[rd];
 				break;
 
 				case MFLO:  //TODO restricçao de instrucoes seguintes nao poderem mexer em LO
@@ -326,8 +326,8 @@ void MIPS_core::execute(){
                         << "execute:\n\t"
                         << rd << " = " << LO
                     << std::endl;
-					mem[rd] = LO;
-					std::cout << "Resultado " << mem[rd];
+					regs[rd] = LO;
+					std::cout << "Resultado " << regs[rd];
 				break;
 
 				case JR:  //TODO verificar o branch delay, nao saquei o q e,  //VERIFICAR O PC +4
@@ -337,8 +337,8 @@ void MIPS_core::execute(){
                         << "execute:\n\t"
                         << PC << " <-  " << rs
                     << std::endl;
-					PC = mem[rs];
-					std::cout << "Resultado " << mem[rs];
+					PC = regs[rs];
+					std::cout << "Resultado " << regs[rs];
 				break;
 			}
 		break;
@@ -348,10 +348,10 @@ void MIPS_core::execute(){
                 << "function\n\taddi rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " <- " << mem[rs] << " + " << k16
+                << rd << " <- " << regs[rs] << " + " << k16
             << std::endl;
-			mem[rt] = mem[rs] + k16;
-			std::cout << "Resultado " << mem[rt];
+			regs[rt] = regs[rs] + k16;
+			std::cout << "Resultado " << regs[rt];
 		break;
 
         case ADDIU:
@@ -359,10 +359,10 @@ void MIPS_core::execute(){
                 << "function\n\taddiu rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " <- u(" << mem[rs] << ") + u(" << k16 << ")"
+                << rd << " <- u(" << regs[rs] << ") + u(" << k16 << ")"
             << std::endl;
-			mem[rt] = (int32_t)mem[rs] + (int16_t)k16;
-			std::cout << "Resultado " << mem[rt];
+			regs[rt] = (int32_t)regs[rs] + (int16_t)k16;
+			std::cout << "Resultado " << regs[rt];
 		break;
 
         case ANDI:
@@ -370,10 +370,10 @@ void MIPS_core::execute(){
                 << "function\n\tandi rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " <-  " << mem[rs] << " & " << k16 << " )"
+                << rd << " <-  " << regs[rs] << " & " << k16 << " )"
             << std::endl;
-			mem[rt] = mem[rs] & (uint32_t)k16;
-			std::cout << "Resultado " << mem[rt];
+			regs[rt] = regs[rs] & (uint32_t)k16;
+			std::cout << "Resultado " << regs[rt];
 		break;
 
         case ORI:
@@ -381,10 +381,10 @@ void MIPS_core::execute(){
                 << "function\n\tori rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " <-  " << mem[rs] << " | " << k16 << " )"
+                << rd << " <-  " << regs[rs] << " | " << k16 << " )"
             << std::endl;
-			mem[rt] = mem[rs] | (uint32_t)k16;
-			std::cout << "Resultado " << mem[rt];
+			regs[rt] = regs[rs] | (uint32_t)k16;
+			std::cout << "Resultado " << regs[rt];
 		break;
 
         case XORI:
@@ -392,10 +392,10 @@ void MIPS_core::execute(){
                 << "function\n\txori rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " <-  " << mem[rs] << " xor " << k16 << " )"
+                << rd << " <-  " << regs[rs] << " xor " << k16 << " )"
             << std::endl;
-			mem[rt] = mem[rs] ^ (uint32_t)k16;
-			std::cout << "Resultado " << mem[rt];
+			regs[rt] = regs[rs] ^ (uint32_t)k16;
+			std::cout << "Resultado " << regs[rt];
 		break;
 
         case LW:
@@ -403,10 +403,10 @@ void MIPS_core::execute(){
                 << "function\n\tlw rd, off( rs )\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " <-  " << mem[rs] << " + " << k16
+                << rd << " <-  " << regs[rs] << " + " << k16
             << std::endl;
-             mem[rt] = ((int32_t)mem[mem[rs]+(int32_t)k16]);
-			std::cout << "Resultado " << mem[rt];
+             regs[rt] = ((int32_t)mem[regs[rs]+(int32_t)k16]);
+			std::cout << "Resultado " << regs[rt];
 		break;
 
 		case LH:
@@ -415,10 +415,10 @@ void MIPS_core::execute(){
                 << "----------------------------------------\n"
                 << "execute:\n\t"
                 // TODO representar rs em half word
-                << rd << " <-  " << mem[rs] << " + " << k16
+                << rd << " <-  " << regs[rs] << " + " << k16
             << std::endl;
-            mem[rt] = ((int16_t)mem[mem[rs]+(int32_t)k16]);
-			std::cout << "Resultado " << mem[rt];
+            regs[rt] = ((int16_t)mem[regs[rs]+(int32_t)k16]);
+			std::cout << "Resultado " << regs[rt];
 		break;
 
         case LHU:
@@ -427,10 +427,10 @@ void MIPS_core::execute(){
                 << "----------------------------------------\n"
                 << "execute:\n\t"
                 // TODO representar rs em half word
-                << rd << " <-  " << mem[rs] << " + " << k16
+                << rd << " <-  " << regs[rs] << " + " << k16
             << std::endl;
-            mem[rt] = ((uint16_t)mem[mem[rs]+(int32_t)k16]);
-			std::cout << "Resultado " << mem[rt];
+            regs[rt] = ((uint16_t)mem[regs[rs]+(int32_t)k16]);
+			std::cout << "Resultado " << regs[rt];
 		break;
 
         case LB:
@@ -439,27 +439,27 @@ void MIPS_core::execute(){
                 << "----------------------------------------\n"
                 << "execute:\n\t"
                 // TODO representá-los em byte
-                << rd << " <-  " << mem[rs] << " + " << k16
+                << rd << " <-  " << regs[rs] << " + " << k16
             << std::endl;
-            mem[rt] = ((int8_t)mem[mem[rs]+(int32_t)k16]);
-			std::cout << "Resultado " << mem[rt];
+            regs[rt] = ((int8_t)mem[regs[rs]+(int32_t)k16]);
+			std::cout << "Resultado " << regs[rt];
 
 
             //TODO Fazer função
 		break;
 
 		case LUI:
-		    mem[rt] = ((uint32_t)k16 << 16);
-		    std::cout << "Resultado " << mem[rt];
+		    regs[rt] = ((uint32_t)k16 << 16);
+		    std::cout << "Resultado " << regs[rt];
 		break;
 
 		case LBU:
-			mem[rt] = ((uint8_t)mem[mem[rs]+(int32_t)k16]);
-			std::cout << "Resultado " << mem[rt];
+			regs[rt] = ((uint8_t)mem[regs[rs]+(int32_t)k16]);
+			std::cout << "Resultado " << regs[rt];
 		break;
 
         case SW:
-            mem[mem[rs]+(int32_t)k16]= (int32_t)mem[rt];
+            mem[regs[rs]+(int32_t)k16]= (int32_t)regs[rt];
 
 		break;
 
@@ -469,9 +469,9 @@ void MIPS_core::execute(){
                 << "----------------------------------------\n"
                 << "execute:\n\t"
                 // TODO representar rt em halfword
-                << rs << " <-  " << mem[rt] << " + " << k16
+                << rs << " <-  " << regs[rt] << " + " << k16
             << std::endl;
-            mem[mem[rs]+(int32_t)k16]= (int16_t)mem[rt];
+            mem[regs[rs]+(int32_t)k16]= (int16_t)regs[rt];
 
 		break;
 
@@ -481,9 +481,9 @@ void MIPS_core::execute(){
                 << "----------------------------------------\n"
                 << "execute:\n\t"
                 // TODO representar rt em byte
-                << rs << " <-  " << mem[rt] << " + " << k16
+                << rs << " <-  " << regs[rt] << " + " << k16
             << std::endl;
-            mem[mem[rs]+(int32_t)k16]= (int8_t)mem[rt];
+            mem[regs[rs]+(int32_t)k16]= (int8_t)regs[rt];
 
 		break;
 
@@ -492,11 +492,11 @@ void MIPS_core::execute(){
                 << "function\n\tslti rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " = ( " << mem[rs] << " < " <<  k16 << " )? 1 : 0"
+                << rd << " = ( " << regs[rs] << " < " <<  k16 << " )? 1 : 0"
             << std::endl;
-			if((int32_t)mem[rs] < (int16_t)k16) mem[rt] = 1;
-			else mem[rt] = 0;
-			std::cout << "Resultado " << mem[rt];
+			if((int32_t)regs[rs] < (int16_t)k16) regs[rt] = 1;
+			else regs[rt] = 0;
+			std::cout << "Resultado " << regs[rt];
 		break;
 
         case SLTIU:
@@ -504,11 +504,11 @@ void MIPS_core::execute(){
                 << "function\n\tsltiu rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " = ( u(" << mem[rs] << ") < u(" <<  k16 << ") )? 1 : 0"
+                << rd << " = ( u(" << regs[rs] << ") < u(" <<  k16 << ") )? 1 : 0"
             << std::endl;
 
-            if((int32_t)mem[rs] < (int16_t)k16) mem[rt] = 1;
-			else mem[rt] = 0;
+            if((int32_t)regs[rs] < (int16_t)k16) regs[rt] = 1;
+			else regs[rt] = 0;
 		break;
 
         case J:  //VERIFICAR O PC +4
@@ -530,11 +530,11 @@ void MIPS_core::execute(){
                 << RA << " <- " << PC + 8 << "\n\t"
                 << PC << " += " << k26
             << std::endl;
-			mem[RA] = PC + 8;
+			regs[RA] = PC + 8;
 			PC = ((PC & 0xff000000) | (int32_t)k26 << 2);
 
 			std::cout << "Resultado " << PC;
-			std::cout << "Resultado " << mem[RA];
+			std::cout << "Resultado " << regs[RA];
 		break;
 
         case BEQ: //Testar , verificar se é necessario o +4
@@ -542,10 +542,10 @@ void MIPS_core::execute(){
                 << "function\n\tbeq rs, rt, LABEL\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << "if( " << mem[rs] << " == " << mem[rt] << " )\n\t"
+                << "if( " << regs[rs] << " == " << regs[rt] << " )\n\t"
                 << PC << " += " << k26
             << std::endl;
-            if(mem[rs] == mem[rt]) PC = (PC+ ((int32_t)k16<<2));
+            if(regs[rs] == regs[rt]) PC = (PC+ ((int32_t)k16<<2));
             std::cout << "Resultado " << PC;
         break;
 
@@ -554,10 +554,10 @@ void MIPS_core::execute(){
                 << "function\n\tbne rs, rt, LABEL\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << "if( " << mem[rs] << " != " << mem[rt] << " )\n\t"
+                << "if( " << regs[rs] << " != " << regs[rt] << " )\n\t"
                 << PC << " += " << k26
             << std::endl;
-			if(mem[rs] != mem[rt]) PC = (PC+ ((int32_t)k16<<2));
+			if(regs[rs] != regs[rt]) PC = (PC+ ((int32_t)k16<<2));
 			std::cout << "Resultado " << PC;
 		break;
 
@@ -566,10 +566,10 @@ void MIPS_core::execute(){
                 << "function\n\tblez rs, k26\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << "if( " << mem[rs] << " <= 0  )\n\t"
+                << "if( " << regs[rs] << " <= 0  )\n\t"
                 << PC << " <-  " << rs << " + " << k26
             << std::endl;
-			if(mem[rs] <= 0) PC = (PC + ((int32_t)k16<<2));
+			if(regs[rs] <= 0) PC = (PC + ((int32_t)k16<<2));
 			std::cout << "Resultado " << PC;
 		break;
 
@@ -578,10 +578,10 @@ void MIPS_core::execute(){
                 << "function\n\tbgtz rs, LABEL\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << "if( " << mem[rs] << " > 0  )\n\t"
+                << "if( " << regs[rs] << " > 0  )\n\t"
                 << PC << " +=  " << k26
             << std::endl;
-			if(mem[rs] > 0) PC = (PC + ((int32_t)k16<<2));
+			if(regs[rs] > 0) PC = (PC + ((int32_t)k16<<2));
 			std::cout << "Resultado " << PC;
 		break;
 	}
