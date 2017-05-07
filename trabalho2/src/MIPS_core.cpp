@@ -459,7 +459,7 @@ void MIPS_core::execute(){
 
         case SW:
             mem[mem[rs]+(int32_t)k16]= (int32_t)mem[rt];
-			"Resultado " << mem[mem[rs]+(int32_t)k16];
+			
 		break;
 
         case SH:
@@ -471,7 +471,7 @@ void MIPS_core::execute(){
                 << rs << " <-  " << mem[rt] << " + " << k16
             << std::endl;
             mem[mem[rs]+(int32_t)k16]= (int16_t)mem[rt];
-			"Resultado " << mem[mem[rs]+(int32_t)k16];
+			
 		break;
 
 		case SB:
@@ -483,7 +483,7 @@ void MIPS_core::execute(){
                 << rs << " <-  " << mem[rt] << " + " << k16
             << std::endl;
             mem[mem[rs]+(int32_t)k16]= (int8_t)mem[rt];
-			"Resultado " << mem[mem[rs]+(int32_t)k16];
+			
 		break;
 
         case SLTI:
