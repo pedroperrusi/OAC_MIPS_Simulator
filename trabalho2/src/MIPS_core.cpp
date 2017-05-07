@@ -382,7 +382,7 @@ void MIPS_core::execute(){
                 << "function\n\taddi rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " <- " << regs[rs] << " + " << k16
+                << rt << " <- " << regs[rs] << " + " << k16
             << std::endl;
 			regs[rt] = (int32_t)regs[rs] + (int16_t)k16;
 			std::cout << "Resultado " << regs[rt];
@@ -393,7 +393,7 @@ void MIPS_core::execute(){
                 << "function\n\taddiu rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " <- u(" << regs[rs] << ") + u(" << k16 << ")"
+                << rt << " <- u(" << regs[rs] << ") + u(" << k16 << ")"
             << std::endl;
 			regs[rt] = (int32_t)regs[rs] + (int16_t)k16;
 			std::cout << "Resultado " << regs[rt];
@@ -404,7 +404,7 @@ void MIPS_core::execute(){
                 << "function\n\tandi rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " <-  " << regs[rs] << " & " << k16 << " )"
+                << rt << " <-  " << regs[rs] << " & " << k16 << " )"
             << std::endl;
 			regs[rt] = regs[rs] & (uint32_t)k16;
 			std::cout << "Resultado " << regs[rt];
@@ -415,7 +415,7 @@ void MIPS_core::execute(){
                 << "function\n\tori rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " <-  " << regs[rs] << " | " << k16 << " )"
+                << rt << " <-  " << regs[rs] << " | " << k16 << " )"
             << std::endl;
 			regs[rt] = regs[rs] | (uint32_t)k16;
 			std::cout << "Resultado " << regs[rt];
@@ -426,7 +426,7 @@ void MIPS_core::execute(){
                 << "function\n\txori rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " <-  " << regs[rs] << " xor " << k16 << " )"
+                << rt << " <-  " << regs[rs] << " xor " << k16 << " )"
             << std::endl;
 			regs[rt] = regs[rs] ^ (uint32_t)k16;
 			std::cout << "Resultado " << regs[rt];
@@ -437,7 +437,7 @@ void MIPS_core::execute(){
                 << "function\n\tlw rd, off( rs )\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " <-  " << regs[rs] << " + " << k16
+                << rt << " <-  " << regs[rs] << " + " << k16
             << std::endl;
              regs[rt] = ((int32_t)mem[regs[rs]+(int32_t)k16]);
 			std::cout << "Resultado " << regs[rt];
@@ -461,7 +461,7 @@ void MIPS_core::execute(){
                 << "----------------------------------------\n"
                 << "execute:\n\t"
                 // TODO representar rs em half word
-                << rd << " <-  " << regs[rs] << " + " << k16
+                << rt << " <-  " << regs[rs] << " + " << k16
             << std::endl;
             regs[rt] = ((uint16_t)mem[regs[rs]+(int32_t)k16]);
 			std::cout << "Resultado " << regs[rt];
@@ -473,7 +473,7 @@ void MIPS_core::execute(){
                 << "----------------------------------------\n"
                 << "execute:\n\t"
                 // TODO representá-los em byte
-                << rd << " <-  " << regs[rs] << " + " << k16
+                << rt << " <-  " << regs[rs] << " + " << k16
             << std::endl;
             regs[rt] = ((int8_t)mem[regs[rs]+(int32_t)k16]);
 			std::cout << "Resultado " << regs[rt];
@@ -526,7 +526,7 @@ void MIPS_core::execute(){
                 << "function\n\tslti rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " = ( " << regs[rs] << " < " <<  k16 << " )? 1 : 0"
+                << rt << " = ( " << regs[rs] << " < " <<  k16 << " )? 1 : 0"
             << std::endl;
 			if((int32_t)regs[rs] < (int16_t)k16) regs[rt] = 1;
 			else regs[rt] = 0;
@@ -538,7 +538,7 @@ void MIPS_core::execute(){
                 << "function\n\tsltiu rd, rs, k16\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rd << " = ( u(" << regs[rs] << ") < u(" <<  k16 << ") )? 1 : 0"
+                << rt << " = ( u(" << regs[rs] << ") < u(" <<  k16 << ") )? 1 : 0"
             << std::endl;
 
             if((int32_t)regs[rs] < (int16_t)k16) regs[rt] = 1;
@@ -601,7 +601,7 @@ void MIPS_core::execute(){
                 << "----------------------------------------\n"
                 << "execute:\n\t"
                 << "if( " << regs[rs] << " <= 0  )\n\t"
-                << PC << " <-  " << rs << " + " << k26
+                << PC << " =  " << rs << " + " << k26
             << std::endl;
 			if(regs[rs] <= 0) PC = (PC + ((int32_t)k16<<2));
 			std::cout << "Resultado " << PC;
