@@ -114,12 +114,12 @@ void MIPS_core::dump_reg(char formato)	/* Imprime o conteúdo dos registradores 
 
 }
 
-void MIPS_core::fetch()
+bool MIPS_core::fetch()
 {
     if( PC >= (this->sizeText) )
     {
         std::cout << "-- program is finished running --" << '\n';
-        return;
+        return false;
     }
     std::cout << "----------------------------------------" << '\n';
     std::cout << "fetch:\n" << '\n';
@@ -128,6 +128,7 @@ void MIPS_core::fetch()
     printAddressValues( PC, RI, 'h' );
     std::cout << "----------------------------------------\n";
     PC += WORD_SIZE;
+	return true;
 }
 
 void MIPS_core::decode(){
@@ -459,7 +460,7 @@ void MIPS_core::execute(){
 
         case SW:
             mem[mem[rs]+(int32_t)k16]= (int32_t)mem[rt];
-			
+
 		break;
 
         case SH:
@@ -471,7 +472,7 @@ void MIPS_core::execute(){
                 << rs << " <-  " << mem[rt] << " + " << k16
             << std::endl;
             mem[mem[rs]+(int32_t)k16]= (int16_t)mem[rt];
-			
+
 		break;
 
 		case SB:
@@ -483,7 +484,7 @@ void MIPS_core::execute(){
                 << rs << " <-  " << mem[rt] << " + " << k16
             << std::endl;
             mem[mem[rs]+(int32_t)k16]= (int8_t)mem[rt];
-			
+
 		break;
 
         case SLTI:
@@ -588,9 +589,11 @@ void MIPS_core::execute(){
 }
 
 void MIPS_core::step(){
-	fetch();
-	decode();
-	execute();
+	if( fetch() )
+	{
+		decode();
+		execute();
+	}
 }
 
 void MIPS_core::run()
