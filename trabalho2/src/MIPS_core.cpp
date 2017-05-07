@@ -8,6 +8,7 @@ MIPS_core::MIPS_core()
 void MIPS_core::inicializaRegs()
 {
 	PC = 0;
+    mem[ZERO] = 0;
 }
 
 void MIPS_core::dump_mem( size_t start, size_t end, char format )
@@ -134,27 +135,28 @@ void MIPS_core::decode(){
 	opcode = (RI >> 26) & 0x3F;		/* Separa apenas os bits de interesse que representam o opcode */
 
 
-	if(opcode == EXT){	/* Se do tipo R */
-			/* Separacao de cada campo */
-			rs = (RI >> 21) & 0x1F;
-			rt = (RI >> 16) & 0x1F;
-			rd = (RI >> 11) & 0x1F;
-			shamt = (RI >> 6) & 0x1F;
-			funct = RI & 0x3F;
+	if(opcode == EXT)
+    {	/* Se do tipo R */
+		/* Separacao de cada campo */
+		rs = (RI >> 21) & 0x1F;
+		rt = (RI >> 16) & 0x1F;
+		rd = (RI >> 11) & 0x1F;
+		shamt = (RI >> 6) & 0x1F;
+		funct = RI & 0x3F;
 	}
-	else if(opcode == ADDI, opcode == ADDIU, opcode == ANDI, opcode == BEQ, opcode == BNE, opcode == LBU,
+	else
+        if( opcode == ADDI, opcode == ADDIU, opcode == ANDI, opcode == BEQ, opcode == BNE, opcode == LBU,
 			opcode == LH, opcode == LUI, opcode == LW, opcode == ORI, opcode == SB, opcode == SH, opcode == SLTI,
-			opcode == SLTIU, opcode == SW, opcode == XORI,  opcode == LB, opcode == LHU){	/* Se do tipo I */
-
-
+			opcode == SLTIU, opcode == SW, opcode == XORI,  opcode == LB, opcode == LHU)
+        {	/* Se do tipo I */
 			/* Separacao de cada campo */
 			rs = (RI >> 21) & 0x1F;
 			rt = (RI >> 16) & 0x1F;
 			k16 = RI & 0xFFFF;
 	}
-	else if(opcode == BLEZ, opcode == J, opcode == JAL, opcode == BGTZ){	/* Se do tipo J */
-
-
+	else
+        if(opcode == BLEZ, opcode == J, opcode == JAL, opcode == BGTZ)
+        {	/* Se do tipo J */
 			/* Separacao de cada campo */
 			k26 = RI & 0x03FFFFFF;		/* Separando endereco */
 	}
