@@ -54,7 +54,7 @@ public:
     void dump_mem( size_t, size_t, char );
     void dump_reg( char );
 
-    void fetch();
+    bool fetch();
     void decode();
     void execute();
     void step();

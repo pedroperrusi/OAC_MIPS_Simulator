@@ -598,5 +598,9 @@ void MIPS_core::step(){
 
 void MIPS_core::run()
 {
-
+	while( fetch() )
+	{
+		decode();
+		execute();
+	}
 }

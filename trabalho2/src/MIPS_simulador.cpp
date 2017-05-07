@@ -63,7 +63,7 @@ void MIPS_simulador::interfaceUsuario(){
 			break;
 
 			case 2:
-
+				mips_ -> run();
 			break;
 
 			case 3:
