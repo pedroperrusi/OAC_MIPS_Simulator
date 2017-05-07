@@ -12,6 +12,7 @@ private:
     void limpaTela(int);
     int loadMemory( char*, char* );
     void dump_mem();
+    void dump_reg();
 
 public:
     MIPS_core* mips_;

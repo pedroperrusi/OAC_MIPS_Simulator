@@ -69,11 +69,9 @@ void MIPS_simulador::interfaceUsuario(){
 			case 3:
 				this -> dump_mem();
 			break;
-				
+
 			case 4:
-				char formato;
-				cin >> formato;
-				mips_ -> dump_reg(formato);
+				this -> dump_reg();
 			break;
 
 			case 5:
@@ -88,13 +86,28 @@ void MIPS_simulador::interfaceUsuario(){
 	}while(opcaoMenu != 5);
 }
 
+void MIPS_simulador::dump_reg()
+{
+	limpaTela(0);
+	std::cout <<
+				"Essa função imprime o conteúdo da memória a partir do endereço start até o endereço end.\n"
+				"O formato pode ser em hexa (‘h’) ou decimal (‘d’).\n"
+	<< std::endl;
+	char formato;
+	do {
+		std::cout << "Insira o formato desejado ('h' ou 'd'):" << '\n';
+		cin >> formato;
+	} while( formato != 'h' && formato != 'd' );
+	mips_ -> dump_reg(formato);
+}
+
 void MIPS_simulador::dump_mem()
 {
 	limpaTela(0);
 	std::cout <<
 				"Essa função imprime o conteúdo da memória a partir do endereço start até o endereço end.\n"
 				"O formato pode ser em hexa (‘h’) ou decimal (‘d’).\n"
-			  << '\n';
+	<< std::endl;
 
 	int start, end;
 	char formato;
