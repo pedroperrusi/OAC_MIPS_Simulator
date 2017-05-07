@@ -69,9 +69,11 @@ void MIPS_simulador::interfaceUsuario(){
 			case 3:
 				this -> dump_mem();
 			break;
-
+				
 			case 4:
-
+				char formato;
+				cin >> formato;
+				mips_ -> dump_reg(formato);
 			break;
 
 			case 5:
