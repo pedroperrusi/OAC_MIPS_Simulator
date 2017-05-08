@@ -247,9 +247,10 @@ void MIPS_core::execute(){
                         << "HI" << " <- " << regs[rs] << " * " << regs[rt] << "\n\t"
                         << "LO" << " <- " << regs[rs] << " * " << regs[rt]
                     << std::endl;
-					/*int64_t result = regs[rs] * regs[rt];
-					LO = *((int32_t *)&result + 0);
-					HI = *((int32_t *)&result + 1);*/
+					int64_t result;
+					result = regs[rs] * regs[rt];
+					LO = *((int32_t*)&result + 0);
+					HI = *((int32_t*)&result + 1);
 				break;
 
 				case AND:
