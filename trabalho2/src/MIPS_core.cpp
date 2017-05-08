@@ -60,8 +60,6 @@ void MIPS_core::dump_mem( size_t start, size_t end, char format )
 		binValue = mem[ position ];
 		// Prnt addresses and their values
 		printAddressValues( position, binValue, format );
-		// wait key
-		getchar();
 	}
 }
 

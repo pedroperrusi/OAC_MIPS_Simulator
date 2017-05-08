@@ -11,6 +11,8 @@ class MIPS_simulador
 private:
     void limpaTela(int);
     int loadMemory( char*, char* );
+    void step();
+    void run();
     void dump_mem();
     void dump_reg();
 
