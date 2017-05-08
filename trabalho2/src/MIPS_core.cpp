@@ -376,12 +376,43 @@ void MIPS_core::execute(){
 				break;
 
 				case SYSCALL:
-					if((regs[V0] == 1) || (regs[V0] == 4))
-						cout << regs[A0];
+					std::cout << "SYSCALL" << '\n';
+					if( regs[V0] == 1 )
+						std::cout
+							<< "\tPrint integer" << "\n"
+							<< "----------------------------------------\n"
+							<< "execute:\n\t"
+							<< regs[A0] << '\n';
+
+					if( regs[V0] == 4 )
+					{
+						std::cout
+							<< "\tPrint string on address: $a0 = " << regs[A0] << "\n"
+							<< "----------------------------------------\n"
+							<< "execute:\n\t";
+
+							int address = regs[A0];
+							char* ptr = (char*) (mem+address);
+							int i = 0;
+							while( ptr[i] != '\0' )
+							{
+								printf("%c", ptr[i] );
+								i++;
+								if( i == 4 )
+								{
+									address += 4;
+									ptr = (char*) (mem+address);
+									i = 0;
+								}
+							}
+
+					}
 					else if (regs[V0] == 10)
-						exit(0);
+					{
+						std::cout << "-- program is finished running --" << '\n';						
+					}
 				break;
-			
+
 			}
 		break;
 
