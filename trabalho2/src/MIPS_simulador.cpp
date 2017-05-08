@@ -110,46 +110,56 @@ void MIPS_simulador::run()
 	limpaTela(1);
 }
 
-void MIPS_simulador::dump_mem()
+void MIPS_simulador::dump_mem( char param )
 {
-	limpaTela(0);
-	std::cout <<
-				"Essa função imprime o conteúdo da memória a partir do endereço start até o endereço end.\n"
-				"O formato pode ser em hexa (‘h’) ou decimal (‘d’).\n"
-	<< std::endl;
-
-	int start, end;
-	char formato;
-	do
+	if( param == 'f' )
+		mips_ -> dump_mem( MEM_TEXT_BEGIN, MEM_SIZE, 'h' );
+	else
 	{
-		std::cout << "Insira o valor de início de impressão:" << '\n';
-		cin >> start;
-	}while( start < MEM_TEXT_BEGIN || start > MEM_SIZE );
-	do {
-		std::cout << "Insira o valor de fim:" << '\n';
-		cin >> end;
-	} while( end < start || start > MEM_SIZE );
-	do {
-		std::cout << "Insira o formato desejado ('h' ou 'd'):" << '\n';
-		cin >> formato;
-	} while( formato != 'h' && formato != 'd' );
+		limpaTela(0);
+		std::cout <<
+					"Essa função imprime o conteúdo da memória a partir do endereço start até o endereço end.\n"
+					"O formato pode ser em hexa (‘h’) ou decimal (‘d’).\n"
+		<< std::endl;
 
-	mips_ -> dump_mem( start, end, formato );
-	limpaTela(1);
+		int start, end;
+		char formato;
+		do
+		{
+			std::cout << "Insira o valor de início de impressão:" << '\n';
+			cin >> start;
+		}while( start < MEM_TEXT_BEGIN || start > MEM_SIZE );
+		do {
+			std::cout << "Insira o valor de fim:" << '\n';
+			cin >> end;
+		} while( end < start || start > MEM_SIZE );
+		do {
+			std::cout << "Insira o formato desejado ('h' ou 'd'):" << '\n';
+			cin >> formato;
+		} while( formato != 'h' && formato != 'd' );
+
+		mips_ -> dump_mem( start, end, formato );
+		limpaTela(1);
+	}
 }
 
-void MIPS_simulador::dump_reg()
+void MIPS_simulador::dump_reg( char param )
 {
-	limpaTela(0);
-	std::cout <<
-				"Essa função imprime o conteúdo da memória a partir do endereço start até o endereço end.\n"
-				"O formato pode ser em hexa (‘h’) ou decimal (‘d’).\n"
-	<< std::endl;
-	char formato;
-	do {
-		std::cout << "Insira o formato desejado ('h' ou 'd'):" << '\n';
-		cin >> formato;
-	} while( formato != 'h' && formato != 'd' );
-	mips_ -> dump_reg(formato);
-	limpaTela(1);
+	if( param == 'f' )
+		mips_ -> dump_reg( 'h' );
+	else
+	{
+		limpaTela(0);
+		std::cout <<
+					"Essa função imprime o conteúdo da memória a partir do endereço start até o endereço end.\n"
+					"O formato pode ser em hexa (‘h’) ou decimal (‘d’).\n"
+		<< std::endl;
+		char formato;
+		do {
+			std::cout << "Insira o formato desejado ('h' ou 'd'):" << '\n';
+			cin >> formato;
+		} while( formato != 'h' && formato != 'd' );
+		mips_ -> dump_reg(formato);
+		limpaTela(1);
+	}
 }

@@ -14,13 +14,15 @@ int main(int argc, char *argv[])
 
 	}else if(!paramF.compare(argv[3])){		//Caso o parametro passado seja f
 
-		std::cout << ".text" << '\n';
-		simulador.mips_ -> dump_mem( MEM_TEXT_BEGIN, simulador.mips_->sizeText, 'h' );
-		std::cout << "Size: "<< simulador.mips_->sizeText << '\n';
-		std::cout << ".data" << '\n';
-		simulador.mips_ -> dump_mem( MEM_DATA_BEGIN, simulador.mips_->sizeData-4, 'h' );
-		std::cout << "Size: "<< simulador.mips_->sizeData << '\n';
+		simulador.run();
+		std::cout << "Gerando arquivos mem.txt e reg.txt..." << '\n';
+		freopen("mem.txt","w",stdout);
+	    	simulador.dump_mem( 'f' );
+		fclose (stdout);
 
+		freopen("reg.txt","w",stdout);
+	    	simulador.dump_reg( 'f' );
+		fclose (stdout);
 	}
 
 	return EXIT_SUCCESS;

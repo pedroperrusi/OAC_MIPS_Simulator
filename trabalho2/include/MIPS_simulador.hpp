@@ -11,14 +11,15 @@ class MIPS_simulador
 private:
     void limpaTela(int);
     int loadMemory( char*, char* );
-    void step();
-    void run();
-    void dump_mem();
-    void dump_reg();
 
 public:
     MIPS_core* mips_;
     MIPS_simulador( char*, char* );
+
+    void step();
+    void run();
+    void dump_mem( char param = 'p' );
+    void dump_reg( char param = 'p' );
 
     int menu();
     void interfaceUsuario();
