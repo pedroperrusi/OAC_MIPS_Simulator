@@ -54,7 +54,7 @@ void MIPS_core::dump_mem( size_t start, size_t end, char format )
 	}
 
 	uint32_t binValue;
-	std::cout << " Memory "<< '\n';
+	std::cout << "MEMORY\n\n";
 	for( size_t position = start; position < end; position += WORD_SIZE )
 	{
 		binValue = mem[ position ];
@@ -69,79 +69,79 @@ void MIPS_core::dump_reg(char formato)	/* Imprime o conteúdo dos registradores 
 
 	if(formato == 'h'){		/* Printando o valor dos regs em formato hexadecimal */
 
-		printf("$zero = 0x%08x \n",regs[ZERO]);		/* 0x%08x para printar no formato hexadecimal 0x00000000 */
-		printf("$at = 0x%08x \n",regs[AT]);
-		printf("$v0 = 0x%08x \n",regs[V0]);
-		printf("$v1 = 0x%08x \n",regs[V1]);
-		printf("$a0 = 0x%08x \n",regs[A0]);
-		printf("$a1 = 0x%08x \n",regs[A1]);
-		printf("$a2 = 0x%08x \n",regs[A2]);
-		printf("$a3 = 0x%08x \n",regs[A3]);
-		printf("$t0 = 0x%08x \n",regs[T0]);
-		printf("$t1 = 0x%08x \n",regs[T1]);
-		printf("$t2 = 0x%08x \n",regs[T2]);
-		printf("$t3 = 0x%08x \n",regs[T3]);
-		printf("$t4 = 0x%08x \n",regs[T4]);
-		printf("$t5 = 0x%08x \n",regs[T5]);
-		printf("$t6 = 0x%08x \n",regs[T6]);
-		printf("$t7 = 0x%08x \n",regs[T7]);
-		printf("$s0 = 0x%08x \n",regs[S0]);
-		printf("$s1 = 0x%08x \n",regs[S1]);
-		printf("$s2 = 0x%08x \n",regs[S2]);
-		printf("$s3 = 0x%08x \n",regs[S3]);
-		printf("$s4 = 0x%08x \n",regs[S4]);
-		printf("$s5 = 0x%08x \n",regs[S5]);
-		printf("$s6 = 0x%08x \n",regs[S6]);
-		printf("$s7 = 0x%08x \n",regs[S7]);
-		printf("$t8 = 0x%08x \n",regs[T8]);
-		printf("$t9 = 0x%08x \n",regs[T9]);
-		printf("$k0 = 0x%08x \n",regs[K0]);
-		printf("$k1 = 0x%08x \n",regs[K1]);
-		printf("$gp = 0x%08x \n",regs[GP]);
-		printf("$sp = 0x%08x \n",regs[SP]);
-		printf("$fp = 0x%08x \n",regs[FP]);
-		printf("$ra = 0x%08x \n\n",regs[RA]);
-		printf("PC = 0x%08x \n",PC);
-		printf("HI = 0x%08x \n",HI);
-		printf("LO = 0x%08x \n",LO);
+		printf("$zero\t = \t0x%08x \n",regs[ZERO]);		/* 0x%08x para printar no formato hexadecimal 0x00000000 */
+		printf("$at  \t = \t0x%08x \n",regs[AT]);
+		printf("$v0  \t = \t0x%08x \n",regs[V0]);
+		printf("$v1  \t = \t0x%08x \n",regs[V1]);
+		printf("$a0  \t = \t0x%08x \n",regs[A0]);
+		printf("$a1  \t = \t0x%08x \n",regs[A1]);
+		printf("$a2  \t = \t0x%08x \n",regs[A2]);
+		printf("$a3  \t = \t0x%08x \n",regs[A3]);
+		printf("$t0  \t = \t0x%08x \n",regs[T0]);
+		printf("$t1  \t = \t0x%08x \n",regs[T1]);
+		printf("$t2  \t = \t0x%08x \n",regs[T2]);
+		printf("$t3  \t = \t0x%08x \n",regs[T3]);
+		printf("$t4  \t = \t0x%08x \n",regs[T4]);
+		printf("$t5  \t = \t0x%08x \n",regs[T5]);
+		printf("$t6  \t = \t0x%08x \n",regs[T6]);
+		printf("$t7  \t = \t0x%08x \n",regs[T7]);
+		printf("$s0  \t = \t0x%08x \n",regs[S0]);
+		printf("$s1  \t = \t0x%08x \n",regs[S1]);
+		printf("$s2  \t = \t0x%08x \n",regs[S2]);
+		printf("$s3  \t = \t0x%08x \n",regs[S3]);
+		printf("$s4  \t = \t0x%08x \n",regs[S4]);
+		printf("$s5  \t = \t0x%08x \n",regs[S5]);
+		printf("$s6  \t = \t0x%08x \n",regs[S6]);
+		printf("$s7  \t = \t0x%08x \n",regs[S7]);
+		printf("$t8  \t = \t0x%08x \n",regs[T8]);
+		printf("$t9  \t = \t0x%08x \n",regs[T9]);
+		printf("$k0  \t = \t0x%08x \n",regs[K0]);
+		printf("$k1  \t = \t0x%08x \n",regs[K1]);
+		printf("$gp  \t = \t0x%08x \n",regs[GP]);
+		printf("$sp  \t = \t0x%08x \n",regs[SP]);
+		printf("$fp  \t = \t0x%08x \n",regs[FP]);
+		printf("$ra  \t = \t0x%08x \n\n",regs[RA]);
+		printf("PC   \t = \t0x%08x \n",PC);
+		printf("HI   \t = \t0x%08x \n",HI);
+		printf("LO   \t = \t0x%08x \n",LO);
 	}
 	else if(formato == 'd'){	/* Printando o valor dos regs em formato decimal */
 
-		printf("$zero = %d \n",regs[ZERO]);
-		printf("$at = %d \n",regs[AT]);
-		printf("$v0 = %d \n",regs[V0]);
-		printf("$v1 = %d \n",regs[V1]);
-		printf("$a0 = %d \n",regs[A0]);
-		printf("$a1 = %d \n",regs[A1]);
-		printf("$a2 = %d \n",regs[A2]);
-		printf("$a3 = %d \n",regs[A3]);
-		printf("$t0 = %d \n",regs[T0]);
-		printf("$t1 = %d \n",regs[T1]);
-		printf("$t2 = %d \n",regs[T2]);
-		printf("$t3 = %d \n",regs[T3]);
-		printf("$t4 = %d \n",regs[T4]);
-		printf("$t5 = %d \n",regs[T5]);
-		printf("$t6 = %d \n",regs[T6]);
-		printf("$t7 = %d \n",regs[T7]);
-		printf("$s0 = %d \n",regs[S0]);
-		printf("$s1 = %d \n",regs[S1]);
-		printf("$s2 = %d \n",regs[S2]);
-		printf("$s3 = %d \n",regs[S3]);
-		printf("$s4 = %d \n",regs[S4]);
-		printf("$s5 = %d \n",regs[S5]);
-		printf("$s6 = %d \n",regs[S6]);
-		printf("$s7 = %d \n",regs[S7]);
-		printf("$t8 = %d \n",regs[T8]);
-		printf("$t9 = %d \n",regs[T9]);
-		printf("$k0 = %d \n",regs[K0]);
-		printf("$k1 = %d \n",regs[K1]);
-		printf("$gp = %d \n",regs[GP]);
-		printf("$sp = %d \n",regs[SP]);
-		printf("$fp = %d \n",regs[FP]);
-		printf("$ra = %d \n\n",regs[RA]);
-		printf("PC = %d \n",PC);
-		printf("HI = %d \n",HI);
-		printf("LO = %d \n",LO);
+		printf("$zero\t = \t%d \n",regs[ZERO]);
+		printf("$at  \t = \t%d \n",regs[AT]);
+		printf("$v0  \t = \t%d \n",regs[V0]);
+		printf("$v1  \t = \t%d \n",regs[V1]);
+		printf("$a0  \t = \t%d \n",regs[A0]);
+		printf("$a1  \t = \t%d \n",regs[A1]);
+		printf("$a2  \t = \t%d \n",regs[A2]);
+		printf("$a3  \t = \t%d \n",regs[A3]);
+		printf("$t0  \t = \t%d \n",regs[T0]);
+		printf("$t1  \t = \t%d \n",regs[T1]);
+		printf("$t2  \t = \t%d \n",regs[T2]);
+		printf("$t3  \t = \t%d \n",regs[T3]);
+		printf("$t4  \t = \t%d \n",regs[T4]);
+		printf("$t5  \t = \t%d \n",regs[T5]);
+		printf("$t6  \t = \t%d \n",regs[T6]);
+		printf("$t7  \t = \t%d \n",regs[T7]);
+		printf("$s0  \t = \t%d \n",regs[S0]);
+		printf("$s1  \t = \t%d \n",regs[S1]);
+		printf("$s2  \t = \t%d \n",regs[S2]);
+		printf("$s3  \t = \t%d \n",regs[S3]);
+		printf("$s4  \t = \t%d \n",regs[S4]);
+		printf("$s5  \t = \t%d \n",regs[S5]);
+		printf("$s6  \t = \t%d \n",regs[S6]);
+		printf("$s7  \t = \t%d \n",regs[S7]);
+		printf("$t8  \t = \t%d \n",regs[T8]);
+		printf("$t9  \t = \t%d \n",regs[T9]);
+		printf("$k0  \t = \t%d \n",regs[K0]);
+		printf("$k1  \t = \t%d \n",regs[K1]);
+		printf("$gp  \t = \t%d \n",regs[GP]);
+		printf("$sp  \t = \t%d \n",regs[SP]);
+		printf("$fp  \t = \t%d \n",regs[FP]);
+		printf("$ra  \t = \t%d \n\n",regs[RA]);
+		printf("PC   \t = \t%d \n",PC);
+		printf("HI   \t = \t%d \n",HI);
+		printf("LO   \t = \t%d \n",LO);
 	}
 
 }
