@@ -409,7 +409,7 @@ void MIPS_core::execute(){
 					}
 					else if (regs[V0] == 10)
 					{
-						std::cout << "-- program is finished running --" << '\n';						
+						std::cout << "-- program is finished running --" << '\n';
 					}
 				break;
 
@@ -476,7 +476,7 @@ void MIPS_core::execute(){
                 << "function\n\tlw rd, off( rs )\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                << rt << " <-  " << regs[rs] << " + " << k16
+                << rt << " <-  " << k16 << "(" << (int32_t)regs[rs] << ")"
             << std::endl;
              regs[rt] = ((int32_t)mem[regs[rs]+(int32_t)k16]);
 			std::cout << "Resultado " << regs[rt];
@@ -487,8 +487,7 @@ void MIPS_core::execute(){
                 << "function\n\tlh rd, off( rs )\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                // TODO representar rs em half word
-                << rd << " <-  " << regs[rs] << " + " << k16
+                << rt << " <-  " << k16 << "(" << (int16_t)regs[rs] << ")"
             << std::endl;
             regs[rt] = ((int16_t)mem[regs[rs]+(int32_t)k16]);
 			std::cout << "Resultado " << regs[rt];
@@ -496,11 +495,10 @@ void MIPS_core::execute(){
 
         case LHU:
             std::cout
-                << "function\n\tlh rd, off( rs )\n" << std::hex
+                << "function\n\tlhu rd, off( rs )\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                // TODO representar rs em half word
-                << rt << " <-  " << regs[rs] << " + " << k16
+                << rt << " <-  " << k16 << "(" << (uint16_t)regs[rs] << ")"
             << std::endl;
             regs[rt] = ((uint16_t)mem[regs[rs]+(int32_t)k16]);
 			std::cout << "Resultado " << regs[rt];
@@ -511,27 +509,41 @@ void MIPS_core::execute(){
                 << "function\n\tlb rd, off( rs )\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                // TODO representá-los em byte
-                << rt << " <-  " << regs[rs] << " + " << k16
+                << rt << " <-  " << k16 << "(" << (int8_t)regs[rs] << ")"
             << std::endl;
             regs[rt] = ((int8_t)mem[regs[rs]+(int32_t)k16]);
 			std::cout << "Resultado " << regs[rt];
-
-
-            //TODO Fazer função
 		break;
 
 		case LUI:
+			std::cout
+				<< "function\n\tlui rt, k16\n" << std::hex
+				<< "----------------------------------------\n"
+				<< "execute:\n\t"
+				<< rt << " <-  " << k16
+			<< std::endl;
 		    regs[rt] = ((uint32_t)k16 << 16);
 		    std::cout << "Resultado " << regs[rt];
 		break;
 
 		case LBU:
+			std::cout
+				<< "function\n\tlbu rd, off( rs )\n" << std::hex
+				<< "----------------------------------------\n"
+				<< "execute:\n\t"
+				<< rt << " <-  " << k16 << "(" << (uint8_t)regs[rs] << ")"
+			<< std::endl;
 			regs[rt] = ((uint8_t)mem[regs[rs]+(int32_t)k16]);
 			std::cout << "Resultado " << regs[rt];
 		break;
 
         case SW:
+			std::cout
+				<< "function\n\tsh rs, off( rt )\n" << std::hex
+				<< "----------------------------------------\n"
+				<< "execute:\n\t"
+				<< "mem["<<rs<<"] <-  " << k16 << "(" << (int32_t)regs[rs] << ")"
+			<< std::endl;
             mem[regs[rs]+(int32_t)k16]= (int32_t)regs[rt];
 
 		break;
@@ -541,8 +553,7 @@ void MIPS_core::execute(){
                 << "function\n\tsh rs, off( rt )\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                // TODO representar rt em halfword
-                << rs << " <-  " << regs[rt] << " + " << k16
+                << "mem["<<rs<<"] <-  " << k16 << "(" << (int16_t)regs[rs] << ")"
             << std::endl;
             mem[regs[rs]+(int32_t)k16]= (int16_t)regs[rt];
 
@@ -553,8 +564,7 @@ void MIPS_core::execute(){
                 << "function\n\tsb rs, off( rt )\n" << std::hex
                 << "----------------------------------------\n"
                 << "execute:\n\t"
-                // TODO representar rt em byte
-                << rs << " <-  " << regs[rt] << " + " << k16
+                << "mem["<<rs<<"] <-  " << k16 << "(" << (int8_t)regs[rs] << ")"
             << std::endl;
             mem[regs[rs]+(int32_t)k16]= (int8_t)regs[rt];
 
