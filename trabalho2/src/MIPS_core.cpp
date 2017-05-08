@@ -291,7 +291,7 @@ void MIPS_core::execute(){
                         << "execute:\n\t"
                         << rd << " <- ~( " << regs[rs] << " | " << regs[rt] << " )"
                     << std::endl;
-					regs[rd] = !(regs[rs] | regs[rt]);
+					regs[rd] = ~(regs[rs] | regs[rt]);
 					std::cout << "Resultado " << regs[rd];
 				break;
 
