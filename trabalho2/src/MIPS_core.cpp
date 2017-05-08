@@ -180,7 +180,7 @@ void MIPS_core::decode(){
 		funct = RI & 0x3F;
 	}
 	else
-        if( opcode == ADDI || opcode == ADDIU || opcode == ANDI || opcode == BEQ || opcode == BNE || opcode == LBU ||
+        if( opcode == BLEZ || opcode == ADDI || opcode == ADDIU || opcode == ANDI || opcode == BEQ || opcode == BNE || opcode == LBU ||
 			opcode == LH || opcode == LUI || opcode == LW || opcode == ORI || opcode == SB || opcode == SH || opcode == SLTI ||
 			opcode == SLTIU || opcode == SW || opcode == XORI ||  opcode == LB || opcode == LHU || opcode == BGTZ)
         {	/* Se do tipo I */
@@ -190,7 +190,7 @@ void MIPS_core::decode(){
 			k16 = RI & 0xFFFF;
 	}
 	else
-        if(opcode == BLEZ || opcode == J || opcode == JAL)
+        if(opcode == J || opcode == JAL)
         {	/* Se do tipo J */
 			/* Separacao de cada campo */
 			k26 = RI & 0x03FFFFFF;		/* Separando endereco */
@@ -611,7 +611,7 @@ void MIPS_core::execute(){
                 << "if( " << regs[rs] << " <= 0  )\n\t"
                 << PC << " =  " << rs << " + " << k26
             << std::endl;
-			if(regs[rs] <= 0) PC = (PC + ((int32_t)k16<<2));
+			if(regs[rs] <= 0) PC = (PC+ ((int16_t)k16<<2));
 			std::cout << "Resultado " << PC;
 		break;
 
@@ -623,7 +623,7 @@ void MIPS_core::execute(){
                 << "if( " << regs[rs] << " > 0  )\n\t"
                 << PC << " +=  " << k16
             << std::endl;
-			if(regs[rs] > 0)PC = (PC+ ((int16_t)k16<<2));
+			if(regs[rs] > 0) PC = (PC+ ((int16_t)k16<<2));
 			std::cout << "Resultado " << PC;
 		break;
 	}
