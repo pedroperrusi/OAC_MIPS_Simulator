@@ -18,7 +18,7 @@ entity reg_bank is
 	
 end entity reg_bank;
 
-architecture rtl of signed_adder is
+architecture rtl of reg_bank is
 	
 	type word is array (DATA_WIDTH -1 downto 0) of std_logic;
 	type array_words is array ((2**ADDRESS_WIDTH)-1 downto 0) of word;
@@ -27,28 +27,36 @@ architecture rtl of signed_adder is
 	
 
 begin
-
-	p-w: process (clk)
+	
+	process (clk)
 	begin
 		if(wren = '1') then										--Verifica se a escrita esta abilitada
 			if (clk = '1') then									--Verifica se o evento foi uma borda de subida no clock
 				if(to_integer(unsigned(wadd)) /= 0) then	--Verifica em qual registrador sera escrito, caso 0 nao faz escreve
-					regs(wadd) <= wdata;
+					for  i in DATA_WIDTH -1  to 0 loop
+                 regs(to_integer(unsigned(wadd)))(i) <= wdata(i);
+					end loop;
 				end if;
 			end if;
 		end if;
 	end process;
 	
-	p-r1: process (clk, radd1)
+	process (clk, radd1)
 	begin
-		if(clk = '0')
-			rdata1 <= regs(radd1);
+		if(clk = '0') then
+			for  i in DATA_WIDTH -1  to 0 loop
+			  rdata1(i) <= regs(to_integer(unsigned(radd1)))(i);
+			end loop;
+		end if;
 	end process;
 	
-	p-r2: process (clk, radd2)
+	process (clk, radd2)
 	begin
-		if(clk = '0')
-			rdata1 <= regs(radd2);
+		if(clk = '0') then
+			for  i in DATA_WIDTH -1  to 0 loop
+			  rdata2(i) <= regs(to_integer(unsigned(radd2)))(i);
+			end loop;
+		end if;
 	end process;
 
 end rtl;
