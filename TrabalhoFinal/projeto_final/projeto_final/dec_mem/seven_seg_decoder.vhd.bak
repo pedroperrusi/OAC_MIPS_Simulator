@@ -1,0 +1,40 @@
+library IEEE; 
+use IEEE.STD_LOGIC_1164.all;
+
+entity seven_seg_decoder is
+	port(
+			SW: in STD_LOGIC_VECTOR(3 downto 0);
+			HEX0: out STD_LOGIC_VECTOR(6 downto 0)
+		 );
+end;
+
+architecture seven_seg_decoder_arch of seven_seg_decoder is
+begin
+
+	process(SW) 
+	begin
+	
+		case SW is
+			when X"0" => HEX0 <= not "0111111"; 
+			when X"1" => HEX0 <= not "0000110";
+			when X"2" => HEX0 <= not "1011011"; 
+			when X"3" => HEX0 <= not "1001111"; 
+			when X"4" => HEX0 <= not "1100110"; 
+			when X"5" => HEX0 <= not "1101101"; 
+			when X"6" => HEX0 <= not "1111101"; 
+			when X"7" => HEX0 <= not "0000111"; 
+			when X"8" => HEX0 <= not "1111111"; 
+			when X"9" => HEX0 <= not "1101111";
+			when X"A" => HEX0 <= not "1110111"; 
+			when X"B" => HEX0 <= not "1111100"; 
+			when X"C" => HEX0 <= not "0111001"; 
+			when X"D" => HEX0 <= not "1011110"; 
+			when X"E" => HEX0 <= not "1111001"; 
+			when X"F" => HEX0 <= not "1110001"; 
+			when others => HEX0 <= not "0000000";
+		end case;
+		
+	end process;
+	
+end;
+

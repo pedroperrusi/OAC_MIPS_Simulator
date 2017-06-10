@@ -1,0 +1,44 @@
+library IEEE; 
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity memory is
+  generic(N: integer := 6; M: integer := 32);
+  port(clk, 
+       we:   in  STD_LOGIC := '0';
+       adr:  in  STD_LOGIC_VECTOR(N-1 downto 0) := (others => '0');
+       din:  in  STD_LOGIC_VECTOR(M-1 downto 0) := (others => '0');
+       dout: out STD_LOGIC_VECTOR(M-1 downto 0));
+end;
+
+architecture memory_arcb of memory is
+	type mem_array is array(0 to (2**N-1)) of STD_LOGIC_VECTOR(M-1 downto 0);
+	signal mem: mem_array := (
+										x"abababab",
+										x"00000001",
+										x"00000001",
+										x"00000001",
+										x"00000001",
+										x"00000001",
+										x"00000001",
+										x"00000001",
+										x"00000001",
+										x"00000001",
+										x"00000001",
+										x"00000001",
+										x"00000001",
+										x"00000001",
+										others => (others => '1')
+									 );
+begin
+	process(clk) begin
+		if rising_edge(clk) then 
+			if we='1' then 
+				mem(to_integer(unsigned(adr))) <= din;
+			end if;
+		end if;
+	end process;
+
+	dout <= mem(to_integer(unsigned(adr)));
+	
+end;
