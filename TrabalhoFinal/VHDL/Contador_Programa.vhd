@@ -5,9 +5,9 @@ use ieee.numeric_std.all;
 -- Entidade que representa o contador de programa do sistema --
 entity Contador_Programa is
 port( 
-	input: in std_logic_vector(32 downto 0);
+	input: in std_logic_vector(31 downto 0) := x"00000000";
 	w: in std_logic;
-	output: out std_logic_vector(32 downto 0)
+	output: out std_logic_vector(31 downto 0)
 	);
 	
 end entity Contador_Programa;

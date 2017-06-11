@@ -3,6 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity memory is
+
   generic(N: integer := 7; M: integer := 32);
   port(
 			clk:  in  STD_LOGIC := '0'; 
