@@ -6,7 +6,6 @@ use ieee.numeric_std.all;
 entity Contador_Programa is
 port( 
 	input: in std_logic_vector(31 downto 0) := x"00000000";
-	w: in std_logic;
 	output: out std_logic_vector(31 downto 0)
 	);
 	
@@ -15,16 +14,11 @@ end entity Contador_Programa;
 architecture arch of Contador_Programa is
 begin
 
-	process(w,input)
+	process(input)
 	begin
-		
-		if w = '1' then
 			
-			output <= input;
+		output <= input;
 		
-		else
-
-		end if;
 	end process;
 
 end arch;
