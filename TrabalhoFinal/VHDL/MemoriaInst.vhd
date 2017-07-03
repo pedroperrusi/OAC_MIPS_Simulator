@@ -7,7 +7,7 @@ entity MemoriaInst is
 
  generic(N: integer := 7; M: integer := 32);
  port(
-			--clk:  in  STD_LOGIC := '0'; 
+			clk:  in  STD_LOGIC; 
 			adr: in std_logic_vector(N-1 downto 0) := (others => '0');
 			inst: out std_logic_vector(M-1 downto 0) := (others => '0')
 		);
@@ -37,14 +37,14 @@ architecture arch of MemoriaInst is
 									 
 begin
 	
-	--process(clk) begin
+	process(clk) begin
 	
-		--if clk'event and clk='1' then 
+		if clk'event and clk='1' then 
 			
 			inst <= mem(to_integer(unsigned(adr)));
 			
-		--end if;
+		end if;
 		
-	--end process;
+	end process;
 	
 end arch;

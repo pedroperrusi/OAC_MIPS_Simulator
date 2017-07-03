@@ -55,7 +55,7 @@ component MemoriaInst is
 
  generic(N: integer := 7; M: integer := 32);
  port(
-			--clk:  in  STD_LOGIC := '0'; 
+			clk:  in  STD_LOGIC; 
 			adr: in std_logic_vector(N-1 downto 0) := (others => '0');
 			inst: out std_logic_vector(M-1 downto 0) := (others => '0')
 		);
@@ -66,7 +66,8 @@ component ParteControle is
 
 port( 
 	input : in std_logic_vector(5 downto 0);
-	regdst, jump, branch, memread, memtoreg, aluop, memwrite, alusrc, regwrite: out std_logic
+	regdst, jump, branch, memread, memtoreg, memwrite, alusrc, regwrite: out std_logic;
+	aluop: out std_logic_vector(3 downto 0)
 	);
 
 end component;
@@ -107,7 +108,7 @@ component ControleULA is
 
 port( 
 	instrucao: in std_logic_vector(5 downto 0);
-	ALUop : in std_logic;
+	ALUop : in std_logic_vector(3 downto 0) := "0000";
 	operation: out std_logic_vector(3 downto 0)
 	);
 
@@ -139,7 +140,8 @@ end component;
 signal saida_somador : std_logic_vector(31 downto 0) := x"00000000";
 signal saida_pc : std_logic_vector(31 downto 0) := x"00000000";
 signal instrucao : std_logic_vector(31 downto 0);
-signal regdst, jump, branch, memread, memtoreg, aluop, memwrite, alusrc, regwrite : std_logic;
+signal regdst, jump, branch, memread, memtoreg, memwrite, alusrc, regwrite : std_logic;
+signal aluop : std_logic_vector(3 downto 0);
 signal saida_mux2, saida_extensor_sinal, dado1_regbank, dado2_regbank : std_logic_vector(31 downto 0);
 signal saida_mux3 : std_logic_vector(4 downto 0);
 signal op_ULA : std_logic_vector(3 downto 0);
@@ -156,15 +158,15 @@ begin
 	-- TODO : Implementar parte de controle !!!!
 	
 	
-	
+	  
 	------------------------------ Busca de Instrucao -----------------------------------------
 	U1: Contador_Programa port map(saida_somador,saida_pc);
-	U2: MemoriaInst port map(saida_pc(8 downto 2), instrucao);
+	U2: MemoriaInst port map(clk,saida_pc(8 downto 2), instrucao);
 	U3: Somador port map(saida_pc,std_logic_vector(to_signed(4,32)),saida_somador);
 	-------------------------------------------------------------------------------------------
 	
 	U4: ParteControle port map(instrucao(31 downto 26),regdst, jump, branch, memread, memtoreg,
-										aluop, memwrite, alusrc, regwrite);
+										memwrite, alusrc, regwrite,aluop);
 	U5: Mux3 port map(instrucao(20 downto 16), instrucao(15 downto 11), regdst, saida_mux3);									
 	U6: reg_bank port map(clk, regwrite, instrucao(25 downto 21), instrucao(20 downto 16),
 								 saida_mux3, saida_memDado, dado1_regbank, dado2_regbank);
