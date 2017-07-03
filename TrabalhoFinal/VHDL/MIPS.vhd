@@ -178,9 +178,6 @@ begin
 
 	-- Port Maps --
 	
-	
-	-- TODO : Verificar se o endereco de 7 bits esta sendo passado de forma correta (?)
-	
 	  
 	------------------------------ Busca de Instrucao -----------------------------------------
 	U1: Contador_Programa port map(saida_muxJumpAddress,saida_pc);

@@ -125,6 +125,18 @@ begin
 			memwrite <= '0';
 			alusrc <= '1';
 			regwrite <= '1';
+			
+		elsif input = "000010" then 	-- JUMP 
+		
+			regdst <= '0'; 
+			jump <= '1';
+			branch <= '0';
+			memread <= '0';
+			memtoreg <= '0';
+			aluop <= "0000";
+			memwrite <= '0';
+			alusrc <= '1';
+			regwrite <= '1';
 		
 		end if;
 	end process;

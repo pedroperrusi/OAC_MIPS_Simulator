@@ -18,20 +18,7 @@ architecture arch of MemoriaInst is
 
 	type mem_array is array(0 to (2**N-1)) of std_logic_vector(M-1 downto 0);
 	signal mem: mem_array := (
-										x"abababab",
-										x"efefefef",
-										x"02146545",
-										x"85781546",
-										x"69782314",
-										x"25459789",
-										x"245a65c5",
-										x"ac5b4b5b",
-										x"ebebebeb",
-										x"cacacaca",
-										x"ecececec",
-										x"facfcafc",
-										x"ecaecaaa",
-										x"dadadeac",
+										x"21080005",
 										others => (others => '1')
 									 );
 									 
