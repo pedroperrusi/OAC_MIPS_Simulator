@@ -135,6 +135,25 @@ port(
 	);
 
 end component;
+
+component Bloco_Sll is
+	generic (DATA_WIDTH : natural := 32);
+
+port( 
+	a, b : in std_logic_vector(DATA_WIDTH -1 downto 0) := std_logic_vector(to_signed(0,32));
+	z: out std_logic_vector(DATA_WIDTH -1 downto 0)
+	);
+
+end component;
+
+component ShiftLeft2 is
+
+port( 
+	a: in std_logic_vector(25 downto 0);
+	z: out std_logic_vector(27 downto 0)
+	);
+
+end component;
 -----------------------------------------------------------------------------------------------
 
 signal saida_somador : std_logic_vector(31 downto 0) := x"00000000";
@@ -143,11 +162,17 @@ signal instrucao : std_logic_vector(31 downto 0);
 signal regdst, jump, branch, memread, memtoreg, memwrite, alusrc, regwrite : std_logic;
 signal aluop : std_logic_vector(3 downto 0);
 signal saida_mux2, saida_extensor_sinal, dado1_regbank, dado2_regbank : std_logic_vector(31 downto 0);
+signal saida_muxMemToReg, saida_muxSomador2 : std_logic_vector(31 downto 0);
 signal saida_mux3 : std_logic_vector(4 downto 0);
 signal op_ULA : std_logic_vector(3 downto 0);
 signal output_ULA : std_logic_vector(31 downto 0);
 signal zero_ULA, negative_ULA, carry_ULA, overflow_ULA : std_logic; 
 signal saida_memDado : std_logic_vector(31 downto 0); 
+signal saida_shif_left1, saida_somador2 : std_logic_vector(31 downto 0);
+signal carry_out_somador2 : std_logic;
+signal saida_ShiftLeft2 : std_logic_vector(27 downto 0);
+signal jump_address : std_logic_vector(31 downto 0);
+signal saida_muxJumpAddress : std_logic_vector(31 downto 0);
 
 begin
 
@@ -155,12 +180,10 @@ begin
 	
 	
 	-- TODO : Verificar se o endereco de 7 bits esta sendo passado de forma correta (?)
-	-- TODO : Implementar parte de controle !!!!
-	
 	
 	  
 	------------------------------ Busca de Instrucao -----------------------------------------
-	U1: Contador_Programa port map(saida_somador,saida_pc);
+	U1: Contador_Programa port map(saida_muxJumpAddress,saida_pc);
 	U2: MemoriaInst port map(clk,saida_pc(8 downto 2), instrucao);
 	U3: Somador port map(saida_pc,std_logic_vector(to_signed(4,32)),saida_somador);
 	-------------------------------------------------------------------------------------------
@@ -169,7 +192,7 @@ begin
 										memwrite, alusrc, regwrite,aluop);
 	U5: Mux3 port map(instrucao(20 downto 16), instrucao(15 downto 11), regdst, saida_mux3);									
 	U6: reg_bank port map(clk, regwrite, instrucao(25 downto 21), instrucao(20 downto 16),
-								 saida_mux3, saida_memDado, dado1_regbank, dado2_regbank);
+								 saida_mux3, saida_muxMemToReg, dado1_regbank, dado2_regbank);
 	U7: ExtensorDeSinal port map(instrucao(15 downto 0), saida_extensor_sinal);
 	U8: Mux2 port map(dado2_regbank, saida_extensor_sinal, alusrc, saida_mux2);
 	
@@ -180,7 +203,17 @@ begin
 	----------------------------------------------------------------------------------------
 
 	U11: MemoriaDado port map(clk, memread, output_ULA(6 downto 0), saida_memDado);
+	U12: Mux2 port map(output_ULA,saida_memDado,memtoreg,saida_muxMemToReg);
+	U13: Bloco_Sll port map(saida_extensor_sinal,std_logic_vector(to_signed(2,32)),saida_shif_left1);
+	U14: Somador port map(saida_shif_left1,saida_somador,saida_somador2,carry_out_somador2);
+	U15: Mux2 port map(saida_somador,saida_somador2,(branch and zero_ULA),saida_muxSomador2);
+	U16: ShiftLeft2 port map(instrucao(25 downto 0),saida_ShiftLeft2);
 	
-	-- ......
+	jump_address(31 downto 28) <= saida_somador(31 downto 28);
+	jump_address(27 downto 0) <= saida_ShiftLeft2;
+	
+	U17: Mux2 port map(saida_muxSomador2,jump_address,jump,saida_muxJumpAddress);
+	
 	-- Fim Port Map --
+
 end arch;
