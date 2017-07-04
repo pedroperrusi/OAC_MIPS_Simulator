@@ -7,7 +7,7 @@ entity Subtrator is
 	generic (DATA_WIDTH : natural := 32);
 
 port( 
-	a, b : in std_logic_vector(DATA_WIDTH -1 downto 0);
+	a, b : in std_logic_vector(DATA_WIDTH -1 downto 0) := x"00000000";
 	z: out std_logic_vector(DATA_WIDTH -1 downto 0)
 	);
 

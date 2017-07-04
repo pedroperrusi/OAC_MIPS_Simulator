@@ -6,7 +6,21 @@ use ieee.numeric_std.all;
 entity MIPS is
 	
 	port (
-		clk : in std_logic
+		clk : in std_logic;
+		
+		saida_MUXXSomador2 : out std_logic_vector(31 downto 0);
+		saidaSoma : out std_logic_vector(31 downto 0);
+		saidaSoma2 : out std_logic_vector(31 downto 0);
+		saidaDaULA : out std_logic_vector(31 downto 0);
+		saidaDoShiftLeft1 : out std_logic_vector(31 downto 0);
+		saidaMemoriaInst : out std_logic_vector(31 downto 0);
+		saida_muxJump : out std_logic_vector(31 downto 0); 
+		saidaExtSinal : out std_logic_vector(31 downto 0);
+		saida_MemOuULA : out std_logic_vector(31 downto 0);
+		
+		saida_contador_programa : out std_logic_vector(31 downto 0);
+		reg1_output : out std_logic_vector(31 downto 0);
+		reg2_output : out std_logic_vector(31 downto 0)
 	);
 	
 end entity MIPS;
@@ -31,6 +45,7 @@ component Contador_Programa is
 
 port( 
 	input: in std_logic_vector(31 downto 0) := x"00000000";
+	clk: in std_logic;
 	output: out std_logic_vector(31 downto 0)
 	);
 	
@@ -172,16 +187,18 @@ signal saida_shif_left1, saida_somador2 : std_logic_vector(31 downto 0);
 signal carry_out_somador2 : std_logic;
 signal saida_ShiftLeft2 : std_logic_vector(27 downto 0);
 signal jump_address : std_logic_vector(31 downto 0);
-signal saida_muxJumpAddress : std_logic_vector(31 downto 0);
+signal saida_muxJumpAddress : std_logic_vector(31 downto 0) := x"00000000";
+signal efetiva_branch : std_logic;
 
 begin
 
 	-- Port Maps --
 	
-	  
 	------------------------------ Busca de Instrucao -----------------------------------------
-	U1: Contador_Programa port map(saida_muxJumpAddress,saida_pc);
-	U2: MemoriaInst port map(clk,saida_pc(8 downto 2), instrucao);
+	U1: Contador_Programa port map(saida_muxJumpAddress,clk,saida_pc);
+
+	U2: MemoriaInst port map(clk,saida_pc(8 downto 2), instrucao);	
+	
 	U3: Somador port map(saida_pc,std_logic_vector(to_signed(4,32)),saida_somador);
 	-------------------------------------------------------------------------------------------
 	
@@ -190,6 +207,7 @@ begin
 	U5: Mux3 port map(instrucao(20 downto 16), instrucao(15 downto 11), regdst, saida_mux3);									
 	U6: reg_bank port map(clk, regwrite, instrucao(25 downto 21), instrucao(20 downto 16),
 								 saida_mux3, saida_muxMemToReg, dado1_regbank, dado2_regbank);
+	
 	U7: ExtensorDeSinal port map(instrucao(15 downto 0), saida_extensor_sinal);
 	U8: Mux2 port map(dado2_regbank, saida_extensor_sinal, alusrc, saida_mux2);
 	
@@ -203,13 +221,32 @@ begin
 	U12: Mux2 port map(output_ULA,saida_memDado,memtoreg,saida_muxMemToReg);
 	U13: Bloco_Sll port map(saida_extensor_sinal,std_logic_vector(to_signed(2,32)),saida_shif_left1);
 	U14: Somador port map(saida_shif_left1,saida_somador,saida_somador2,carry_out_somador2);
-	U15: Mux2 port map(saida_somador,saida_somador2,(branch and zero_ULA),saida_muxSomador2);
+	
+	efetiva_branch <= branch and zero_ULA;
+	
+	U15: Mux2 port map(saida_somador,saida_somador2,efetiva_branch,saida_muxSomador2);
+	
 	U16: ShiftLeft2 port map(instrucao(25 downto 0),saida_ShiftLeft2);
 	
 	jump_address(31 downto 28) <= saida_somador(31 downto 28);
 	jump_address(27 downto 0) <= saida_ShiftLeft2;
 	
 	U17: Mux2 port map(saida_muxSomador2,jump_address,jump,saida_muxJumpAddress);
+	
+	
+	-- Para testar !
+	reg1_output <= dado1_regbank;
+	reg2_output <= dado2_regbank;
+	saida_MemOuULA <= saida_muxMemToReg;
+	saidaSoma <= saida_somador;
+	saidaSoma2 <= saida_somador2;
+	saida_MUXXSomador2 <= saida_muxSomador2;
+	saidaDoShiftLeft1 <= saida_shif_left1;
+	saidaExtSinal <= saida_extensor_sinal;
+	saidaDaULA <= output_ULA;
+	saida_MuxJump <= saida_muxJumpAddress;
+	saida_contador_programa <= saida_pc;
+	saidaMemoriaInst <= instrucao;
 	
 	-- Fim Port Map --
 

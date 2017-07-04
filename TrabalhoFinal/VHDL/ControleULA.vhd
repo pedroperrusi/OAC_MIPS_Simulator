@@ -28,7 +28,7 @@ begin
 			
 			operation <= "0110"; -- SUB
 		
-		elsif ALUop = "10" then
+		elsif ALUop = "0010" then
 			
 			if instrucao = "100100" then	
 					
