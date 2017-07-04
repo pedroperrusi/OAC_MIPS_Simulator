@@ -46,7 +46,7 @@ component Mux is
 	generic (DATA_WIDTH : natural := 32);
 
 port( 
-	a,b,c,d,e,f,g,h,i,j: in std_logic_vector(DATA_WIDTH -1 downto 0);
+	a,b,c,d,e,f,g,h,i,j,k: in std_logic_vector(DATA_WIDTH -1 downto 0);
 	operation : in std_logic_vector(3 downto 0);
 	output: out std_logic_vector(DATA_WIDTH -1 downto 0)
 	);
@@ -174,10 +174,20 @@ port(
 	);
 
 end component;
+
+component Bloco_Lui is
+	generic (DATA_WIDTH : natural := 32);
+
+port( 
+	a : in std_logic_vector(DATA_WIDTH -1 downto 0);
+	z: out std_logic_vector(DATA_WIDTH -1 downto 0)
+	);
+
+end component;
 -- Fim do Import --
 
 -- Declaração de sinais --
-signal out1,out2,out3,out4,out5,out6,out7,out8,out9,out10,out11,aux_output: std_logic_vector(DATA_WIDTH -1 downto 0);
+signal out1,out2,out3,out4,out5,out6,out7,out8,out9,out10,out11,out12,aux_output: std_logic_vector(DATA_WIDTH -1 downto 0);
 signal overflow_soma,overflow_sub : std_logic;
 -- Fim sinais --
 
@@ -193,11 +203,12 @@ begin
 	I9: Bloco_Sll port map (input1,input2,out8);
 	I10: Bloco_Srl port map (input1,input2,out9);
 	I11: Bloco_Sra port map (input1,input2,out10);
-	I12: Mux port map (out1,out2,out3,out4,out5,out6,out7,out8,out9,out10,operation,aux_output);
+	I12: Mux port map (out1,out2,out3,out4,out5,out6,out7,out8,out9,out10,out12,operation,aux_output);
 	I13: Detector_Zero port map (aux_output,zero);
 	I14: Detector_Negative port map (aux_output,negative);
 	I15: Detector_Overflow port map (input1,input2,out3,operation,overflow_soma);
 	I16: Detector_Overflow_Sub port map (input1,input2,out4,operation,overflow_sub);
+	I17: Bloco_Lui port map (input2,out12);
 	-- Fim Port Maps --  
 
 	overflow <= overflow_soma or overflow_sub;

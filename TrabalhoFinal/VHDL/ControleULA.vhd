@@ -91,6 +91,10 @@ begin
 		elsif ALUop = "0111" then 
 			
 				operation <= "0110"; -- XORI
+		
+		elsif ALUop = "1000" then 
+			
+				operation <= "1010"; -- LUI
 				
 		end if;
 	end process;

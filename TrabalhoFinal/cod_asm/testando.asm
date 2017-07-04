@@ -5,3 +5,4 @@
 .text
 	
 	lw $t1,valor1
+	add $t3,$t1,$t1

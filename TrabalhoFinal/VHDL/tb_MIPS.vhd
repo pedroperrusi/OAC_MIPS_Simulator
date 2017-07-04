@@ -17,6 +17,10 @@ architecture tb of tb_MIPS is
 					saida_muxJump : out std_logic_vector(31 downto 0); 
 					saidaExtSinal : out std_logic_vector(31 downto 0);
 					saida_MemOuULA : out std_logic_vector(31 downto 0);
+					saida_MemDados :  out std_logic_vector(31 downto 0);
+					inst3126,inst50 : out std_logic_vector(5 downto 0);
+					inst1511,inst2016,inst2521 : out std_logic_vector(4 downto 0);
+					inst150 : out std_logic_vector(15 downto 0);
 		
 					saida_contador_programa : out std_logic_vector(31 downto 0);
 					reg1_output : out std_logic_vector(31 downto 0);
@@ -31,8 +35,10 @@ architecture tb of tb_MIPS is
     signal TbSimEnded : std_logic := '0';
 	 signal reg1_output,reg2_output,saida_contador_programa : std_logic_vector(31 downto 0);
 	 signal saida_MUXXSomador2,saidaSoma,saidaSoma2,saidaDaULA,saidaDoShiftLeft1,saidaMemoriaInst,saida_muxJump, 
-				saidaExtSinal,saida_MemOuULA : std_logic_vector(31 downto 0);
-	 
+				saidaExtSinal,saida_MemOuULA,saida_MemDados : std_logic_vector(31 downto 0);
+	 signal inst3126,inst50 : std_logic_vector(5 downto 0);
+	 signal inst1511,inst2016,inst2521 : std_logic_vector(4 downto 0);
+	 signal inst150 : std_logic_vector(15 downto 0);
 	 
 begin
 
@@ -46,6 +52,10 @@ begin
 					saida_muxJump, 
 					saidaExtSinal,
 					saida_MemOuULA,
+					saida_MemDados,
+					inst3126,inst50,
+					inst1511,inst2016,inst2521,
+					inst150,
 	 
 	 
 	 
@@ -59,12 +69,9 @@ begin
 
     stimuli : process
     begin
-        -- EDIT Adapt initialization as needed
 
-        -- EDIT Add stimuli here
         wait for 100 * TbPeriod;
 
-        -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';
         wait;
     end process;

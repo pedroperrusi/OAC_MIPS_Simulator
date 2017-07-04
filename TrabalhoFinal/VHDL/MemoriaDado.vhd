@@ -9,6 +9,7 @@ entity MemoriaDado is
  port(
 			clk, escreveMem:  in  STD_LOGIC; 
 			adr: in std_logic_vector(N-1 downto 0) := (others => '0');
+			wdata: in std_logic_vector(M-1 downto 0);
 			dado: out std_logic_vector(M-1 downto 0) := (others => '0')
 		); 
 		
@@ -20,12 +21,12 @@ architecture arch of MemoriaDado is
 	signal mem: mem_array := (
 										x"0000001b",
 										x"0000002e",
-										x"00000000",
-										x"00000000",
-										x"00000000",
-										x"00000000",
-										x"00000000",
-										x"00000000",
+										x"0000002a",
+										x"0000002b",
+										x"0000002c",
+										x"0000002d",
+										x"0000002f",
+										x"00000030",
 										x"00000000",
 										x"00000000",
 										x"00000000",
@@ -39,11 +40,13 @@ architecture arch of MemoriaDado is
 									 
 begin
 	
-	process(clk,escreveMem) begin
-	
-		if clk'event and clk = '1' and escreveMem = '1' then 
+	process(clk,escreveMem,mem,adr) begin
+		
+		dado <= mem(to_integer(unsigned(shift_right(unsigned(adr),2))));
+		
+		if rising_edge(clk) and escreveMem = '1' then 
 			
-			dado <= mem(to_integer(unsigned(adr)));
+			mem(to_integer(unsigned(adr))) <= wdata;
 			
 		end if;
 	end process;

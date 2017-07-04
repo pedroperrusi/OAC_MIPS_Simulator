@@ -126,7 +126,7 @@ begin
 			alusrc <= '1';
 			regwrite <= '1';
 			
-		elsif input = "000010" then 	-- JUMP 
+		elsif input = "000010" then 	-- JUMP    
 		
 			regdst <= '0'; 
 			jump <= '1';
@@ -137,6 +137,30 @@ begin
 			memwrite <= '0';
 			alusrc <= '1';
 			regwrite <= '1';
+			
+		elsif input = "001111" then 	-- LUI
+		
+			regdst <= '0'; 
+			jump <= '0';
+			branch <= '0';
+			memread <= '0';
+			memtoreg <= '0';
+			aluop <= "1000";
+			memwrite <= '0';
+			alusrc <= '1';
+			regwrite <= '1';
+			
+		else
+			
+			regdst <= 'X'; 
+			jump <= 'X';
+			branch <= 'X';
+			memread <= 'X';
+			memtoreg <= 'X';
+			aluop <= "XXXX";
+			memwrite <= 'X';
+			alusrc <= 'X';
+			regwrite <= 'X';
 		
 		end if;
 	end process;
