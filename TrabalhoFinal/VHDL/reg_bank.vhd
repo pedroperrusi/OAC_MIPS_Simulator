@@ -22,7 +22,7 @@ architecture rtl of reg_bank is
 	
   constant ZERO32: std_logic_vector(DATA_WIDTH-1 downto 0) := (others => '0');
   type reg_array_t is array(natural range <>) of std_logic_vector(DATA_WIDTH-1 downto 0);
-	signal breg: reg_array_t((2**ADDRESS_WIDTH)-1 downto 0) := (others => (others => '0'));
+  signal breg: reg_array_t((2**ADDRESS_WIDTH)-1 downto 0) := (others => (others => '0'));
 
 
 	

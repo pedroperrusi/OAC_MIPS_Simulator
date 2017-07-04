@@ -17,6 +17,10 @@ entity MIPS is
 		saida_muxJump : out std_logic_vector(31 downto 0); 
 		saidaExtSinal : out std_logic_vector(31 downto 0);
 		saida_MemOuULA : out std_logic_vector(31 downto 0);
+		saida_MemDados :  out std_logic_vector(31 downto 0);
+		inst3126,inst50 : out std_logic_vector(5 downto 0);
+		inst1511,inst2016,inst2521 : out std_logic_vector(4 downto 0);
+		inst150 : out std_logic_vector(15 downto 0);
 		
 		saida_contador_programa : out std_logic_vector(31 downto 0);
 		reg1_output : out std_logic_vector(31 downto 0);
@@ -135,6 +139,7 @@ component MemoriaDado is
  port(
 			clk, escreveMem:  in  STD_LOGIC; 
 			adr: in std_logic_vector(N-1 downto 0) := (others => '0');
+			wdata: in std_logic_vector(M-1 downto 0);
 			dado: out std_logic_vector(M-1 downto 0) := (others => '0')
 		); 
 		
@@ -217,7 +222,7 @@ begin
 							carry_ULA, overflow_ULA);
 	----------------------------------------------------------------------------------------
 
-	U11: MemoriaDado port map(clk, memread, output_ULA(6 downto 0), saida_memDado);
+	U11: MemoriaDado port map(clk, memwrite, output_ULA(6 downto 0),dado2_regbank, saida_memDado);
 	U12: Mux2 port map(output_ULA,saida_memDado,memtoreg,saida_muxMemToReg);
 	U13: Bloco_Sll port map(saida_extensor_sinal,std_logic_vector(to_signed(2,32)),saida_shif_left1);
 	U14: Somador port map(saida_shif_left1,saida_somador,saida_somador2,carry_out_somador2);
@@ -238,6 +243,7 @@ begin
 	reg1_output <= dado1_regbank;
 	reg2_output <= dado2_regbank;
 	saida_MemOuULA <= saida_muxMemToReg;
+	saida_MemDados <= saida_memDado;
 	saidaSoma <= saida_somador;
 	saidaSoma2 <= saida_somador2;
 	saida_MUXXSomador2 <= saida_muxSomador2;
@@ -247,6 +253,12 @@ begin
 	saida_MuxJump <= saida_muxJumpAddress;
 	saida_contador_programa <= saida_pc;
 	saidaMemoriaInst <= instrucao;
+	inst3126 <= instrucao(31 downto 26);
+	inst2521 <= instrucao(25 downto 21);
+	inst2016 <= instrucao(20 downto 16);
+	inst1511 <= instrucao(15 downto 11);
+	inst150 <= instrucao(15 downto 0);
+	inst50 <= instrucao(5 downto 0);
 	
 	-- Fim Port Map --
 

@@ -7,7 +7,7 @@ entity Mux is
 	generic (DATA_WIDTH : natural := 32);
 
 port( 
-	a,b,c,d,e,f,g,h,i,j: in std_logic_vector(DATA_WIDTH -1 downto 0);
+	a,b,c,d,e,f,g,h,i,j,k: in std_logic_vector(DATA_WIDTH -1 downto 0);
 	operation : in std_logic_vector(3 downto 0);
 	output: out std_logic_vector(DATA_WIDTH -1 downto 0)
 	);
@@ -18,7 +18,7 @@ end entity Mux;
 architecture arch of Mux is
 begin
 
-	process(a,b,c,d,e,f,g,h,i,j,operation)
+	process(a,b,c,d,e,f,g,h,i,j,k,operation)
 	begin
 	
 		if operation = "0000" then
@@ -60,6 +60,10 @@ begin
 		elsif operation = "1001" then
 		
 			output <= j;
+		
+		elsif operation = "1010" then
+		
+			output <= k;
 	
 		end if;
 	end process;

@@ -18,12 +18,12 @@ signal output_signal : std_logic_vector(31 downto 0);
 
 begin
 	
-	process(clk)
+	process(clk,input)
 	begin
 		
 		output_signal <= input;
 		
-		if rising_edge(clk) then
+		if falling_edge(clk) then
 			
 			output <= output_signal;
 			
