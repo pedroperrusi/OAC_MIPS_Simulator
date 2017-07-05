@@ -1,0 +1,93 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'KEY3'
+Slack : -13.582
+TNS   : -61942.730
+
+Type  : Slow Model Setup 'MIPS:U1|ControleULA:U9|operation[0]'
+Slack : -10.694
+TNS   : -321.352
+
+Type  : Slow Model Setup 'MIPS:U1|MemoriaInst:U2|inst[0]'
+Slack : -6.190
+TNS   : -193.589
+
+Type  : Slow Model Hold 'MIPS:U1|MemoriaInst:U2|inst[0]'
+Slack : -7.368
+TNS   : -216.234
+
+Type  : Slow Model Hold 'MIPS:U1|ControleULA:U9|operation[0]'
+Slack : -1.397
+TNS   : -23.294
+
+Type  : Slow Model Hold 'KEY3'
+Slack : -0.407
+TNS   : -0.407
+
+Type  : Slow Model Recovery 'MIPS:U1|MemoriaInst:U2|inst[0]'
+Slack : -3.239
+TNS   : -9.081
+
+Type  : Slow Model Removal 'MIPS:U1|MemoriaInst:U2|inst[0]'
+Slack : 0.522
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'KEY3'
+Slack : -1.627
+TNS   : -5709.322
+
+Type  : Slow Model Minimum Pulse Width 'MIPS:U1|MemoriaInst:U2|inst[0]'
+Slack : -0.700
+TNS   : -165.266
+
+Type  : Slow Model Minimum Pulse Width 'MIPS:U1|ControleULA:U9|operation[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Setup 'KEY3'
+Slack : -5.706
+TNS   : -26301.221
+
+Type  : Fast Model Setup 'MIPS:U1|ControleULA:U9|operation[0]'
+Slack : -4.759
+TNS   : -139.663
+
+Type  : Fast Model Setup 'MIPS:U1|MemoriaInst:U2|inst[0]'
+Slack : -3.024
+TNS   : -91.555
+
+Type  : Fast Model Hold 'MIPS:U1|MemoriaInst:U2|inst[0]'
+Slack : -3.637
+TNS   : -107.797
+
+Type  : Fast Model Hold 'MIPS:U1|ControleULA:U9|operation[0]'
+Slack : -0.938
+TNS   : -20.547
+
+Type  : Fast Model Hold 'KEY3'
+Slack : -0.636
+TNS   : -4.434
+
+Type  : Fast Model Recovery 'MIPS:U1|MemoriaInst:U2|inst[0]'
+Slack : -1.512
+TNS   : -4.200
+
+Type  : Fast Model Removal 'MIPS:U1|MemoriaInst:U2|inst[0]'
+Slack : 0.596
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'KEY3'
+Slack : -1.627
+TNS   : -5709.322
+
+Type  : Fast Model Minimum Pulse Width 'MIPS:U1|MemoriaInst:U2|inst[0]'
+Slack : -0.008
+TNS   : -1.168
+
+Type  : Fast Model Minimum Pulse Width 'MIPS:U1|ControleULA:U9|operation[0]'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------

@@ -1,0 +1,1690 @@
+Analysis & Synthesis report for mips
+Wed Jul 05 12:43:22 2017
+Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Registers Added for RAM Pass-Through Logic
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Source assignments for MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_0|altsyncram_sng1:auto_generated
+ 15. Source assignments for MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_1|altsyncram_sng1:auto_generated
+ 16. Parameter Settings for User Entity Instance: MIPS:U1|MemoriaInst:U2
+ 17. Parameter Settings for User Entity Instance: MIPS:U1|Somador:U3
+ 18. Parameter Settings for User Entity Instance: MIPS:U1|Mux3:U5
+ 19. Parameter Settings for User Entity Instance: MIPS:U1|reg_bank:U6
+ 20. Parameter Settings for User Entity Instance: MIPS:U1|ExtensorDeSinal:U7
+ 21. Parameter Settings for User Entity Instance: MIPS:U1|Mux2:U8
+ 22. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10
+ 23. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_And:I1
+ 24. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Or:I2
+ 25. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Somador:I3
+ 26. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Subtrator:I5
+ 27. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Slt:I6
+ 28. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Nor:I7
+ 29. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Xor:I8
+ 30. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Sll:I9
+ 31. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Srl:I10
+ 32. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Sra:I11
+ 33. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Mux:I12
+ 34. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Detector_Zero:I13
+ 35. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Detector_Negative:I14
+ 36. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Detector_Overflow:I15
+ 37. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Detector_Overflow_Sub:I16
+ 38. Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Lui:I17
+ 39. Parameter Settings for User Entity Instance: MIPS:U1|MemoriaDado:U11
+ 40. Parameter Settings for User Entity Instance: MIPS:U1|Mux4:U12
+ 41. Parameter Settings for User Entity Instance: MIPS:U1|Bloco_ShiftLeft:U13
+ 42. Parameter Settings for User Entity Instance: MIPS:U1|Somador:U14
+ 43. Parameter Settings for User Entity Instance: MIPS:U1|Mux2:U15
+ 44. Parameter Settings for User Entity Instance: MIPS:U1|Mux2:U17
+ 45. Parameter Settings for User Entity Instance: MIPS:U1|Mux2:U19
+ 46. Parameter Settings for Inferred Entity Instance: MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_0
+ 47. Parameter Settings for Inferred Entity Instance: MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_1
+ 48. altsyncram Parameter Settings by Entity Instance
+ 49. Port Connectivity Checks: "MIPS:U1|Somador:U14"
+ 50. Port Connectivity Checks: "MIPS:U1|Bloco_ShiftLeft:U13"
+ 51. Port Connectivity Checks: "MIPS:U1|ULA:U10"
+ 52. Port Connectivity Checks: "MIPS:U1|Mux3:U5"
+ 53. Port Connectivity Checks: "MIPS:U1|ParteControle:U4"
+ 54. Port Connectivity Checks: "MIPS:U1|Somador:U3"
+ 55. Port Connectivity Checks: "MIPS:U1"
+ 56. Elapsed Time Per Partition
+ 57. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Jul 05 12:43:22 2017      ;
+; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
+; Revision Name                      ; mips                                       ;
+; Top-level Entity Name              ; interface                                  ;
+; Family                             ; Cyclone II                                 ;
+; Total logic elements               ; 10,713                                     ;
+;     Total combinational functions  ; 9,238                                      ;
+;     Dedicated logic registers      ; 5,220                                      ;
+; Total registers                    ; 5220                                       ;
+; Total pins                         ; 71                                         ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 2,048                                      ;
+; Embedded Multiplier 9-bit elements ; 0                                          ;
+; Total PLLs                         ; 0                                          ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; interface          ; mips               ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                            ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                        ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------+---------+
+; seven_seg_decoder.vhd            ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/seven_seg_decoder.vhd                     ;         ;
+; ULA.vhd                          ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/ULA.vhd                                   ;         ;
+; Subtrator.vhd                    ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Subtrator.vhd                             ;         ;
+; Somador.vhd                      ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Somador.vhd                               ;         ;
+; ShiftLeft2.vhd                   ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/ShiftLeft2.vhd                            ;         ;
+; reg_bank.vhd                     ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/reg_bank.vhd                              ;         ;
+; ParteControle.vhd                ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/ParteControle.vhd                         ;         ;
+; Mux3.vhd                         ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Mux3.vhd                                  ;         ;
+; Mux2.vhd                         ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Mux2.vhd                                  ;         ;
+; Mux.vhd                          ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Mux.vhd                                   ;         ;
+; MIPS.vhd                         ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/MIPS.vhd                                  ;         ;
+; MemoriaInst.vhd                  ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/MemoriaInst.vhd                           ;         ;
+; MemoriaDado.vhd                  ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/MemoriaDado.vhd                           ;         ;
+; ExtensorDeSinal.vhd              ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/ExtensorDeSinal.vhd                       ;         ;
+; Detector_Zero.vhd                ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Detector_Zero.vhd                         ;         ;
+; Detector_Overflow_Sub.vhd        ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Detector_Overflow_Sub.vhd                 ;         ;
+; Detector_Overflow.vhd            ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Detector_Overflow.vhd                     ;         ;
+; Detector_Negative.vhd            ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Detector_Negative.vhd                     ;         ;
+; ControleULA.vhd                  ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/ControleULA.vhd                           ;         ;
+; Contador_Programa.vhd            ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Contador_Programa.vhd                     ;         ;
+; Bloco_Xor.vhd                    ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Bloco_Xor.vhd                             ;         ;
+; Bloco_Srl.vhd                    ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Bloco_Srl.vhd                             ;         ;
+; Bloco_Sra.vhd                    ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Bloco_Sra.vhd                             ;         ;
+; Bloco_Slt.vhd                    ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Bloco_Slt.vhd                             ;         ;
+; Bloco_Sll.vhd                    ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Bloco_Sll.vhd                             ;         ;
+; Bloco_Or.vhd                     ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Bloco_Or.vhd                              ;         ;
+; Bloco_Nor.vhd                    ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Bloco_Nor.vhd                             ;         ;
+; Bloco_And.vhd                    ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/Bloco_And.vhd                             ;         ;
+; interface.vhd                    ; yes             ; User VHDL File               ; C:/Users/alonm/OneDrive/Documentos/tf-oac/interface.vhd                             ;         ;
+; bloco_lui.vhd                    ; yes             ; Auto-Found VHDL File         ; C:/Users/alonm/OneDrive/Documentos/tf-oac/bloco_lui.vhd                             ;         ;
+; mux4.vhd                         ; yes             ; Auto-Found VHDL File         ; C:/Users/alonm/OneDrive/Documentos/tf-oac/mux4.vhd                                  ;         ;
+; bloco_shiftleft.vhd              ; yes             ; Auto-Found VHDL File         ; C:/Users/alonm/OneDrive/Documentos/tf-oac/bloco_shiftleft.vhd                       ;         ;
+; muxbranch.vhd                    ; yes             ; Auto-Found VHDL File         ; C:/Users/alonm/OneDrive/Documentos/tf-oac/muxbranch.vhd                             ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/program files (x86)/altera/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/program files (x86)/altera/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/program files (x86)/altera/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/program files (x86)/altera/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction                 ; c:/program files (x86)/altera/quartus/libraries/megafunctions/aglobal130.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/program files (x86)/altera/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; c:/program files (x86)/altera/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; c:/program files (x86)/altera/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; c:/program files (x86)/altera/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_sng1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/alonm/OneDrive/Documentos/tf-oac/db/altsyncram_sng1.tdf                    ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary          ;
++---------------------------------------------+--------+
+; Resource                                    ; Usage  ;
++---------------------------------------------+--------+
+; Estimated Total logic elements              ; 10,713 ;
+;                                             ;        ;
+; Total combinational functions               ; 9238   ;
+; Logic element usage by number of LUT inputs ;        ;
+;     -- 4 input functions                    ; 5117   ;
+;     -- 3 input functions                    ; 407    ;
+;     -- <=2 input functions                  ; 3714   ;
+;                                             ;        ;
+; Logic elements by mode                      ;        ;
+;     -- normal mode                          ; 9087   ;
+;     -- arithmetic mode                      ; 151    ;
+;                                             ;        ;
+; Total registers                             ; 5220   ;
+;     -- Dedicated logic registers            ; 5220   ;
+;     -- I/O registers                        ; 0      ;
+;                                             ;        ;
+; I/O pins                                    ; 71     ;
+; Total memory bits                           ; 2048   ;
+; Embedded Multiplier 9-bit elements          ; 0      ;
+; Maximum fan-out node                        ; KEY3   ;
+; Maximum fan-out                             ; 5284   ;
+; Total fan-out                               ; 41961  ;
+; Average fan-out                             ; 2.88   ;
++---------------------------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                           ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                 ; Library Name ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------+--------------+
+; |interface                                   ; 9238 (741)        ; 5220 (0)     ; 2048        ; 0            ; 0       ; 0         ; 71   ; 0            ; |interface                                                                          ;              ;
+;    |MIPS:U1|                                 ; 8441 (0)          ; 5220 (0)     ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1                                                                  ;              ;
+;       |Contador_Programa:U1|                 ; 7 (7)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|Contador_Programa:U1                                             ;              ;
+;       |ControleULA:U9|                       ; 34 (34)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|ControleULA:U9                                                   ;              ;
+;       |MemoriaDado:U11|                      ; 7119 (7119)       ; 4096 (4096)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|MemoriaDado:U11                                                  ;              ;
+;       |MemoriaInst:U2|                       ; 115 (115)         ; 30 (30)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|MemoriaInst:U2                                                   ;              ;
+;       |Mux2:U19|                             ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|Mux2:U19                                                         ;              ;
+;       |Mux2:U8|                              ; 33 (33)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|Mux2:U8                                                          ;              ;
+;       |Mux3:U5|                              ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|Mux3:U5                                                          ;              ;
+;       |Mux4:U12|                             ; 96 (96)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|Mux4:U12                                                         ;              ;
+;       |ParteControle:U4|                     ; 26 (26)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|ParteControle:U4                                                 ;              ;
+;       |Somador:U14|                          ; 30 (30)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|Somador:U14                                                      ;              ;
+;       |Somador:U3|                           ; 30 (30)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|Somador:U3                                                       ;              ;
+;       |ULA:U10|                              ; 756 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|ULA:U10                                                          ;              ;
+;          |Bloco_And:I1|                      ; 22 (22)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|ULA:U10|Bloco_And:I1                                             ;              ;
+;          |Bloco_Or:I2|                       ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|ULA:U10|Bloco_Or:I2                                              ;              ;
+;          |Bloco_Sll:I9|                      ; 121 (121)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|ULA:U10|Bloco_Sll:I9                                             ;              ;
+;          |Bloco_Slt:I6|                      ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|ULA:U10|Bloco_Slt:I6                                             ;              ;
+;          |Bloco_Sra:I11|                     ; 71 (71)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|ULA:U10|Bloco_Sra:I11                                            ;              ;
+;          |Bloco_Srl:I10|                     ; 79 (79)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|ULA:U10|Bloco_Srl:I10                                            ;              ;
+;          |Bloco_Xor:I8|                      ; 28 (28)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|ULA:U10|Bloco_Xor:I8                                             ;              ;
+;          |Mux:I12|                           ; 338 (338)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|ULA:U10|Mux:I12                                                  ;              ;
+;          |Somador:I3|                        ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|ULA:U10|Somador:I3                                               ;              ;
+;          |Subtrator:I5|                      ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|ULA:U10|Subtrator:I5                                             ;              ;
+;       |reg_bank:U6|                          ; 135 (135)         ; 1062 (1062)  ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|reg_bank:U6                                                      ;              ;
+;          |altsyncram:breg_rtl_0|             ; 0 (0)             ; 0 (0)        ; 1024        ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_0                                ;              ;
+;             |altsyncram_sng1:auto_generated| ; 0 (0)             ; 0 (0)        ; 1024        ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_0|altsyncram_sng1:auto_generated ;              ;
+;          |altsyncram:breg_rtl_1|             ; 0 (0)             ; 0 (0)        ; 1024        ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_1                                ;              ;
+;             |altsyncram_sng1:auto_generated| ; 0 (0)             ; 0 (0)        ; 1024        ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_1|altsyncram_sng1:auto_generated ;              ;
+;    |seven_seg_decoder:i0|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|seven_seg_decoder:i0                                                     ;              ;
+;    |seven_seg_decoder:i1|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|seven_seg_decoder:i1                                                     ;              ;
+;    |seven_seg_decoder:i2|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|seven_seg_decoder:i2                                                     ;              ;
+;    |seven_seg_decoder:i3|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|seven_seg_decoder:i3                                                     ;              ;
+;    |seven_seg_decoder:i4|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|seven_seg_decoder:i4                                                     ;              ;
+;    |seven_seg_decoder:i5|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|seven_seg_decoder:i5                                                     ;              ;
+;    |seven_seg_decoder:i6|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|seven_seg_decoder:i6                                                     ;              ;
+;    |seven_seg_decoder:i7|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |interface|seven_seg_decoder:i7                                                     ;              ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                        ;
++-------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                                                ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++-------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_0|altsyncram_sng1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 32           ; 32           ; 32           ; 32           ; 1024 ; None ;
+; MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_1|altsyncram_sng1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 32           ; 32           ; 32           ; 32           ; 1024 ; None ;
++-------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                ;
++-----------------------------------------------------+-------------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal                 ; Free of Timing Hazards ;
++-----------------------------------------------------+-------------------------------------+------------------------+
+; MIPS:U1|ULA:U10|Mux:I12|output[0]                   ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[5]                   ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[4]                   ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[3]                   ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[2]                   ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[6]                   ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[1]                   ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[7]                   ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[8]                   ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[9]                   ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[10]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[11]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[12]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[13]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[14]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[15]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[16]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[17]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[18]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[19]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[20]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[21]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[22]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[23]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[24]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[25]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[26]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[27]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[28]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[29]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[30]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ULA:U10|Mux:I12|output[31]                  ; MIPS:U1|ULA:U10|Mux:I12|output[31]  ; yes                    ;
+; MIPS:U1|ControleULA:U9|operation[3]                 ; MIPS:U1|ControleULA:U9|operation[3] ; yes                    ;
+; MIPS:U1|ControleULA:U9|operation[1]                 ; MIPS:U1|ControleULA:U9|operation[3] ; yes                    ;
+; MIPS:U1|ControleULA:U9|operation[2]                 ; MIPS:U1|ControleULA:U9|operation[3] ; no                     ;
+; MIPS:U1|ControleULA:U9|operation[0]                 ; MIPS:U1|ControleULA:U9|operation[3] ; yes                    ;
+; Number of user-specified and inferred latches = 36  ;                                     ;                        ;
++-----------------------------------------------------+-------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++---------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                ;
++-------------------------------------------+-------------------------------------------------------+
+; Register name                             ; Reason for Removal                                    ;
++-------------------------------------------+-------------------------------------------------------+
+; MIPS:U1|MemoriaInst:U2|inst[9]            ; Merged with MIPS:U1|MemoriaInst:U2|inst[10]           ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[8]  ; Merged with MIPS:U1|MemoriaInst:U2|inst[19]           ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[6]  ; Merged with MIPS:U1|MemoriaInst:U2|inst[18]           ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[4]  ; Merged with MIPS:U1|MemoriaInst:U2|inst[17]           ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[2]  ; Merged with MIPS:U1|MemoriaInst:U2|inst[16]           ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[6]  ; Merged with MIPS:U1|MemoriaInst:U2|inst[23]           ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[4]  ; Merged with MIPS:U1|MemoriaInst:U2|inst[22]           ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[2]  ; Merged with MIPS:U1|MemoriaInst:U2|inst[21]           ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[10] ; Merged with MIPS:U1|MemoriaInst:U2|inst[20]           ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[10] ; Merged with MIPS:U1|MemoriaInst:U2|inst[25]           ;
+; MIPS:U1|MemoriaInst:U2|inst[30]           ; Merged with MIPS:U1|MemoriaInst:U2|inst[25]           ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[8]  ; Merged with MIPS:U1|MemoriaInst:U2|inst[24]           ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[42] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[11] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[0]  ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[0]  ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[1]  ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[1]  ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[3]  ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[3]  ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[5]  ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[5]  ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[7]  ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[7]  ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[9]  ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[9]  ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[41] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[42] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[40] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[41] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[11] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[40] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[39] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[39] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[38] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[38] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[37] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[37] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[36] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[36] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[35] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[35] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[34] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[34] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[33] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[33] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[32] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[32] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[31] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[31] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[30] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[30] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[29] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[29] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[28] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[28] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[27] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[27] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[26] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[26] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[25] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[25] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[24] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[24] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[23] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[23] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[22] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[22] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[21] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[21] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[20] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[20] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[19] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[19] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[18] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[18] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[17] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[17] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[16] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[16] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[15] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[15] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[14] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[14] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[13] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[13] ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[12] ; Merged with MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[12] ;
+; Total Number of Removed Registers = 50    ;                                                       ;
++-------------------------------------------+-------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 5220  ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 4     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 5122  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------+
+; Registers Added for RAM Pass-Through Logic                                 ;
++-------------------------------------------+--------------------------------+
+; Register Name                             ; RAM Name                       ;
++-------------------------------------------+--------------------------------+
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[0]  ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[1]  ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[2]  ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[3]  ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[4]  ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[5]  ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[6]  ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[7]  ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[8]  ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[9]  ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[10] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[11] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[12] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[13] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[14] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[15] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[16] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[17] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[18] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[19] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[20] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[21] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[22] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[23] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[24] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[25] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[26] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[27] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[28] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[29] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[30] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[31] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[32] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[33] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[34] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[35] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[36] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[37] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[38] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[39] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[40] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[41] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_0_bypass[42] ; MIPS:U1|reg_bank:U6|breg_rtl_0 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[0]  ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[1]  ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[2]  ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[3]  ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[4]  ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[5]  ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[6]  ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[7]  ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[8]  ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[9]  ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[10] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[11] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[12] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[13] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[14] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[15] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[16] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[17] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[18] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[19] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[20] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[21] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[22] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[23] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[24] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[25] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[26] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[27] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[28] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[29] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[30] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[31] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[32] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[33] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[34] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[35] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[36] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[37] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[38] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[39] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[40] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[41] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
+; MIPS:U1|reg_bank:U6|breg_rtl_1_bypass[42] ; MIPS:U1|reg_bank:U6|breg_rtl_1 ;
++-------------------------------------------+--------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |interface|MIPS:U1|Contador_Programa:U1|output[1]  ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |interface|MIPS:U1|Contador_Programa:U1|output[28] ;
+; 4:1                ; 26 bits   ; 52 LEs        ; 52 LEs               ; 0 LEs                  ; Yes        ; |interface|MIPS:U1|Contador_Programa:U1|output[2]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |interface|MIPS:U1|reg_bank:U6|rdata1[0]           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |interface|MIPS:U1|reg_bank:U6|rdata2[2]           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |interface|MIPS:U1|ParteControle:U4|aluop[2]       ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |interface|MIPS:U1|Mux4:U12|output[2]              ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |interface|MIPS:U1|Mux3:U5|output[0]               ;
+; 33:1               ; 2 bits    ; 44 LEs        ; 6 LEs                ; 38 LEs                 ; No         ; |interface|MIPS:U1|ParteControle:U4|jump           ;
+; 20:1               ; 7 bits    ; 91 LEs        ; 56 LEs               ; 35 LEs                 ; No         ; |interface|MIPS:U1|ULA:U10|Mux:I12|output[23]      ;
+; 19:1               ; 8 bits    ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; No         ; |interface|MIPS:U1|ULA:U10|Mux:I12|output[11]      ;
+; 21:1               ; 4 bits    ; 56 LEs        ; 36 LEs               ; 20 LEs                 ; No         ; |interface|MIPS:U1|ULA:U10|Mux:I12|output[27]      ;
+; 20:1               ; 4 bits    ; 52 LEs        ; 32 LEs               ; 20 LEs                 ; No         ; |interface|MIPS:U1|ULA:U10|Mux:I12|output[7]       ;
+; 36:1               ; 32 bits   ; 768 LEs       ; 768 LEs              ; 0 LEs                  ; No         ; |interface|data[20]                                ;
+; 21:1               ; 2 bits    ; 28 LEs        ; 16 LEs               ; 12 LEs                 ; No         ; |interface|MIPS:U1|ULA:U10|Mux:I12|output[3]       ;
+; 22:1               ; 2 bits    ; 28 LEs        ; 20 LEs               ; 8 LEs                  ; No         ; |interface|MIPS:U1|ULA:U10|Mux:I12|output[29]      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Source assignments for MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_0|altsyncram_sng1:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------+
+; Assignment                      ; Value              ; From ; To                                ;
++---------------------------------+--------------------+------+-----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                 ;
++---------------------------------+--------------------+------+-----------------------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Source assignments for MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_1|altsyncram_sng1:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------+
+; Assignment                      ; Value              ; From ; To                                ;
++---------------------------------+--------------------+------+-----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                 ;
++---------------------------------+--------------------+------+-----------------------------------+
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|MemoriaInst:U2 ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; n              ; 7     ; Signed Integer                             ;
+; m              ; 32    ; Signed Integer                             ;
++----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|Somador:U3 ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; data_width     ; 32    ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|Mux3:U5 ;
++----------------+-------+-------------------------------------+
+; Parameter Name ; Value ; Type                                ;
++----------------+-------+-------------------------------------+
+; data_width     ; 5     ; Signed Integer                      ;
++----------------+-------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|reg_bank:U6 ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; data_width     ; 32    ; Signed Integer                          ;
+; address_width  ; 5     ; Signed Integer                          ;
++----------------+-------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ExtensorDeSinal:U7 ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; data_width     ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|Mux2:U8 ;
++----------------+-------+-------------------------------------+
+; Parameter Name ; Value ; Type                                ;
++----------------+-------+-------------------------------------+
+; data_width     ; 32    ; Signed Integer                      ;
++----------------+-------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10 ;
++----------------+-------+-------------------------------------+
+; Parameter Name ; Value ; Type                                ;
++----------------+-------+-------------------------------------+
+; data_width     ; 32    ; Signed Integer                      ;
++----------------+-------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_And:I1 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Or:I2 ;
++----------------+-------+-------------------------------------------------+
+; Parameter Name ; Value ; Type                                            ;
++----------------+-------+-------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                  ;
++----------------+-------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Somador:I3 ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Subtrator:I5 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Slt:I6 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Nor:I7 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Xor:I8 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Sll:I9 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Srl:I10 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Sra:I11 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Mux:I12 ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; data_width     ; 32    ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Detector_Zero:I13 ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                        ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Detector_Negative:I14 ;
++----------------+-------+-----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                      ;
++----------------+-------+-----------------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                            ;
++----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Detector_Overflow:I15 ;
++----------------+-------+-----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                      ;
++----------------+-------+-----------------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                            ;
++----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Detector_Overflow_Sub:I16 ;
++----------------+-------+---------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                          ;
++----------------+-------+---------------------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                                ;
++----------------+-------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|ULA:U10|Bloco_Lui:I17 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|MemoriaDado:U11 ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; n              ; 7     ; Signed Integer                              ;
+; m              ; 32    ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|Mux4:U12 ;
++----------------+-------+--------------------------------------+
+; Parameter Name ; Value ; Type                                 ;
++----------------+-------+--------------------------------------+
+; data_width     ; 32    ; Signed Integer                       ;
++----------------+-------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|Bloco_ShiftLeft:U13 ;
++----------------+-------+-------------------------------------------------+
+; Parameter Name ; Value ; Type                                            ;
++----------------+-------+-------------------------------------------------+
+; data_width     ; 32    ; Signed Integer                                  ;
++----------------+-------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|Somador:U14 ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; data_width     ; 32    ; Signed Integer                          ;
++----------------+-------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|Mux2:U15 ;
++----------------+-------+--------------------------------------+
+; Parameter Name ; Value ; Type                                 ;
++----------------+-------+--------------------------------------+
+; data_width     ; 32    ; Signed Integer                       ;
++----------------+-------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|Mux2:U17 ;
++----------------+-------+--------------------------------------+
+; Parameter Name ; Value ; Type                                 ;
++----------------+-------+--------------------------------------+
+; data_width     ; 32    ; Signed Integer                       ;
++----------------+-------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MIPS:U1|Mux2:U19 ;
++----------------+-------+--------------------------------------+
+; Parameter Name ; Value ; Type                                 ;
++----------------+-------+--------------------------------------+
+; data_width     ; 32    ; Signed Integer                       ;
++----------------+-------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_0 ;
++------------------------------------+----------------------+--------------------------------+
+; Parameter Name                     ; Value                ; Type                           ;
++------------------------------------+----------------------+--------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                        ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                   ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                 ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                        ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                        ;
+; WIDTH_A                            ; 32                   ; Untyped                        ;
+; WIDTHAD_A                          ; 5                    ; Untyped                        ;
+; NUMWORDS_A                         ; 32                   ; Untyped                        ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                        ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                        ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                        ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                        ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                        ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                        ;
+; WIDTH_B                            ; 32                   ; Untyped                        ;
+; WIDTHAD_B                          ; 5                    ; Untyped                        ;
+; NUMWORDS_B                         ; 32                   ; Untyped                        ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                        ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                        ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                        ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                        ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                        ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                        ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                        ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                        ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                        ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                        ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                        ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                        ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                        ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                        ;
+; BYTE_SIZE                          ; 8                    ; Untyped                        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA             ; Untyped                        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                        ;
+; INIT_FILE                          ; UNUSED               ; Untyped                        ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                        ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                        ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                        ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                        ;
+; DEVICE_FAMILY                      ; Cyclone II           ; Untyped                        ;
+; CBXI_PARAMETER                     ; altsyncram_sng1      ; Untyped                        ;
++------------------------------------+----------------------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_1 ;
++------------------------------------+----------------------+--------------------------------+
+; Parameter Name                     ; Value                ; Type                           ;
++------------------------------------+----------------------+--------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                        ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                   ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                 ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                        ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                        ;
+; WIDTH_A                            ; 32                   ; Untyped                        ;
+; WIDTHAD_A                          ; 5                    ; Untyped                        ;
+; NUMWORDS_A                         ; 32                   ; Untyped                        ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                        ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                        ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                        ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                        ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                        ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                        ;
+; WIDTH_B                            ; 32                   ; Untyped                        ;
+; WIDTHAD_B                          ; 5                    ; Untyped                        ;
+; NUMWORDS_B                         ; 32                   ; Untyped                        ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                        ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                        ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                        ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                        ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                        ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                        ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                        ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                        ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                        ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                        ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                        ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                        ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                        ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                        ;
+; BYTE_SIZE                          ; 8                    ; Untyped                        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA             ; Untyped                        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                        ;
+; INIT_FILE                          ; UNUSED               ; Untyped                        ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                        ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                        ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                        ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                        ;
+; DEVICE_FAMILY                      ; Cyclone II           ; Untyped                        ;
+; CBXI_PARAMETER                     ; altsyncram_sng1      ; Untyped                        ;
++------------------------------------+----------------------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                      ;
++-------------------------------------------+-------------------------------------------+
+; Name                                      ; Value                                     ;
++-------------------------------------------+-------------------------------------------+
+; Number of entity instances                ; 2                                         ;
+; Entity Instance                           ; MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                 ;
+;     -- WIDTH_A                            ; 32                                        ;
+;     -- NUMWORDS_A                         ; 32                                        ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                              ;
+;     -- WIDTH_B                            ; 32                                        ;
+;     -- NUMWORDS_B                         ; 32                                        ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                  ;
+; Entity Instance                           ; MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_1 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                 ;
+;     -- WIDTH_A                            ; 32                                        ;
+;     -- NUMWORDS_A                         ; 32                                        ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                              ;
+;     -- WIDTH_B                            ; 32                                        ;
+;     -- NUMWORDS_B                         ; 32                                        ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                  ;
++-------------------------------------------+-------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "MIPS:U1|Somador:U14"                                                                 ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; c_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------+
+; Port Connectivity Checks: "MIPS:U1|Bloco_ShiftLeft:U13" ;
++----------+-------+----------+---------------------------+
+; Port     ; Type  ; Severity ; Details                   ;
++----------+-------+----------+---------------------------+
+; b[31..2] ; Input ; Info     ; Stuck at GND              ;
+; b[1]     ; Input ; Info     ; Stuck at VCC              ;
+; b[0]     ; Input ; Info     ; Stuck at GND              ;
++----------+-------+----------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "MIPS:U1|ULA:U10"                                                                        ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; zero     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; negative ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; carry    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; overflow ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "MIPS:U1|Mux3:U5" ;
++------+-------+----------+-------------------+
+; Port ; Type  ; Severity ; Details           ;
++------+-------+----------+-------------------+
+; c    ; Input ; Info     ; Stuck at VCC      ;
++------+-------+----------+-------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "MIPS:U1|ParteControle:U4"                                                              ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; memread ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "MIPS:U1|Somador:U3"                                                                     ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; b[31..3] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; b[1..0]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; b[2]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; c_out    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "MIPS:U1"                                                                                          ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port               ; Type   ; Severity ; Details                                                                             ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+; saida_muxxsomador2 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; saidasoma          ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; saidasoma2         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; saidadaula         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; saidadoshiftleft1  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; saida_muxjump      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; saidaextsinal      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; saida_memouula     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; saida_memdados     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; inst3126           ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; inst50             ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; inst1511           ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; inst2016           ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; inst2521           ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; inst150            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; reg1_output        ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; jumpregister1      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; reg2_output        ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:21     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+    Info: Processing started: Wed Jul 05 12:42:56 2017
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mips -c mips
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file seven_seg_decoder.vhd
+    Info (12022): Found design unit 1: seven_seg_decoder-seven_seg_decoder_arch
+    Info (12023): Found entity 1: seven_seg_decoder
+Info (12021): Found 2 design units, including 1 entities, in source file ula.vhd
+    Info (12022): Found design unit 1: ULA-ULA_arch
+    Info (12023): Found entity 1: ULA
+Info (12021): Found 2 design units, including 1 entities, in source file tb_mips.vhd
+    Info (12022): Found design unit 1: tb_MIPS-tb
+    Info (12023): Found entity 1: tb_MIPS
+Info (12021): Found 2 design units, including 1 entities, in source file subtrator.vhd
+    Info (12022): Found design unit 1: Subtrator-arch
+    Info (12023): Found entity 1: Subtrator
+Info (12021): Found 2 design units, including 1 entities, in source file somador.vhd
+    Info (12022): Found design unit 1: Somador-arch
+    Info (12023): Found entity 1: Somador
+Info (12021): Found 2 design units, including 1 entities, in source file shiftleft2.vhd
+    Info (12022): Found design unit 1: ShiftLeft2-arch
+    Info (12023): Found entity 1: ShiftLeft2
+Info (12021): Found 2 design units, including 1 entities, in source file reg_bank.vhd
+    Info (12022): Found design unit 1: reg_bank-rtl
+    Info (12023): Found entity 1: reg_bank
+Info (12021): Found 2 design units, including 1 entities, in source file parteoperativa.vhd
+    Info (12022): Found design unit 1: ParteOperativa-arch
+    Info (12023): Found entity 1: ParteOperativa
+Info (12021): Found 2 design units, including 1 entities, in source file partecontrole.vhd
+    Info (12022): Found design unit 1: ParteControle-arch
+    Info (12023): Found entity 1: ParteControle
+Info (12021): Found 2 design units, including 1 entities, in source file mux3.vhd
+    Info (12022): Found design unit 1: Mux3-arch
+    Info (12023): Found entity 1: Mux3
+Info (12021): Found 2 design units, including 1 entities, in source file mux2.vhd
+    Info (12022): Found design unit 1: Mux2-arch
+    Info (12023): Found entity 1: Mux2
+Warning (12090): Entity "Mux" obtained from "Mux.vhd" instead of from Quartus II megafunction library
+Info (12021): Found 2 design units, including 1 entities, in source file mux.vhd
+    Info (12022): Found design unit 1: Mux-arch
+    Info (12023): Found entity 1: Mux
+Info (12021): Found 2 design units, including 1 entities, in source file mips.vhd
+    Info (12022): Found design unit 1: MIPS-arch
+    Info (12023): Found entity 1: MIPS
+Info (12021): Found 2 design units, including 1 entities, in source file memoriainst.vhd
+    Info (12022): Found design unit 1: MemoriaInst-arch
+    Info (12023): Found entity 1: MemoriaInst
+Info (12021): Found 2 design units, including 1 entities, in source file memoriadado.vhd
+    Info (12022): Found design unit 1: MemoriaDado-arch
+    Info (12023): Found entity 1: MemoriaDado
+Info (12021): Found 2 design units, including 1 entities, in source file extensordesinal.vhd
+    Info (12022): Found design unit 1: ExtensorDeSinal-arch
+    Info (12023): Found entity 1: ExtensorDeSinal
+Info (12021): Found 2 design units, including 1 entities, in source file detector_zero.vhd
+    Info (12022): Found design unit 1: Detector_Zero-arch
+    Info (12023): Found entity 1: Detector_Zero
+Info (12021): Found 2 design units, including 1 entities, in source file detector_overflow_sub.vhd
+    Info (12022): Found design unit 1: Detector_Overflow_sub-arch
+    Info (12023): Found entity 1: Detector_Overflow_Sub
+Info (12021): Found 2 design units, including 1 entities, in source file detector_overflow.vhd
+    Info (12022): Found design unit 1: Detector_Overflow-arch
+    Info (12023): Found entity 1: Detector_Overflow
+Info (12021): Found 2 design units, including 1 entities, in source file detector_negative.vhd
+    Info (12022): Found design unit 1: Detector_Negative-arch
+    Info (12023): Found entity 1: Detector_Negative
+Info (12021): Found 2 design units, including 1 entities, in source file controleula.vhd
+    Info (12022): Found design unit 1: ControleULA-arch
+    Info (12023): Found entity 1: ControleULA
+Info (12021): Found 2 design units, including 1 entities, in source file contador_programa.vhd
+    Info (12022): Found design unit 1: Contador_Programa-arch
+    Info (12023): Found entity 1: Contador_Programa
+Info (12021): Found 2 design units, including 1 entities, in source file bloco_xor.vhd
+    Info (12022): Found design unit 1: Bloco_Xor-arch
+    Info (12023): Found entity 1: Bloco_Xor
+Info (12021): Found 2 design units, including 1 entities, in source file bloco_srl.vhd
+    Info (12022): Found design unit 1: Bloco_Srl-arch
+    Info (12023): Found entity 1: Bloco_Srl
+Info (12021): Found 2 design units, including 1 entities, in source file bloco_sra.vhd
+    Info (12022): Found design unit 1: Bloco_Sra-arch
+    Info (12023): Found entity 1: Bloco_Sra
+Info (12021): Found 2 design units, including 1 entities, in source file bloco_slt.vhd
+    Info (12022): Found design unit 1: Bloco_Slt-arch
+    Info (12023): Found entity 1: Bloco_Slt
+Info (12021): Found 2 design units, including 1 entities, in source file bloco_sll.vhd
+    Info (12022): Found design unit 1: Bloco_Sll-arch
+    Info (12023): Found entity 1: Bloco_Sll
+Info (12021): Found 2 design units, including 1 entities, in source file bloco_or.vhd
+    Info (12022): Found design unit 1: Bloco_Or-arch
+    Info (12023): Found entity 1: Bloco_Or
+Info (12021): Found 2 design units, including 1 entities, in source file bloco_nor.vhd
+    Info (12022): Found design unit 1: Bloco_Nor-arch
+    Info (12023): Found entity 1: Bloco_Nor
+Info (12021): Found 2 design units, including 1 entities, in source file bloco_and.vhd
+    Info (12022): Found design unit 1: Bloco_And-arch
+    Info (12023): Found entity 1: Bloco_And
+Info (12021): Found 2 design units, including 1 entities, in source file interface.vhd
+    Info (12022): Found design unit 1: interface-interface_arch
+    Info (12023): Found entity 1: interface
+Info (12127): Elaborating entity "interface" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(69): object "saida_MUXXSomador2" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(70): object "saidaSoma" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(71): object "saidaSoma2" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(72): object "saidaDaULA" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(73): object "saidaDoShiftLeft1" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(75): object "saida_muxJump" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(76): object "saidaExtSinal" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(77): object "saida_MemOuULA" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(78): object "saida_MemDados" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(79): object "inst3126" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(79): object "inst50" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(80): object "inst1511" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(80): object "inst2016" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(80): object "inst2521" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(81): object "inst150" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(83): object "reg1_output" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(84): object "reg2_output" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at interface.vhd(85): object "jumpRegister1" assigned a value but never read
+Warning (10492): VHDL Process Statement warning at interface.vhd(122): signal "saida_contador_programa" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at interface.vhd(126): signal "saidaMemoriaInst" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at interface.vhd(130): signal "outRegData" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at interface.vhd(134): signal "outMemDado" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at interface.vhd(117): inferring latch(es) for signal or variable "data", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "data[0]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[1]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[2]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[3]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[4]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[5]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[6]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[7]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[8]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[9]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[10]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[11]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[12]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[13]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[14]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[15]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[16]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[17]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[18]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[19]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[20]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[21]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[22]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[23]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[24]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[25]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[26]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[27]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[28]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[29]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[30]" at interface.vhd(117)
+Info (10041): Inferred latch for "data[31]" at interface.vhd(117)
+Info (12128): Elaborating entity "MIPS" for hierarchy "MIPS:U1"
+Warning (10036): Verilog HDL or VHDL warning at MIPS.vhd(224): object "memread" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MIPS.vhd(232): object "negative_ULA" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MIPS.vhd(232): object "carry_ULA" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MIPS.vhd(232): object "overflow_ULA" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MIPS.vhd(235): object "carry_out_somador2" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MIPS.vhd(239): object "efetiva_branch" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MIPS.vhd(239): object "efetiva_bne" assigned a value but never read
+Info (12128): Elaborating entity "Contador_Programa" for hierarchy "MIPS:U1|Contador_Programa:U1"
+Info (12128): Elaborating entity "MemoriaInst" for hierarchy "MIPS:U1|MemoriaInst:U2"
+Info (12128): Elaborating entity "Somador" for hierarchy "MIPS:U1|Somador:U3"
+Info (12128): Elaborating entity "ParteControle" for hierarchy "MIPS:U1|ParteControle:U4"
+Info (12128): Elaborating entity "Mux3" for hierarchy "MIPS:U1|Mux3:U5"
+Warning (10492): VHDL Process Statement warning at Mux3.vhd(34): signal "c" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at Mux3.vhd(21): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "output[0]" at Mux3.vhd(21)
+Info (10041): Inferred latch for "output[1]" at Mux3.vhd(21)
+Info (10041): Inferred latch for "output[2]" at Mux3.vhd(21)
+Info (10041): Inferred latch for "output[3]" at Mux3.vhd(21)
+Info (10041): Inferred latch for "output[4]" at Mux3.vhd(21)
+Info (12128): Elaborating entity "reg_bank" for hierarchy "MIPS:U1|reg_bank:U6"
+Info (12128): Elaborating entity "ExtensorDeSinal" for hierarchy "MIPS:U1|ExtensorDeSinal:U7"
+Info (12128): Elaborating entity "Mux2" for hierarchy "MIPS:U1|Mux2:U8"
+Warning (10631): VHDL Process Statement warning at Mux2.vhd(24): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "output[0]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[1]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[2]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[3]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[4]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[5]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[6]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[7]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[8]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[9]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[10]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[11]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[12]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[13]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[14]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[15]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[16]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[17]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[18]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[19]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[20]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[21]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[22]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[23]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[24]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[25]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[26]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[27]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[28]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[29]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[30]" at Mux2.vhd(24)
+Info (10041): Inferred latch for "output[31]" at Mux2.vhd(24)
+Info (12128): Elaborating entity "ControleULA" for hierarchy "MIPS:U1|ControleULA:U9"
+Warning (10631): VHDL Process Statement warning at ControleULA.vhd(20): inferring latch(es) for signal or variable "operation", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "operation[0]" at ControleULA.vhd(20)
+Info (10041): Inferred latch for "operation[1]" at ControleULA.vhd(20)
+Info (10041): Inferred latch for "operation[2]" at ControleULA.vhd(20)
+Info (10041): Inferred latch for "operation[3]" at ControleULA.vhd(20)
+Info (12128): Elaborating entity "ULA" for hierarchy "MIPS:U1|ULA:U10"
+Info (12128): Elaborating entity "Bloco_And" for hierarchy "MIPS:U1|ULA:U10|Bloco_And:I1"
+Info (12128): Elaborating entity "Bloco_Or" for hierarchy "MIPS:U1|ULA:U10|Bloco_Or:I2"
+Info (12128): Elaborating entity "Subtrator" for hierarchy "MIPS:U1|ULA:U10|Subtrator:I5"
+Info (12128): Elaborating entity "Bloco_Slt" for hierarchy "MIPS:U1|ULA:U10|Bloco_Slt:I6"
+Info (12128): Elaborating entity "Bloco_Nor" for hierarchy "MIPS:U1|ULA:U10|Bloco_Nor:I7"
+Info (12128): Elaborating entity "Bloco_Xor" for hierarchy "MIPS:U1|ULA:U10|Bloco_Xor:I8"
+Info (12128): Elaborating entity "Bloco_Sll" for hierarchy "MIPS:U1|ULA:U10|Bloco_Sll:I9"
+Info (12128): Elaborating entity "Bloco_Srl" for hierarchy "MIPS:U1|ULA:U10|Bloco_Srl:I10"
+Info (12128): Elaborating entity "Bloco_Sra" for hierarchy "MIPS:U1|ULA:U10|Bloco_Sra:I11"
+Info (12128): Elaborating entity "Mux" for hierarchy "MIPS:U1|ULA:U10|Mux:I12"
+Warning (10631): VHDL Process Statement warning at Mux.vhd(21): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "output[0]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[1]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[2]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[3]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[4]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[5]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[6]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[7]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[8]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[9]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[10]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[11]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[12]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[13]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[14]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[15]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[16]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[17]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[18]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[19]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[20]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[21]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[22]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[23]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[24]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[25]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[26]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[27]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[28]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[29]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[30]" at Mux.vhd(21)
+Info (10041): Inferred latch for "output[31]" at Mux.vhd(21)
+Info (12128): Elaborating entity "Detector_Zero" for hierarchy "MIPS:U1|ULA:U10|Detector_Zero:I13"
+Info (12128): Elaborating entity "Detector_Negative" for hierarchy "MIPS:U1|ULA:U10|Detector_Negative:I14"
+Info (12128): Elaborating entity "Detector_Overflow" for hierarchy "MIPS:U1|ULA:U10|Detector_Overflow:I15"
+Info (12128): Elaborating entity "Detector_Overflow_Sub" for hierarchy "MIPS:U1|ULA:U10|Detector_Overflow_Sub:I16"
+Warning (12125): Using design file bloco_lui.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: Bloco_Lui-arch
+    Info (12023): Found entity 1: Bloco_Lui
+Info (12128): Elaborating entity "Bloco_Lui" for hierarchy "MIPS:U1|ULA:U10|Bloco_Lui:I17"
+Info (12128): Elaborating entity "MemoriaDado" for hierarchy "MIPS:U1|MemoriaDado:U11"
+Warning (10492): VHDL Process Statement warning at MemoriaDado.vhd(48): signal "input_fpga" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (12125): Using design file mux4.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: Mux4-arch
+    Info (12023): Found entity 1: Mux4
+Info (12128): Elaborating entity "Mux4" for hierarchy "MIPS:U1|Mux4:U12"
+Warning (10631): VHDL Process Statement warning at mux4.vhd(21): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "output[0]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[1]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[2]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[3]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[4]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[5]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[6]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[7]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[8]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[9]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[10]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[11]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[12]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[13]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[14]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[15]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[16]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[17]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[18]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[19]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[20]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[21]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[22]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[23]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[24]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[25]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[26]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[27]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[28]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[29]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[30]" at mux4.vhd(21)
+Info (10041): Inferred latch for "output[31]" at mux4.vhd(21)
+Warning (12125): Using design file bloco_shiftleft.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: Bloco_ShiftLeft-arch
+    Info (12023): Found entity 1: Bloco_ShiftLeft
+Info (12128): Elaborating entity "Bloco_ShiftLeft" for hierarchy "MIPS:U1|Bloco_ShiftLeft:U13"
+Info (12128): Elaborating entity "ShiftLeft2" for hierarchy "MIPS:U1|ShiftLeft2:U16"
+Warning (12125): Using design file muxbranch.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: MuxBranch-arch
+    Info (12023): Found entity 1: MuxBranch
+Info (12128): Elaborating entity "MuxBranch" for hierarchy "MIPS:U1|MuxBranch:U18"
+Warning (10631): VHDL Process Statement warning at muxbranch.vhd(20): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "output" at muxbranch.vhd(20)
+Info (12128): Elaborating entity "seven_seg_decoder" for hierarchy "seven_seg_decoder:i0"
+Warning (14026): LATCH primitive "data[28]" is permanently enabled
+Warning (14026): LATCH primitive "data[27]" is permanently enabled
+Warning (14026): LATCH primitive "data[26]" is permanently enabled
+Warning (14026): LATCH primitive "data[25]" is permanently enabled
+Warning (14026): LATCH primitive "data[24]" is permanently enabled
+Warning (14026): LATCH primitive "data[23]" is permanently enabled
+Warning (14026): LATCH primitive "data[22]" is permanently enabled
+Warning (14026): LATCH primitive "data[21]" is permanently enabled
+Warning (14026): LATCH primitive "data[20]" is permanently enabled
+Warning (14026): LATCH primitive "data[19]" is permanently enabled
+Warning (14026): LATCH primitive "data[18]" is permanently enabled
+Warning (14026): LATCH primitive "data[17]" is permanently enabled
+Warning (14026): LATCH primitive "data[16]" is permanently enabled
+Warning (14026): LATCH primitive "data[15]" is permanently enabled
+Warning (14026): LATCH primitive "data[14]" is permanently enabled
+Warning (14026): LATCH primitive "data[13]" is permanently enabled
+Warning (14026): LATCH primitive "data[12]" is permanently enabled
+Warning (14026): LATCH primitive "data[11]" is permanently enabled
+Warning (14026): LATCH primitive "data[10]" is permanently enabled
+Warning (14026): LATCH primitive "data[9]" is permanently enabled
+Warning (14026): LATCH primitive "data[8]" is permanently enabled
+Warning (14026): LATCH primitive "data[7]" is permanently enabled
+Warning (14026): LATCH primitive "data[6]" is permanently enabled
+Warning (14026): LATCH primitive "data[5]" is permanently enabled
+Warning (14026): LATCH primitive "data[4]" is permanently enabled
+Warning (14026): LATCH primitive "data[3]" is permanently enabled
+Warning (14026): LATCH primitive "data[2]" is permanently enabled
+Warning (14026): LATCH primitive "data[1]" is permanently enabled
+Warning (14026): LATCH primitive "data[0]" is permanently enabled
+Warning (14026): LATCH primitive "data[31]" is permanently enabled
+Warning (14026): LATCH primitive "data[30]" is permanently enabled
+Warning (14026): LATCH primitive "data[29]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux3:U5|output[4]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux3:U5|output[3]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux3:U5|output[2]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux3:U5|output[1]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux3:U5|output[0]" is permanently enabled
+Warning (276020): Inferred RAM node "MIPS:U1|reg_bank:U6|breg_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Warning (276020): Inferred RAM node "MIPS:U1|reg_bank:U6|breg_rtl_1" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Info (276014): Found 2 instances of uninferred RAM logic
+    Info (276007): RAM logic "MIPS:U1|MemoriaDado:U11|mem" is uninferred due to asynchronous read logic
+    Info (276007): RAM logic "MIPS:U1|MemoriaInst:U2|mem" is uninferred due to asynchronous read logic
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[3]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[31]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[30]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[29]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[28]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[27]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[26]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[25]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[24]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[23]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[22]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[21]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[20]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[19]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[18]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[17]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[16]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[15]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[14]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[13]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[12]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[11]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[10]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[9]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[8]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[7]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[6]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[5]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[4]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[2]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[1]" is permanently enabled
+Warning (14026): LATCH primitive "MIPS:U1|Mux4:U12|output[0]" is permanently enabled
+Info (19000): Inferred 2 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "MIPS:U1|reg_bank:U6|breg_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 5
+        Info (286033): Parameter NUMWORDS_A set to 32
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 5
+        Info (286033): Parameter NUMWORDS_B set to 32
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "MIPS:U1|reg_bank:U6|breg_rtl_1" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 5
+        Info (286033): Parameter NUMWORDS_A set to 32
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 5
+        Info (286033): Parameter NUMWORDS_B set to 32
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (12130): Elaborated megafunction instantiation "MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_0"
+Info (12133): Instantiated megafunction "MIPS:U1|reg_bank:U6|altsyncram:breg_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "5"
+    Info (12134): Parameter "NUMWORDS_A" = "32"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "5"
+    Info (12134): Parameter "NUMWORDS_B" = "32"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_sng1.tdf
+    Info (12023): Found entity 1: altsyncram_sng1
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[7] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[8] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[9] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[10] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[11] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[12] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[13] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[14] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[15] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[16] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[17] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[18] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[19] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[20] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[21] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[22] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[23] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[24] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[25] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[26] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[27] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[28] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[29] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[30] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ULA:U10|Mux:I12|output[31] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|ControleULA:U9|operation[3]
+Warning (13012): Latch MIPS:U1|ControleULA:U9|operation[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|MemoriaInst:U2|inst[26]
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal MIPS:U1|MemoriaInst:U2|inst[26]
+Warning (13012): Latch MIPS:U1|ControleULA:U9|operation[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|MemoriaInst:U2|inst[26]
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal MIPS:U1|MemoriaInst:U2|inst[26]
+Warning (13012): Latch MIPS:U1|ControleULA:U9|operation[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|MemoriaInst:U2|inst[26]
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal MIPS:U1|MemoriaInst:U2|inst[26]
+Warning (13012): Latch MIPS:U1|ControleULA:U9|operation[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MIPS:U1|MemoriaInst:U2|inst[26]
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal MIPS:U1|MemoriaInst:U2|inst[26]
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 10928 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 56 output pins
+    Info (21061): Implemented 10793 logic cells
+    Info (21064): Implemented 64 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 191 warnings
+    Info: Peak virtual memory: 580 megabytes
+    Info: Processing ended: Wed Jul 05 12:43:22 2017
+    Info: Elapsed time: 00:00:26
+    Info: Total CPU time (on all processors): 00:00:25
+
+
