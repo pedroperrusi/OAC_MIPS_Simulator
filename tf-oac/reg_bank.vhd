@@ -32,8 +32,8 @@ begin
 	--leitura dos registradores
 	rdata1 <= ZERO32 when (radd1 = "00000") else breg(to_integer(unsigned(radd1)));
 	rdata2 <= ZERO32 when (radd2 = "00000") else breg(to_integer(unsigned(radd2)));
-	rdataFpga <= ZERO32 when (raddFpga = "00000") else breg(to_integer(unsigned(raddFpga)));
-	
+	rdataFpga <= ZERO32 when (raddFpga = "00000") else breg(to_integer(unsigned(raddFpga))); 
+
 	--processo de escrita de um registrador do banco
 	process(clk)
 	begin

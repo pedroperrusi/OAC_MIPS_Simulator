@@ -260,7 +260,7 @@ begin
 	U15: Mux2 port map(saida_somador, saida_somador2, saida_muxBranch, saida_muxSomador2);
 	U16: ShiftLeft2 port map(instrucao(25 downto 0), saida_ShiftLeft2);
 	U17: Mux2 port map(saida_muxSomador2, jump_address, jump,saida_muxJumpAddress);
-	U18: MuxBranch port map(branch,branchNotEqual, seletor_branch, saida_muxBranch);
+	U18: MuxBranch port map(efetiva_branch, efetiva_bne, seletor_branch, saida_muxBranch);
 	U19: Mux2 port map(saida_muxJumpAddress, dado1_regbank, jumpRegister, saidaMuxJR);
 	-- Fim Port Map --
 	

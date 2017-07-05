@@ -9,6 +9,7 @@
 
 .text
 	
+	nop
 	lw $t1,valor1
 	lw $t2,valor2
 	
@@ -74,20 +75,16 @@ testeSRA:
 testeXOR:
 	
 	xor $t1,$a1,$a2
-
-testeBEQ:
 	
-	#beq $t1,$t3,testeBEQ
-	#beq $t1,$t1,testeBEQout
-	
-testeBEQout:
-
 testeJ:
 	
 	j saida
 
 
 testeBNE:
+
+	beq $t1,$t2,done
+	bne $t1,$t2,done
 	
 testeSW:
 	
@@ -99,10 +96,19 @@ saida:
 
 testeJR:
 	
-	addi $t1,$zero,0x00400018
+	addi $t1,$zero,0x00000090
 	jr $t1
 
 testeJAL:
 	
+	add $a1,$zero,$zero
+	add $a1,$zero,$zero
+	add $a1,$zero,$zero
+	add $t7,$zero,$zero
+	
 	jal testeBNE
-	#bne $t1,$t3,testeBNE
+
+done:
+	addi $t1,$zero,5
+	
+

@@ -58,37 +58,6 @@ set_global_assignment -name EDA_TEST_BENCH_FILE tb_MIPS.vhd -section_id tb
 set_global_assignment -name EDA_NETLIST_WRITER_OUTPUT_DIR "C:\\Program Files (x86)\\Altera\\modelsim_ase\\win32aloem" -section_id eda_simulation
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name VHDL_FILE seven_seg_decoder.vhd
-set_global_assignment -name VHDL_FILE ULA.vhd
-set_global_assignment -name VHDL_FILE tb_MIPS.vhd
-set_global_assignment -name VHDL_FILE Subtrator.vhd
-set_global_assignment -name VHDL_FILE Somador.vhd
-set_global_assignment -name VHDL_FILE ShiftLeft2.vhd
-set_global_assignment -name VHDL_FILE reg_bank.vhd
-set_global_assignment -name VHDL_FILE ParteOperativa.vhd
-set_global_assignment -name VHDL_FILE ParteControle.vhd
-set_global_assignment -name VHDL_FILE Mux3.vhd
-set_global_assignment -name VHDL_FILE Mux2.vhd
-set_global_assignment -name VHDL_FILE Mux.vhd
-set_global_assignment -name VHDL_FILE MIPS.vhd
-set_global_assignment -name VHDL_FILE MemoriaInst.vhd
-set_global_assignment -name VHDL_FILE MemoriaDado.vhd
-set_global_assignment -name VHDL_FILE ExtensorDeSinal.vhd
-set_global_assignment -name VHDL_FILE Detector_Zero.vhd
-set_global_assignment -name VHDL_FILE Detector_Overflow_Sub.vhd
-set_global_assignment -name VHDL_FILE Detector_Overflow.vhd
-set_global_assignment -name VHDL_FILE Detector_Negative.vhd
-set_global_assignment -name VHDL_FILE ControleULA.vhd
-set_global_assignment -name VHDL_FILE Contador_Programa.vhd
-set_global_assignment -name VHDL_FILE Bloco_Xor.vhd
-set_global_assignment -name VHDL_FILE Bloco_Srl.vhd
-set_global_assignment -name VHDL_FILE Bloco_Sra.vhd
-set_global_assignment -name VHDL_FILE Bloco_Slt.vhd
-set_global_assignment -name VHDL_FILE Bloco_Sll.vhd
-set_global_assignment -name VHDL_FILE Bloco_Or.vhd
-set_global_assignment -name VHDL_FILE Bloco_Nor.vhd
-set_global_assignment -name VHDL_FILE Bloco_And.vhd
-set_global_assignment -name VHDL_FILE interface.vhd
 set_location_assignment PIN_N25 -to SW[0]
 set_location_assignment PIN_N26 -to SW[1]
 set_location_assignment PIN_P25 -to SW[2]
@@ -517,4 +486,37 @@ set_location_assignment PIN_W23 -to GPIO_1[35]
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VHDL_FILE Bloco_ShiftLeft.vhd
+set_global_assignment -name VHDL_FILE Bloco_Lui.vhd
+set_global_assignment -name VHDL_FILE seven_seg_decoder.vhd
+set_global_assignment -name VHDL_FILE ULA.vhd
+set_global_assignment -name VHDL_FILE tb_MIPS.vhd
+set_global_assignment -name VHDL_FILE Subtrator.vhd
+set_global_assignment -name VHDL_FILE Somador.vhd
+set_global_assignment -name VHDL_FILE ShiftLeft2.vhd
+set_global_assignment -name VHDL_FILE reg_bank.vhd
+set_global_assignment -name VHDL_FILE ParteOperativa.vhd
+set_global_assignment -name VHDL_FILE ParteControle.vhd
+set_global_assignment -name VHDL_FILE Mux3.vhd
+set_global_assignment -name VHDL_FILE Mux2.vhd
+set_global_assignment -name VHDL_FILE Mux.vhd
+set_global_assignment -name VHDL_FILE MIPS.vhd
+set_global_assignment -name VHDL_FILE MemoriaInst.vhd
+set_global_assignment -name VHDL_FILE MemoriaDado.vhd
+set_global_assignment -name VHDL_FILE ExtensorDeSinal.vhd
+set_global_assignment -name VHDL_FILE Detector_Zero.vhd
+set_global_assignment -name VHDL_FILE Detector_Overflow_Sub.vhd
+set_global_assignment -name VHDL_FILE Detector_Overflow.vhd
+set_global_assignment -name VHDL_FILE Detector_Negative.vhd
+set_global_assignment -name VHDL_FILE ControleULA.vhd
+set_global_assignment -name VHDL_FILE Contador_Programa.vhd
+set_global_assignment -name VHDL_FILE Bloco_Xor.vhd
+set_global_assignment -name VHDL_FILE Bloco_Srl.vhd
+set_global_assignment -name VHDL_FILE Bloco_Sra.vhd
+set_global_assignment -name VHDL_FILE Bloco_Slt.vhd
+set_global_assignment -name VHDL_FILE Bloco_Sll.vhd
+set_global_assignment -name VHDL_FILE Bloco_Or.vhd
+set_global_assignment -name VHDL_FILE Bloco_Nor.vhd
+set_global_assignment -name VHDL_FILE Bloco_And.vhd
+set_global_assignment -name VHDL_FILE interface.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

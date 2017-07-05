@@ -17,6 +17,6 @@ end entity Bloco_Lui;
 architecture arch of Bloco_Lui is
 begin
 	
-	z <= std_logic_vector(shift_left(signed(a),16));
+	z <= std_logic_vector(shift_left(unsigned(a),16));
 
 end architecture;
