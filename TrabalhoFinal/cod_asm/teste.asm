@@ -77,7 +77,7 @@ testeXOR:
 
 testeBEQ:
 	
-	beq $t1,$t2,testeBEQ
+	beq $t1,$t3,testeBEQ
 	beq $t1,$t1,testeBEQout
 	
 testeBEQout:
@@ -86,4 +86,14 @@ testeJ:
 	
 	j saida
 
+
+testeBNE:
+	
+testeSW:
+	
+	sw $t4,valor1
+	
+	add $t1,$zero,$t3
+	
 saida:
+	bne $t1,$t3,testeBNE

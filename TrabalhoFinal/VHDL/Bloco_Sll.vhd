@@ -7,8 +7,9 @@ entity Bloco_Sll is
 	generic (DATA_WIDTH : natural := 32);
 
 port( 
-	a, b : in std_logic_vector(DATA_WIDTH -1 downto 0);
-	z: out std_logic_vector(DATA_WIDTH -1 downto 0)
+	a : in std_logic_vector(DATA_WIDTH -1 downto 0);
+	b : in std_logic_vector(4 downto 0);
+	z : out std_logic_vector(DATA_WIDTH -1 downto 0)
 	);
 
 end entity Bloco_Sll;

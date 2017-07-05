@@ -44,9 +44,13 @@ architecture arch of MemoriaInst is
 										x"00055142",
 										x"00065143",
 										x"00a64826",
-										x"112affff",
+										x"112bffff",
 										x"11290000",
-										x"0810001d",
+										x"08100020",
+										x"3c011001",
+										x"ac2c0000",
+										x"000b4820",
+										x"152bfffc",
 
 										others => (others => '1')
 									 );

@@ -6,7 +6,7 @@ use ieee.numeric_std.all;
 entity ParteControle is
 port( 
 	input : in std_logic_vector(5 downto 0);
-	regdst, jump, branch, memread, memtoreg, memwrite, alusrc, regwrite: out std_logic;
+	regdst, jump, branch, branchNotEqual, seletor_branch, memread, memtoreg, memwrite, alusrc, regwrite: out std_logic;
 	aluop: out std_logic_vector(3 downto 0)
 	);
 
@@ -23,6 +23,8 @@ begin
 			regdst <= '1';
 			jump <= '0';
 			branch <= '0';
+			branchNotEqual <= '0';
+			seletor_branch <= '0';
 			memread <= '0';
 			memtoreg <= '0';
 			aluop <= "0010";
@@ -35,6 +37,8 @@ begin
 			regdst <= '0';
 			jump <= '0';
 			branch <= '0';
+			branchNotEqual <= '0';
+			seletor_branch <= '0';
 			memread <= '1';
 			memtoreg <= '1';
 			aluop <= "0000";
@@ -47,6 +51,8 @@ begin
 			regdst <= '1'; -- 'X'
 			jump <= '0';
 			branch <= '0';
+			branchNotEqual <= '0';
+			seletor_branch <= '0';
 			memread <= '0';
 			memtoreg <= '0'; -- 'X'
 			aluop <= "0000";
@@ -59,6 +65,8 @@ begin
 			regdst <= '0'; -- 'X'
 			jump <= '0';
 			branch <= '1';
+			branchNotEqual <= '0';
+			seletor_branch <= '0';
 			memread <= '0';
 			memtoreg <= '0';
 			aluop <= "0001";
@@ -71,6 +79,8 @@ begin
 			regdst <= '0'; 
 			jump <= '0';
 			branch <= '0';
+			branchNotEqual <= '0';
+			seletor_branch <= '0';
 			memread <= '0';
 			memtoreg <= '0';
 			aluop <= "0011";
@@ -83,6 +93,8 @@ begin
 			regdst <= '0'; 
 			jump <= '0';
 			branch <= '0';
+			branchNotEqual <= '0';
+			seletor_branch <= '0';
 			memread <= '0';
 			memtoreg <= '0';
 			aluop <= "0100";
@@ -95,6 +107,8 @@ begin
 			regdst <= '0'; 
 			jump <= '0';
 			branch <= '0';
+			branchNotEqual <= '0';
+			seletor_branch <= '0';
 			memread <= '0';
 			memtoreg <= '0';
 			aluop <= "0101";
@@ -107,6 +121,8 @@ begin
 			regdst <= '0'; 
 			jump <= '0';
 			branch <= '0';
+			branchNotEqual <= '0';
+			seletor_branch <= '0';
 			memread <= '0';
 			memtoreg <= '0';
 			aluop <= "0110";
@@ -119,6 +135,8 @@ begin
 			regdst <= '0'; 
 			jump <= '0';
 			branch <= '0';
+			branchNotEqual <= '0';
+			seletor_branch <= '0';
 			memread <= '0';
 			memtoreg <= '0';
 			aluop <= "0111";
@@ -131,6 +149,8 @@ begin
 			regdst <= '0'; 
 			jump <= '1';
 			branch <= '0';
+			branchNotEqual <= '0';
+			seletor_branch <= '0';
 			memread <= '0';
 			memtoreg <= '0';
 			aluop <= "0000";
@@ -143,6 +163,8 @@ begin
 			regdst <= '0'; 
 			jump <= '0';
 			branch <= '0';
+			branchNotEqual <= '0';
+			seletor_branch <= '0';
 			memread <= '0';
 			memtoreg <= '0';
 			aluop <= "1000";
@@ -150,11 +172,27 @@ begin
 			alusrc <= '1';
 			regwrite <= '1';
 			
-		else
+		elsif input = "000101" then 	-- BNE
+		
+			regdst <= '0'; -- 'X'
+			jump <= '0';
+			branch <= '0';
+			branchNotEqual <= '1';
+			seletor_branch <= '1';
+			memread <= '0';
+			memtoreg <= '0';
+			aluop <= "0001";
+			memwrite <= '0';
+			alusrc <= '0';
+			regwrite <= '0';
+			
+		else	-- OUTROS
 			
 			regdst <= 'X'; 
 			jump <= 'X';
 			branch <= 'X';
+			branchNotEqual <= 'X';
+			seletor_branch <= 'X';
 			memread <= 'X';
 			memtoreg <= 'X';
 			aluop <= "XXXX";

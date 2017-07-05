@@ -8,6 +8,7 @@ entity MIPS is
 	port (
 		clk : in std_logic;
 		
+		-- Para testar --
 		saida_MUXXSomador2 : out std_logic_vector(31 downto 0);
 		saidaSoma : out std_logic_vector(31 downto 0);
 		saidaSoma2 : out std_logic_vector(31 downto 0);
@@ -20,8 +21,7 @@ entity MIPS is
 		saida_MemDados :  out std_logic_vector(31 downto 0);
 		inst3126,inst50 : out std_logic_vector(5 downto 0);
 		inst1511,inst2016,inst2521 : out std_logic_vector(4 downto 0);
-		inst150 : out std_logic_vector(15 downto 0);
-		
+		inst150 : out std_logic_vector(15 downto 0);	
 		saida_contador_programa : out std_logic_vector(31 downto 0);
 		reg1_output : out std_logic_vector(31 downto 0);
 		reg2_output : out std_logic_vector(31 downto 0)
@@ -38,6 +38,7 @@ component ULA is
 port( 
 	input1, input2 : in std_logic_vector(DATA_WIDTH -1 downto 0);
 	operation : in std_logic_vector(3 downto 0);
+	instrucao : in std_logic_vector(DATA_WIDTH -1 downto 0);
 	output : out std_logic_vector(DATA_WIDTH -1 downto 0);
 	zero, negative : out std_logic;
 	carry, overflow : out std_logic
@@ -85,7 +86,7 @@ component ParteControle is
 
 port( 
 	input : in std_logic_vector(5 downto 0);
-	regdst, jump, branch, memread, memtoreg, memwrite, alusrc, regwrite: out std_logic;
+	regdst, jump, branch, branchNotEqual, seletor_branch, memread, memtoreg, memwrite, alusrc, regwrite: out std_logic;
 	aluop: out std_logic_vector(3 downto 0)
 	);
 
@@ -174,12 +175,32 @@ port(
 	);
 
 end component;
+
+component Bloco_ShiftLeft is
+	generic (DATA_WIDTH : natural := 32);
+
+port( 
+	a, b : in std_logic_vector(DATA_WIDTH -1 downto 0);
+	z: out std_logic_vector(DATA_WIDTH -1 downto 0)
+	);
+
+end component;
+
+component MuxBranch is
+
+port( 
+	a,b: in std_logic;
+	operation : in std_logic;
+	output: out std_logic
+	);
+
+end component;
 -----------------------------------------------------------------------------------------------
 
 signal saida_somador : std_logic_vector(31 downto 0) := x"00000000";
 signal saida_pc : std_logic_vector(31 downto 0) := x"00000000";
 signal instrucao : std_logic_vector(31 downto 0);
-signal regdst, jump, branch, memread, memtoreg, memwrite, alusrc, regwrite : std_logic;
+signal regdst, jump, branch, branchNotEqual, memread, memtoreg, memwrite, alusrc, regwrite : std_logic;
 signal aluop : std_logic_vector(3 downto 0);
 signal saida_mux2, saida_extensor_sinal, dado1_regbank, dado2_regbank : std_logic_vector(31 downto 0);
 signal saida_muxMemToReg, saida_muxSomador2 : std_logic_vector(31 downto 0);
@@ -193,51 +214,35 @@ signal carry_out_somador2 : std_logic;
 signal saida_ShiftLeft2 : std_logic_vector(27 downto 0);
 signal jump_address : std_logic_vector(31 downto 0);
 signal saida_muxJumpAddress : std_logic_vector(31 downto 0) := x"00000000";
-signal efetiva_branch : std_logic;
+signal efetiva_branch, efetiva_bne, seletor_branch, saida_muxBranch : std_logic;
 
 begin
 
 	-- Port Maps --
-	
-	------------------------------ Busca de Instrucao -----------------------------------------
 	U1: Contador_Programa port map(saida_muxJumpAddress,clk,saida_pc);
-
 	U2: MemoriaInst port map(clk,saida_pc(8 downto 2), instrucao);	
-	
 	U3: Somador port map(saida_pc,std_logic_vector(to_signed(4,32)),saida_somador);
-	-------------------------------------------------------------------------------------------
-	
-	U4: ParteControle port map(instrucao(31 downto 26),regdst, jump, branch, memread, memtoreg,
-										memwrite, alusrc, regwrite,aluop);
+	U4: ParteControle port map(instrucao(31 downto 26),regdst, jump, branch, branchNotEqual, seletor_branch, memread, memtoreg,memwrite, alusrc, regwrite,aluop);
 	U5: Mux3 port map(instrucao(20 downto 16), instrucao(15 downto 11), regdst, saida_mux3);									
-	U6: reg_bank port map(clk, regwrite, instrucao(25 downto 21), instrucao(20 downto 16),
-								 saida_mux3, saida_muxMemToReg, dado1_regbank, dado2_regbank);
-	
+	U6: reg_bank port map(clk, regwrite, instrucao(25 downto 21), instrucao(20 downto 16),saida_mux3, saida_muxMemToReg, dado1_regbank, dado2_regbank);
 	U7: ExtensorDeSinal port map(instrucao(15 downto 0), saida_extensor_sinal);
 	U8: Mux2 port map(dado2_regbank, saida_extensor_sinal, alusrc, saida_mux2);
-	
-	------------------------------ ULA -----------------------------------------------------
 	U9: ControleULA port map(instrucao(5 downto 0), aluop, op_ULA);
-	U10: ULA port map(dado1_regbank, saida_mux2, op_ULA, output_ULA, zero_ULA, negative_ULA,
-							carry_ULA, overflow_ULA);
-	----------------------------------------------------------------------------------------
-
+	U10: ULA port map(dado1_regbank, saida_mux2, op_ULA, instrucao, output_ULA, zero_ULA, negative_ULA,carry_ULA, overflow_ULA);
 	U11: MemoriaDado port map(clk, memwrite, output_ULA(6 downto 0),dado2_regbank, saida_memDado);
 	U12: Mux2 port map(output_ULA,saida_memDado,memtoreg,saida_muxMemToReg);
-	U13: Bloco_Sll port map(saida_extensor_sinal,std_logic_vector(to_signed(2,32)),saida_shif_left1);
+	U13: Bloco_ShiftLeft port map(saida_extensor_sinal,std_logic_vector(to_signed(2,32)),saida_shif_left1);
 	U14: Somador port map(saida_shif_left1,saida_somador,saida_somador2,carry_out_somador2);
+	U15: Mux2 port map(saida_somador,saida_somador2,saida_muxBranch,saida_muxSomador2);
+	U16: ShiftLeft2 port map(instrucao(25 downto 0),saida_ShiftLeft2);
+	U17: Mux2 port map(saida_muxSomador2,jump_address,jump,saida_muxJumpAddress);
+	U18: MuxBranch port map(branch,branchNotEqual,seletor_branch,saida_muxBranch);
+	-- Fim Port Map --
 	
 	efetiva_branch <= branch and zero_ULA;
-	
-	U15: Mux2 port map(saida_somador,saida_somador2,efetiva_branch,saida_muxSomador2);
-	
-	U16: ShiftLeft2 port map(instrucao(25 downto 0),saida_ShiftLeft2);
-	
+	efetiva_bne <= branchNotEqual and not(zero_ULA);
 	jump_address(31 downto 28) <= saida_somador(31 downto 28);
 	jump_address(27 downto 0) <= saida_ShiftLeft2;
-	
-	U17: Mux2 port map(saida_muxSomador2,jump_address,jump,saida_muxJumpAddress);
-	
 	
 	-- Para testar !
 	reg1_output <= dado1_regbank;
@@ -259,7 +264,5 @@ begin
 	inst1511 <= instrucao(15 downto 11);
 	inst150 <= instrucao(15 downto 0);
 	inst50 <= instrucao(5 downto 0);
-	
-	-- Fim Port Map --
 
 end arch;

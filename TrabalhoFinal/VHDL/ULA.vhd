@@ -9,6 +9,7 @@ entity ULA is
 port( 
 	input1, input2 : in std_logic_vector(DATA_WIDTH -1 downto 0);
 	operation : in std_logic_vector(3 downto 0);
+	instrucao : in std_logic_vector(DATA_WIDTH -1 downto 0);
 	output : out std_logic_vector(DATA_WIDTH -1 downto 0);
 	zero, negative : out std_logic;
 	carry, overflow : out std_logic
@@ -107,8 +108,9 @@ component Bloco_Sll is
 	generic (DATA_WIDTH : natural := 32);
 
 port( 
-	a, b : in std_logic_vector(DATA_WIDTH -1 downto 0);
-	z: out std_logic_vector(DATA_WIDTH -1 downto 0)
+	a : in std_logic_vector(DATA_WIDTH -1 downto 0);
+	b : in std_logic_vector(4 downto 0);
+	z : out std_logic_vector(DATA_WIDTH -1 downto 0)
 	);
 
 end component;
@@ -117,8 +119,9 @@ component Bloco_Srl is
 	generic (DATA_WIDTH : natural := 32);
 
 port( 
-	a, b : in std_logic_vector(DATA_WIDTH -1 downto 0);
-	z: out std_logic_vector(DATA_WIDTH -1 downto 0)
+	a : in std_logic_vector(DATA_WIDTH -1 downto 0);
+	b : in std_logic_vector(4 downto 0);
+	z : out std_logic_vector(DATA_WIDTH -1 downto 0)
 	);
 
 end component;
@@ -127,8 +130,9 @@ component Bloco_Sra is
 	generic (DATA_WIDTH : natural := 32);
 
 port( 
-	a, b : in std_logic_vector(DATA_WIDTH -1 downto 0);
-	z: out std_logic_vector(DATA_WIDTH -1 downto 0)
+	a : in std_logic_vector(DATA_WIDTH -1 downto 0);
+	b : in std_logic_vector(4 downto 0);
+	z : out std_logic_vector(DATA_WIDTH -1 downto 0)
 	);
 
 end component;
@@ -200,9 +204,9 @@ begin
 	I6: Bloco_Slt port map (input1,input2,out5);
 	I7: Bloco_Nor port map (input1,input2,out6);
 	I8: Bloco_Xor port map (input1,input2,out7); 
-	I9: Bloco_Sll port map (input1,input2,out8);
-	I10: Bloco_Srl port map (input1,input2,out9);
-	I11: Bloco_Sra port map (input1,input2,out10);
+	I9: Bloco_Sll port map (input2,instrucao(10 downto 6),out8);
+	I10: Bloco_Srl port map (input2,instrucao(10 downto 6),out9);
+	I11: Bloco_Sra port map (input2,instrucao(10 downto 6),out10);
 	I12: Mux port map (out1,out2,out3,out4,out5,out6,out7,out8,out9,out10,out12,operation,aux_output);
 	I13: Detector_Zero port map (aux_output,zero);
 	I14: Detector_Negative port map (aux_output,negative);
