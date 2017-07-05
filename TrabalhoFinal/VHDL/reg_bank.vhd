@@ -13,7 +13,9 @@ entity reg_bank is
 		clk, wren 				: in std_logic;
 		radd1, radd2, wadd 	: in std_logic_vector(ADDRESS_WIDTH-1 downto 0);
 		wdata 					: in std_logic_vector(DATA_WIDTH -1 downto 0);
+		--input_fpga : in std_logic_vector(DATA_WIDTH-1 downto 0);
 		rdata1, rdata2 		: out std_logic_vector(DATA_WIDTH -1 downto 0)
+		--output_fpga : out std_logic_vector(DATA_WIDTH-1 downto 0)
 	);
 	
 end entity reg_bank;

@@ -2,9 +2,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all; 
 
--- Entidade Multiplexador no MIPS com duas entradas --
-entity Mux3 is
-	generic (DATA_WIDTH : natural := 5);
+-- Entidade Multiplexador no MIPS com tres entradas --
+entity Mux4 is
+	generic (DATA_WIDTH : natural := 32);
 
 port( 
 	a,b,c: in std_logic_vector(DATA_WIDTH -1 downto 0);
@@ -12,13 +12,13 @@ port(
 	output: out std_logic_vector(DATA_WIDTH -1 downto 0)
 	);
 
-end entity Mux3;
+end entity Mux4;
 
 --Definição da arquitetura --
-architecture arch of Mux3 is
+architecture arch of Mux4 is
 begin
 
-	process(a,b,operation)
+	process(a,b,c,operation)
 	begin
 	
 		if operation = "00" then

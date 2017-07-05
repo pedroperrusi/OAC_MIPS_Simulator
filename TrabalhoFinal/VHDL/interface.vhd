@@ -27,6 +27,8 @@ component MIPS is
 	
 	port (
 		clk : in std_logic;
+		
+		-- Para testar --
 		saida_MUXXSomador2 : out std_logic_vector(31 downto 0);
 		saidaSoma : out std_logic_vector(31 downto 0);
 		saidaSoma2 : out std_logic_vector(31 downto 0);
@@ -36,8 +38,13 @@ component MIPS is
 		saida_muxJump : out std_logic_vector(31 downto 0); 
 		saidaExtSinal : out std_logic_vector(31 downto 0);
 		saida_MemOuULA : out std_logic_vector(31 downto 0);
+		saida_MemDados :  out std_logic_vector(31 downto 0);
+		inst3126,inst50 : out std_logic_vector(5 downto 0);
+		inst1511,inst2016,inst2521 : out std_logic_vector(4 downto 0);
+		inst150 : out std_logic_vector(15 downto 0);	
 		saida_contador_programa : out std_logic_vector(31 downto 0);
 		reg1_output : out std_logic_vector(31 downto 0);
+		jumpRegister1 : out std_logic;
 		reg2_output : out std_logic_vector(31 downto 0)
 	);
 	
@@ -52,39 +59,49 @@ end component;
 
 -- signals
 
-	signal clk : std_logic;
-	signal saida_MUXXSomador2 : std_logic_vector(31 downto 0);
-	signal saidaSoma : std_logic_vector(31 downto 0);
-	signal saidaSoma2 :  std_logic_vector(31 downto 0);
-	signal saidaDaULA : std_logic_vector(31 downto 0);
-	signal saidaDoShiftLeft1 : std_logic_vector(31 downto 0);
-	signal saidaMemoriaInst : std_logic_vector(31 downto 0);
-	signal saida_muxJump : std_logic_vector(31 downto 0); 
-	signal saidaExtSinal : std_logic_vector(31 downto 0);
-	signal saida_MemOuULA : std_logic_vector(31 downto 0);
-	signal saida_contador_programa : std_logic_vector(31 downto 0);
-	signal reg1_output : std_logic_vector(31 downto 0);
-	signal reg2_output : std_logic_vector(31 downto 0);
+		signal clk : std_logic;
+		signal saida_MUXXSomador2 : std_logic_vector(31 downto 0);
+		signal saidaSoma : std_logic_vector(31 downto 0);
+		signal saidaSoma2 : std_logic_vector(31 downto 0);
+		signal saidaDaULA : std_logic_vector(31 downto 0);
+		signal saidaDoShiftLeft1 : std_logic_vector(31 downto 0);
+		signal saidaMemoriaInst : std_logic_vector(31 downto 0);
+		signal saida_muxJump : std_logic_vector(31 downto 0); 
+		signal saidaExtSinal : std_logic_vector(31 downto 0);
+		signal saida_MemOuULA : std_logic_vector(31 downto 0);
+		signal saida_MemDados :  std_logic_vector(31 downto 0);
+		signal inst3126,inst50 : std_logic_vector(5 downto 0);
+		signal inst1511,inst2016,inst2521 : std_logic_vector(4 downto 0);
+		signal inst150 : std_logic_vector(15 downto 0);	
+		signal saida_contador_programa : std_logic_vector(31 downto 0);
+		signal reg1_output : std_logic_vector(31 downto 0);
+		signal reg2_output : std_logic_vector(31 downto 0);
+		signal jumpRegister1 : std_logic;
 	
-	signal data : STD_LOGIC_VECTOR(31 DOWNTO 0);
+		signal data : STD_LOGIC_VECTOR(31 DOWNTO 0);
 
 
 begin
 	
 	U1: MIPS port map(
-					clk => KEY3,
-					saida_MUXXSomador2 => saida_MUXXSomador2,
-					saidaSoma  => saidaSoma,
-					saidaSoma2 => saidaSoma2,
-					saidaDaULA => saidaDaULA,
-					saidaDoShiftLeft1 => saidaDoShiftLeft1,
-					saidaMemoriaInst => saidaMemoriaInst,
-					saida_muxJump => saida_muxJump,
-					saidaExtSinal => saidaExtSinal,
-					saida_MemOuULA => saida_MemOuULA,
-					saida_contador_programa => saida_contador_programa,
-					reg1_output => reg1_output,
-					reg2_output => reg2_output
+					KEY3,
+					saida_MUXXSomador2,
+					saidaSoma,
+					saidaSoma2,
+					saidaDaULA,
+					saidaDoShiftLeft1,
+					saidaMemoriaInst,
+					saida_muxJump,
+					saidaExtSinal,
+					saida_MemOuULA,
+					saida_MemDados,
+					inst3126,inst50,
+					inst1511,inst2016,inst2521,
+					inst150,	
+					saida_contador_programa,
+					reg1_output,
+					jumpRegister1,
+					reg2_output
 				);
 	
 	P1:process(KEY3, SW)

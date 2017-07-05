@@ -9,8 +9,10 @@ entity MemoriaDado is
  port(
 			clk, escreveMem:  in  STD_LOGIC; 
 			adr: in std_logic_vector(N-1 downto 0) := (others => '0');
+			--input_fpga : in std_logic_vector(M-1 downto 0);
 			wdata: in std_logic_vector(M-1 downto 0);
 			dado: out std_logic_vector(M-1 downto 0) := (others => '0')
+			--output_fpga : out std_logic_vector(M-1 downto 0)
 		); 
 		
 end entity MemoriaDado;

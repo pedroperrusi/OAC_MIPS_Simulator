@@ -24,13 +24,14 @@ architecture tb of tb_MIPS is
 		
 					saida_contador_programa : out std_logic_vector(31 downto 0);
 					reg1_output : out std_logic_vector(31 downto 0);
+					jumpRegister1 : out std_logic;
 					reg2_output : out std_logic_vector(31 downto 0)
 				  );
     end component;
 
     signal clk : std_logic;
 
-    constant TbPeriod : time := 1 ns; -- EDIT Put right period here
+    constant TbPeriod : time := 1 ns; 
     signal TbClock : std_logic := '0';
     signal TbSimEnded : std_logic := '0';
 	 signal reg1_output,reg2_output,saida_contador_programa : std_logic_vector(31 downto 0);
@@ -39,6 +40,7 @@ architecture tb of tb_MIPS is
 	 signal inst3126,inst50 : std_logic_vector(5 downto 0);
 	 signal inst1511,inst2016,inst2521 : std_logic_vector(4 downto 0);
 	 signal inst150 : std_logic_vector(15 downto 0);
+	 signal jumpRegister1 : std_logic;
 	 
 begin
 
@@ -60,7 +62,7 @@ begin
 	 
 	 
 	 
-	 saida_contador_programa,reg1_output,reg2_output);
+	 saida_contador_programa,reg1_output,jumpRegister1,reg2_output);
 
     TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
 
